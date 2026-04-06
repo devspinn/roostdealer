@@ -1,0 +1,1303 @@
+{
+  "dealer": {
+    "name": "Sarasota Powersports",
+    "slug": "sarasota-powersports",
+    "logo": "https://www.sarasotapowersports.com/images/sarasota-powersports-logo.png",
+    "phone": "941-351-4330",
+    "email": "info@sarasotapowersports.com",
+    "address": "2001 University Parkway",
+    "city": "Sarasota",
+    "state": "FL",
+    "zip": "34243",
+    "categoryImages": {
+      "motorcycle": "https://www.sarasotapowersports.com/images/sarasota-powersports-bttn-1.jpg",
+      "atv": "https://www.sarasotapowersports.com/images/sarasota-powersports-bttn-2.jpg",
+      "utv": "https://www.sarasotapowersports.com/images/sarasota-powersports-bttn-3.jpg"
+    },
+    "sourceUrl": "https://www.sarasotapowersports.com"
+  },
+  "units": [
+    {
+      "id": "18437797",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "UFORCE U10 Pro Highland",
+      "type": "utv",
+      "condition": "new",
+      "price": 24499,
+      "specs": {
+        "VIN": "LCELE1ZF5TM003596",
+        "Stock Number": "S6003596",
+        "Type": "Utility Vehicle",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO UFORCE U10 Pro Highland — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/trimsdb/25933471-0-147112351.jpg"
+      ],
+      "stockNumber": "S6003596",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18437797&condition=NEW&year=2026&make=CFMOTO&model=UFORCE+U10+Pro+Highland&vtype=Utility+Vehicle&trimid=25933471&location=Sarasota+Powersports&stockno=S6003596&vin=LCELE1ZF5TM003596&format=print"
+    },
+    {
+      "id": "18411723",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "UFORCE 600",
+      "type": "utv",
+      "condition": "new",
+      "price": 11449,
+      "specs": {
+        "VIN": "LCELDUZ97T6003909",
+        "Stock Number": "S6003909",
+        "Type": "Utility Vehicle",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO UFORCE 600 — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/trimsdb/25934771-0-147116331.jpg"
+      ],
+      "stockNumber": "S6003909",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18411723&condition=NEW&year=2026&make=CFMOTO&model=UFORCE+600&vtype=Utility+Vehicle&trimid=25934771&location=Sarasota+Powersports&stockno=S6003909&vin=LCELDUZ97T6003909&format=print"
+    },
+    {
+      "id": "18411722",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "UFORCE 600",
+      "type": "utv",
+      "condition": "new",
+      "price": 10999,
+      "specs": {
+        "VIN": "LCELDUZ94T6004323",
+        "Stock Number": "S6004323",
+        "Type": "Utility Vehicle",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO UFORCE 600 — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/trimsdb/25934771-0-147116331.jpg"
+      ],
+      "stockNumber": "S6004323",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18411722&condition=NEW&year=2026&make=CFMOTO&model=UFORCE+600&vtype=Utility+Vehicle&trimid=25934771&location=Sarasota+Powersports&stockno=S6004323&vin=LCELDUZ94T6004323&format=print"
+    },
+    {
+      "id": "18411721",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "UFORCE U10 Pro",
+      "type": "utv",
+      "condition": "new",
+      "price": 17949,
+      "specs": {
+        "VIN": "LCELE1ZA6TM001473",
+        "Stock Number": "D6001473",
+        "Type": "Utility Vehicle",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO UFORCE U10 Pro — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/trimsdb/25934841-0-147133581.jpg"
+      ],
+      "stockNumber": "D6001473",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18411721&condition=NEW&year=2026&make=CFMOTO&model=UFORCE+U10+Pro&vtype=Utility+Vehicle&trimid=25934841&location=Sarasota+Powersports&stockno=D6001473&vin=LCELE1ZA6TM001473&format=print"
+    },
+    {
+      "id": "18411718",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "UFORCE 1000",
+      "type": "utv",
+      "condition": "new",
+      "price": 14449,
+      "specs": {
+        "VIN": "LCELV1Z24TM000170",
+        "Stock Number": "S6000170",
+        "Type": "Utility Vehicle",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO UFORCE 1000 — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/trimsdb/25934221-0-147114341.jpg"
+      ],
+      "stockNumber": "S6000170",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18411718&condition=NEW&year=2026&make=CFMOTO&model=UFORCE+1000&vtype=Utility+Vehicle&trimid=25934221&location=Sarasota+Powersports&stockno=S6000170&vin=LCELV1Z24TM000170&format=print"
+    },
+    {
+      "id": "18411717",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "UFORCE 600",
+      "type": "utv",
+      "condition": "new",
+      "price": 11449,
+      "specs": {
+        "VIN": "LCELDUZ9XT6003922",
+        "Stock Number": "S6003922",
+        "Type": "Utility Vehicle",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO UFORCE 600 — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/trimsdb/25934771-0-147116331.jpg"
+      ],
+      "stockNumber": "S6003922",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18411717&condition=NEW&year=2026&make=CFMOTO&model=UFORCE+600&vtype=Utility+Vehicle&trimid=25934771&location=Sarasota+Powersports&stockno=S6003922&vin=LCELDUZ9XT6003922&format=print"
+    },
+    {
+      "id": "18394644",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "UFORCE 800 XL",
+      "type": "utv",
+      "condition": "new",
+      "price": 13499,
+      "specs": {
+        "VIN": "LCELVYZU0T6002268",
+        "Stock Number": "S6002268",
+        "Type": "Utility Vehicle",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO UFORCE 800 XL — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/trimsdb/25940111-0-147134131.jpg"
+      ],
+      "stockNumber": "S6002268",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18394644&condition=NEW&year=2026&make=CFMOTO&model=UFORCE+800+XL&vtype=Utility+Vehicle&trimid=25940111&location=Sarasota+Powersports&stockno=S6002268&vin=LCELVYZU0T6002268&format=print"
+    },
+    {
+      "id": "18394642",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "UFORCE 800 XL",
+      "type": "utv",
+      "condition": "new",
+      "price": 13499,
+      "specs": {
+        "VIN": "LCELVYZU3T6000658",
+        "Stock Number": "S6000658",
+        "Type": "Utility Vehicle",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO UFORCE 800 XL — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/trimsdb/25940111-0-147134131.jpg"
+      ],
+      "stockNumber": "S6000658",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18394642&condition=NEW&year=2026&make=CFMOTO&model=UFORCE+800+XL&vtype=Utility+Vehicle&trimid=25940111&location=Sarasota+Powersports&stockno=S6000658&vin=LCELVYZU3T6000658&format=print"
+    },
+    {
+      "id": "18394641",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "UFORCE 800 XL",
+      "type": "utv",
+      "condition": "new",
+      "price": 13949,
+      "specs": {
+        "VIN": "LCELVYZU0T6002464",
+        "Stock Number": "S6002464",
+        "Type": "Utility Vehicle",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO UFORCE 800 XL — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/trimsdb/25940111-0-147134131.jpg"
+      ],
+      "stockNumber": "S6002464",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18394641&condition=NEW&year=2026&make=CFMOTO&model=UFORCE+800+XL&vtype=Utility+Vehicle&trimid=25940111&location=Sarasota+Powersports&stockno=S6002464&vin=LCELVYZU0T6002464&format=print"
+    },
+    {
+      "id": "18394640",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "UFORCE 800 XL",
+      "type": "utv",
+      "condition": "new",
+      "price": 13499,
+      "specs": {
+        "VIN": "LCELVYZU1T6002232",
+        "Stock Number": "S6002232",
+        "Type": "Utility Vehicle",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO UFORCE 800 XL — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/trimsdb/25940111-0-147134131.jpg"
+      ],
+      "stockNumber": "S6002232",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18394640&condition=NEW&year=2026&make=CFMOTO&model=UFORCE+800+XL&vtype=Utility+Vehicle&trimid=25940111&location=Sarasota+Powersports&stockno=S6002232&vin=LCELVYZU1T6002232&format=print"
+    },
+    {
+      "id": "18388598",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "UFORCE U10 XL PRO",
+      "type": "utv",
+      "condition": "new",
+      "price": 19499,
+      "specs": {
+        "VIN": "LCELE1ZG9TM000130",
+        "Stock Number": "S6000130",
+        "Type": "Utility Vehicle",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO UFORCE U10 XL PRO — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/trimsdb/25934651-0-147115671.jpg"
+      ],
+      "stockNumber": "S6000130",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18388598&condition=NEW&year=2026&make=CFMOTO&model=UFORCE+U10+XL+PRO&vtype=Utility+Vehicle&trimid=25934651&location=Sarasota+Powersports&stockno=S6000130&vin=LCELE1ZG9TM000130&format=print"
+    },
+    {
+      "id": "18262616",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "CFORCE 800 Touring",
+      "type": "atv",
+      "condition": "new",
+      "price": 9499,
+      "specs": {
+        "VIN": "LCELVYZSXT6003085",
+        "Stock Number": "S6003085",
+        "Type": "ATV",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO CFORCE 800 Touring — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/trimsdb/25929041-0-147100181.png"
+      ],
+      "stockNumber": "S6003085",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18262616&condition=NEW&year=2026&make=CFMOTO&model=CFORCE+800+Touring&vtype=ATV&trimid=25929041&location=Sarasota+Powersports&stockno=S6003085&vin=LCELVYZSXT6003085&format=print"
+    },
+    {
+      "id": "18262613",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "Papio CL",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 3299,
+      "specs": {
+        "VIN": "LCEPBJL75T6000052",
+        "Stock Number": "S6000052",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO Papio CL — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/trimsdb/25934141-0-147113801.jpg"
+      ],
+      "stockNumber": "S6000052",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18262613&condition=NEW&year=2026&make=CFMOTO&model=Papio+CL&vtype=Motorcycle+%2F+Scooter&trimid=25934141&location=Sarasota+Powersports&stockno=S6000052&vin=LCEPBJL75T6000052&format=print"
+    },
+    {
+      "id": "18262611",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "450SS",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 5699,
+      "specs": {
+        "VIN": "LCEPESLPXT6001369",
+        "Stock Number": "S6001369",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO 450SS — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/trimsdb/25928211-0-147095641.jpg"
+      ],
+      "stockNumber": "S6001369",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18262611&condition=NEW&year=2026&make=CFMOTO&model=450SS&vtype=Motorcycle+%2F+Scooter&trimid=25928211&location=Sarasota+Powersports&stockno=S6001369&vin=LCEPESLPXT6001369&format=print"
+    },
+    {
+      "id": "18183740",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "UFORCE 1000",
+      "type": "utv",
+      "condition": "new",
+      "price": 13999,
+      "specs": {
+        "VIN": "LCELV1Z28T6001374",
+        "Stock Number": "S6001374",
+        "Type": "Utility Vehicle",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO UFORCE 1000 — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/trimsdb/25934221-0-147114341.png"
+      ],
+      "stockNumber": "S6001374",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18183740&condition=NEW&year=2026&make=CFMOTO&model=UFORCE+1000&vtype=Utility+Vehicle&trimid=25934221&location=Sarasota+Powersports&stockno=S6001374&vin=LCELV1Z28T6001374&format=print"
+    },
+    {
+      "id": "18166109",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "450SS",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 5699,
+      "specs": {
+        "VIN": "LCEPESLP8T6000382",
+        "Stock Number": "S6000382",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO 450SS — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/07/C7/07C77BB1-90A1-4CB9-BAD5-16A23AF94852.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/F4/E1/F4E17065-E7C8-4E81-B03F-376EBCDE2DFA.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/56/DB/56DB3094-5638-4AB0-BA0F-FB8F6D7A2CF8.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/FA/5D/FA5DF2C9-A939-4376-B53F-A5F1EB7DDED1.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/20/8B/208B472A-DF4D-4B5B-9906-632A2B466073.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/F2/75/F275B979-4BE0-42B2-87CA-25FECF2BF4DB.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/DD/BF/DDBF9713-BE94-40D5-80CB-F41C83BCA6C6.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/E6/91/E691B3DB-ACBF-4416-AEE3-BC0EAEB92A79.jpg"
+      ],
+      "stockNumber": "S6000382",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18166109&condition=NEW&year=2026&make=CFMOTO&model=450SS&vtype=Motorcycle+%2F+Scooter&trimid=25928211&location=Sarasota+Powersports&stockno=S6000382&vin=LCEPESLP8T6000382&format=print"
+    },
+    {
+      "id": "18164499",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "450SS",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 5699,
+      "specs": {
+        "VIN": "LCEPESLP9T6000617",
+        "Stock Number": "S6000617",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO 450SS — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/CE/7B/CE7B9614-7B61-4FDD-802D-62A9EF1A30D0.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/BB/B3/BBB3FCAF-09DE-4DF3-9C31-809F946E0F5B.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/3C/93/3C93215D-14E8-48A9-80A3-CB103DB2C82F.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/B4/29/B429F98F-7FE8-4DE4-A49F-FEE005FBB0E6.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/03/79/03791436-462B-43C7-BB7A-04E5D3255506.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/2C/AC/2CACA592-A0E5-4A9C-AC09-63FB1E109BD2.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/88/38/88383816-65EB-472B-A50C-B4053F1343BE.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/69/39/69392373-C0B6-468A-B1F6-2F8A660405DD.jpg"
+      ],
+      "stockNumber": "S6000617",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18164499&condition=NEW&year=2026&make=CFMOTO&model=450SS&vtype=Motorcycle+%2F+Scooter&trimid=25928211&location=Sarasota+Powersports&stockno=S6000617&vin=LCEPESLP9T6000617&format=print"
+    },
+    {
+      "id": "18157995",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "450CL-C",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 5799,
+      "specs": {
+        "VIN": "LCEPESLF0T6000223",
+        "Stock Number": "S6000223",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO 450CL-C — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/4E/CD/4ECD2238-483A-42B2-9D17-81CA983F6E18.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/49/E1/49E19FE9-7456-49A5-8080-E57A1B2DB258.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/C8/2C/C82C7845-6E7D-453E-89B2-D6CAB9A9002B.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/AC/70/AC704BD0-C40E-4D0B-874D-B315E3A66A5A.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/95/9D/959D342F-1329-4A6D-9223-1E23CA2D547F.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/80/6D/806D6765-FC2B-4B57-9B76-4A8643887181.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/F0/E3/F0E3AD61-7841-4D18-B26D-4A64C08133F0.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/EB/66/EB66756E-A60A-471C-82AC-E4FADE9A88B8.jpg"
+      ],
+      "stockNumber": "S6000223",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18157995&condition=NEW&year=2026&make=CFMOTO&model=450CL%2DC&vtype=Motorcycle+%2F+Scooter&trimid=25931371&location=Sarasota+Powersports&stockno=S6000223&vin=LCEPESLF0T6000223&format=print"
+    },
+    {
+      "id": "18157994",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "UFORCE U10 Pro",
+      "type": "utv",
+      "condition": "new",
+      "price": 17499,
+      "specs": {
+        "VIN": "LCELE1ZA9TM000916",
+        "Stock Number": "S6000916",
+        "Type": "Utility Vehicle",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO UFORCE U10 Pro — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/CF/BA/CFBAA87A-BB04-4CF3-90E2-49C2511FB33A.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/63/5C/635C1276-8AFC-4A92-8B4B-C0D0E85243FD.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/00/10/0010A238-DE10-4B83-883F-EBA3F315E8A3.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/A1/7F/A17F7EB5-EE86-40D4-A20A-BC99E4C59832.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/A2/C5/A2C5A3A6-5D62-4781-960F-401182982D1F.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/9A/A1/9AA169A2-AE7A-4A69-BC29-EC5234104855.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/1B/B0/1BB033D8-B9A4-405F-BC69-AC360056538A.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/BA/33/BA33C884-9267-4D81-A2A7-465D53DA33A8.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/0B/95/0B95A30C-DD01-432C-9BA3-62234A8F136B.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/AB/2C/AB2C400E-A2DB-46F4-BF45-DAB3C22873D0.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/9E/CD/9ECD325A-5EFC-435A-BF3C-0F360A029D89.jpg"
+      ],
+      "stockNumber": "S6000916",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18157994&condition=NEW&year=2026&make=CFMOTO&model=UFORCE+U10+Pro&vtype=Utility+Vehicle&trimid=25934841&location=Sarasota+Powersports&stockno=S6000916&vin=LCELE1ZA9TM000916&format=print"
+    },
+    {
+      "id": "18157992",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "450CL-C",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 5799,
+      "specs": {
+        "VIN": "LCEPESLF6T6000193",
+        "Stock Number": "S6000193",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO 450CL-C — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/9B/DE/9BDE766E-DFB8-45A3-8841-FF42EE6F4EA5.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/C0/15/C0155AD6-9769-4C78-9AAB-0BC117CC8493.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/94/C7/94C76975-2BF4-4E24-A15E-9EC2FCE620D8.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/A8/8D/A88DCD1A-0CB1-4200-8A8C-106F88430C57.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/47/75/47758339-A784-4704-94CB-E0E1342E5713.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/8F/87/8F879A2C-A6FD-4DEC-8B94-0911AA2C0BF6.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/03/10/03101118-79F8-48E2-BBBE-4242A96DDA5C.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/9D/CB/9DCBFC10-FF7A-4FAC-9E0A-B2D48BD9D70C.jpg"
+      ],
+      "stockNumber": "S6000193",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18157992&condition=NEW&year=2026&make=CFMOTO&model=450CL%2DC&vtype=Motorcycle+%2F+Scooter&trimid=25931371&location=Sarasota+Powersports&stockno=S6000193&vin=LCEPESLF6T6000193&format=print"
+    },
+    {
+      "id": "18157990",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "450CL-C",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 5799,
+      "specs": {
+        "VIN": "LCEPESLF3T6000460",
+        "Stock Number": "S6000460",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO 450CL-C — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/E0/2D/E02D919B-4D28-47CC-825A-D91AF94BB40E.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/07/63/07634BC4-2627-4CC3-B05C-E0A84C3545CA.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/B9/21/B92159C8-12D8-4E19-B319-BA10DEBE1ABD.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/14/6F/146F1F24-FF15-4B77-A5EA-5CAD19A649CF.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/9C/13/9C1373EF-BC84-47BB-8648-5D685155ED10.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/58/48/5848A3CE-1372-4F26-8E33-CD899D5E4A9F.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/26/B0/26B0BC57-BE05-4206-A07F-72719C246FC7.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/74/3B/743BA08A-8BCA-4BCE-8EFA-DBC8606FAC03.jpg"
+      ],
+      "stockNumber": "S6000460",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18157990&condition=NEW&year=2026&make=CFMOTO&model=450CL%2DC&vtype=Motorcycle+%2F+Scooter&trimid=25931371&location=Sarasota+Powersports&stockno=S6000460&vin=LCEPESLF3T6000460&format=print"
+    },
+    {
+      "id": "18157989",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "UFORCE U10 Pro",
+      "type": "utv",
+      "condition": "new",
+      "price": 17499,
+      "specs": {
+        "VIN": "LCELE1ZA2TM000790",
+        "Stock Number": "S6000790",
+        "Type": "Utility Vehicle",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO UFORCE U10 Pro — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/30/07/3007366A-7925-44E9-A132-59404233F702.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/1C/AF/1CAF9D42-FA19-4B1A-9F1C-8D39F8A25BF3.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/B3/01/B3017FE3-A1F5-4E2C-8EBD-4628246103AE.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/C5/F6/C5F65153-72E1-43C3-A098-D4DBC08FE188.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/16/EA/16EA7D5E-6A84-4239-94AB-07F93A89AA20.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/BA/66/BA66479F-AA34-4190-88B9-9085035A441D.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/46/3C/463C95F1-76BD-42D3-8632-BA8A084E55D1.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/3A/93/3A937540-6E3D-4FF0-AFD2-758CFFB81461.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/0B/B2/0BB271F6-A941-41BD-BCD2-7F1762BFDEC7.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/E8/32/E832F32D-C6EB-437F-9CB7-5480917C0778.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/91/D1/91D108D8-E2F5-4669-BF7E-BA03D8F71D95.jpg"
+      ],
+      "stockNumber": "S6000790",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18157989&condition=NEW&year=2026&make=CFMOTO&model=UFORCE+U10+Pro&vtype=Utility+Vehicle&trimid=25934841&location=Sarasota+Powersports&stockno=S6000790&vin=LCELE1ZA2TM000790&format=print"
+    },
+    {
+      "id": "18157988",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "450CL-C",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 5799,
+      "specs": {
+        "VIN": "LCEPESLF3T6000197",
+        "Stock Number": "S6000197",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO 450CL-C — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/92/A7/92A79F79-57D0-4692-A75B-653A8A34611C.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/87/8E/878E2937-93AD-4737-BF2F-4F890C8D54B1.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/0B/17/0B1742FB-20B3-4665-A288-B4FA825C3F7D.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/A8/E8/A8E818EE-4E44-458A-88B1-61AA2E4427C2.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/3F/B9/3FB92C25-65CA-4FFB-B101-F4FB1FE5DA03.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/40/91/40912038-0AEC-4E66-8CAE-CA8F94A6B55E.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/13/38/133807A2-07A7-4384-B6EE-26C20B0AA922.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/F3/00/F300B44D-5476-415E-8BA8-AD38DB442EA1.jpg"
+      ],
+      "stockNumber": "S6000197",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18157988&condition=NEW&year=2026&make=CFMOTO&model=450CL%2DC&vtype=Motorcycle+%2F+Scooter&trimid=25931371&location=Sarasota+Powersports&stockno=S6000197&vin=LCEPESLF3T6000197&format=print"
+    },
+    {
+      "id": "18151957",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "450SS",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 5699,
+      "specs": {
+        "VIN": "LCEPESLP6T6000414",
+        "Stock Number": "S6000414",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO 450SS — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/9E/DB/9EDB57FC-8C9C-47AE-8086-0F8182190E65.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/E0/C9/E0C97448-04A6-4B1F-B22C-99A4CF0D1DB0.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/8E/CF/8ECF13A4-21D1-491E-943D-E7C93E107471.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/4F/7E/4F7EAE12-95F4-49C6-8C45-E17FBBDF5409.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/85/92/8592534B-3382-4AF6-AAAF-8B4547D218DA.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/FC/5C/FC5C3ABB-87E3-4465-8A2B-D30CC8CA69B2.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/62/C6/62C6E52C-90A2-4992-A3F6-6A57B12F1101.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/06/22/0622E15F-1F0B-4702-8FB1-A14253921E28.jpg"
+      ],
+      "stockNumber": "S6000414",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18151957&condition=NEW&year=2026&make=CFMOTO&model=450SS&vtype=Motorcycle+%2F+Scooter&trimid=25928211&location=Sarasota+Powersports&stockno=S6000414&vin=LCEPESLP6T6000414&format=print"
+    },
+    {
+      "id": "17794371",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "Ibex 450",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 6499,
+      "specs": {
+        "VIN": "LCEPESLD8T6001473",
+        "Stock Number": "S6001473",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO Ibex 450 — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/47/FD/47FD2BEA-F983-4D2B-AF5E-D9D6C7841794.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/BD/42/BD42C599-40C8-4ABE-BE69-E088532A8938.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/0F/E3/0FE368A5-2A20-40A3-AB6E-3B01E817CFBE.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/89/47/89478DBC-F7B7-4761-9A47-DEF472F1E862.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/D0/F0/D0F01C6A-95DE-49A3-9209-0B9E128C9750.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/46/DA/46DA51E5-6E9B-4BEA-AD6D-753781D5666B.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/19/A1/19A1ABAB-ADC9-4ADE-809A-824C73797FAA.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/FF/63/FF631792-4D60-41D0-B08D-27816E63FB6D.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/31/C0/31C03584-EA48-4DAC-ACA1-3A901CC90778.jpg"
+      ],
+      "stockNumber": "S6001473",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=17794371&condition=NEW&year=2026&make=CFMOTO&model=Ibex+450&vtype=Motorcycle+%2F+Scooter&trimid=25931141&location=Sarasota+Powersports&stockno=S6001473&vin=LCEPESLD8T6001473&format=print"
+    },
+    {
+      "id": "17794367",
+      "year": 2026,
+      "make": "CFMOTO",
+      "model": "675NK",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 7499,
+      "specs": {
+        "VIN": "LCEPEVLR9T6000779",
+        "Stock Number": "S6000779",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 CFMOTO 675NK — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/5E/2D/5E2DB2C7-A83C-49D4-A0E8-DDACA4F0CB6B.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/61/FC/61FCF66C-66A4-4C18-9ABD-AD6A33D6D137.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/CE/74/CE74773B-0E13-464F-849F-4570CEC0210F.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/27/F2/27F24D91-38D5-4BD7-B29E-74306B6990A7.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/84/34/84348E46-A9F6-4784-B2DC-A72BD8FA1D06.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/C2/09/C20951A8-C375-445F-9E47-A59894AF4B6B.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/D1/2E/D12E9237-11E8-494F-9B0A-2D56CC89F450.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/37/0C/370CEEF9-C222-43C5-8324-D36BA17477F6.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/C4/8F/C48FA8E6-A169-422F-8B05-F47D5E14C2A8.jpg"
+      ],
+      "stockNumber": "S6000779",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=17794367&condition=NEW&year=2026&make=CFMOTO&model=675NK&vtype=Motorcycle+%2F+Scooter&trimid=25929621&location=Sarasota+Powersports&stockno=S6000779&vin=LCEPEVLR9T6000779&format=print"
+    },
+    {
+      "id": "18049431",
+      "year": 2026,
+      "make": "GASGAS",
+      "model": "EX 300",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 10299,
+      "specs": {
+        "VIN": "VBKGBP237TM323157",
+        "Stock Number": "S6323157",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 GASGAS EX 300 — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/FC/58/FC583B83-445B-44C1-A1E8-48ECF0D918BF.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/8B/D8/8BD87A9F-D84C-4B12-96F9-C924859A36F9.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/89/7D/897D0152-4364-471B-97C6-AF0A2CE93E3F.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/12/B3/12B3A0D1-1396-49B4-8B00-DBA907049A01.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/95/B0/95B0E0BE-78F8-416F-BF24-98A138C35D58.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/49/24/4924C09C-970C-4D45-BC14-36AA4EDEE47A.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/19/B5/19B53AB3-390E-4F50-A5EE-20CB65238596.jpg"
+      ],
+      "stockNumber": "S6323157",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18049431&condition=NEW&year=2026&make=GASGAS&model=EX+300&vtype=Motorcycle+%2F+Scooter&trimid=25918821&location=Sarasota+Powersports&stockno=S6323157&vin=VBKGBP237TM323157&format=print"
+    },
+    {
+      "id": "18196649",
+      "year": 2026,
+      "make": "GASGAS",
+      "model": "MC 65",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 5549,
+      "specs": {
+        "VIN": "VBKGXA236TM025648",
+        "Stock Number": "S6025648",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 GASGAS MC 65 — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/trimsdb/25910651-11599361-147031611.png"
+      ],
+      "stockNumber": "S6025648",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18196649&condition=NEW&year=2026&make=GASGAS&model=MC+65&vtype=Motorcycle+%2F+Scooter&trimid=25910651&location=Sarasota+Powersports&stockno=S6025648&vin=VBKGXA236TM025648&format=print"
+    },
+    {
+      "id": "17848898",
+      "year": 2026,
+      "make": "GASGAS",
+      "model": "MC 65",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 5549,
+      "specs": {
+        "VIN": "VBKGXA235TM020277",
+        "Stock Number": "S6020277",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 GASGAS MC 65 — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/28/DE/28DE469C-C9F5-40D2-98A6-3BA75BAD227A.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/31/A8/31A8A0D5-D4C6-4A2C-912C-C80718A17CB7.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/71/CB/71CB7EAC-FD1E-4827-9C5D-AFFC056CB94E.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/9F/AA/9FAA4FEA-2992-4860-B66A-08013C5B72AE.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/BB/7C/BB7C103D-1AAC-4047-A217-FF5AD0D3967B.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/90/39/903959CF-9726-419D-9AEC-A38F1C1912E2.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/EA/28/EA280067-205D-4090-BA29-564201CB458A.jpg"
+      ],
+      "stockNumber": "S6020277",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=17848898&condition=NEW&year=2026&make=GASGAS&model=MC+65&vtype=Motorcycle+%2F+Scooter&trimid=25910651&location=Sarasota+Powersports&stockno=S6020277&vin=VBKGXA235TM020277&format=print"
+    },
+    {
+      "id": "17848909",
+      "year": 2026,
+      "make": "Husqvarna®",
+      "model": "FE 501s",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 13599,
+      "specs": {
+        "VIN": "VBKUAJ406TM468485",
+        "Stock Number": "S6468485",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 Husqvarna® FE 501s — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/2A/A6/2AA68428-A012-47B0-9126-03B2B3F1EE7B.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/D7/28/D7281D4C-8634-4CB9-AE2A-E262CC51E908.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/BC/5D/BC5DC8CB-3697-4C4E-AC2A-0EF9B081AF5D.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/CD/C7/CDC7330A-AD1D-4768-92EC-2F998A89D875.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/F8/D8/F8D8D020-5D92-4BC5-A933-E57C2E751705.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/85/72/8572286C-E9B1-4799-BABE-D507BE1D51F7.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/AA/04/AA043615-EA26-456B-844B-D1A5ADC44705.jpg"
+      ],
+      "stockNumber": "S6468485",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=17848909&condition=NEW&year=2026&make=Husqvarna%C2%AE&model=FE+501s&vtype=Motorcycle+%2F+Scooter&trimid=26195001&location=Sarasota+Powersports&stockno=S6468485&vin=VBKUAJ406TM468485&format=print"
+    },
+    {
+      "id": "18105862",
+      "year": 2026,
+      "make": "Husqvarna®",
+      "model": "TC 85 19/16",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 7149,
+      "specs": {
+        "VIN": "VBKUXC234TM024304",
+        "Stock Number": "S6024304",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 Husqvarna® TC 85 19/16 — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/ED/24/ED24664A-6883-483F-A587-483B4FF69896.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/A9/D9/A9D903C0-0960-4445-ABDF-8ECE2BDAD016.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/7E/A2/7EA218C1-2229-4ADA-AF41-151C47588B71.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/4A/6C/4A6C9BE6-F550-4336-B658-CA8CAC8C67C8.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/63/FF/63FF1C19-2E3E-4948-969E-3CEF3D333C1E.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/3D/33/3D33CA85-F333-4BDF-AF1C-2404E09C6448.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/1B/20/1B20909E-AE51-4FFF-9C61-D384963142F8.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/44/BE/44BE7D40-AA48-4728-B24A-CC5CB39F10BB.jpg"
+      ],
+      "stockNumber": "S6024304",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18105862&condition=NEW&year=2026&make=Husqvarna%C2%AE&model=TC+85+19%2F16&vtype=Motorcycle+%2F+Scooter&trimid=26187411&location=Sarasota+Powersports&stockno=S6024304&vin=VBKUXC234TM024304&format=print"
+    },
+    {
+      "id": "17511381",
+      "year": 2026,
+      "make": "Kawasaki",
+      "model": "Brute Force® 750 EPS",
+      "type": "atv",
+      "condition": "new",
+      "price": 11499,
+      "specs": {
+        "VIN": "JKAVFDN17TB503346",
+        "Stock Number": "S6503346",
+        "Type": "ATV",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 Kawasaki Brute Force® 750 EPS — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/5C/83/5C8337CA-8329-4477-A531-2141DA3E0C01.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/35/0B/350BDDE2-79E6-478D-A258-20F7DBC01277.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/20/2D/202D687E-E2B3-4F5F-ADEC-B6798A88BE8B.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/79/54/7954A9F8-917C-4A8B-9847-21A49E8412C8.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/DF/F9/DFF94712-B547-4A59-A3F3-D1ADE0027075.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/26/EC/26EC6F08-3675-46B5-B970-AFE0BF62B19C.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/CA/91/CA914535-3DBD-4DC5-A767-9325285D1059.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/64/27/6427000B-9890-4E79-953E-DF13D250749C.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/46/05/4605A83E-3664-49F8-99B3-F76C76C37FF2.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/9A/3A/9A3A18C7-0EA7-4841-96C1-288E31CE7AE5.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/54/9C/549CFE75-6E65-4B1C-B4E7-5C450808E13C.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/8D/C8/8DC83D94-CDF3-49CE-AA19-76820DA1500F.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/DD/94/DD94ABB2-313E-4640-8B24-E5EA267EFA88.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/FB/3F/FB3F1C8D-199F-432D-88B5-1392906D5C78.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/05/24/0524376A-7286-4D63-98B4-9778D7405C6F.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/10/45/104593B7-957F-499E-A952-AF486525F5D5.jpg"
+      ],
+      "stockNumber": "S6503346",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=17511381&condition=NEW&year=2026&make=Kawasaki&model=Brute+Force%C2%AE+750+EPS&vtype=ATV&trimid=25103151&location=Sarasota+Powersports&stockno=S6503346&vin=JKAVFDN17TB503346&format=print"
+    },
+    {
+      "id": "17941830",
+      "year": 2026,
+      "make": "Kawasaki",
+      "model": "Eliminator® ABS",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 6799,
+      "specs": {
+        "VIN": "ML5ELFA17TDA26886",
+        "Stock Number": "S6A26886",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 Kawasaki Eliminator® ABS — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/C1/62/C1626F83-A7D5-443C-BD56-DCF9622B2C15.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/76/7D/767DEEDF-FA8B-445D-A46D-040C5D1D79AB.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/33/41/3341AE8C-D703-47DF-B1A1-49EAE9737AAE.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/2E/81/2E81C0F1-4849-49A8-A671-640767ED72A8.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/31/45/3145D8D4-2BC3-4F80-A846-8297D80F98B2.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/D8/0D/D80D779D-3497-4382-AFBE-92099BD0F3F3.jpg"
+      ],
+      "stockNumber": "S6A26886",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=17941830&condition=NEW&year=2026&make=Kawasaki&model=Eliminator%C2%AE+ABS&vtype=Motorcycle+%2F+Scooter&trimid=26278351&location=Sarasota+Powersports&stockno=S6A26886&vin=ML5ELFA17TDA26886&format=print"
+    },
+    {
+      "id": "17941845",
+      "year": 2026,
+      "make": "Kawasaki",
+      "model": "Eliminator® ABS",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 6799,
+      "specs": {
+        "VIN": "ML5ELFA14TDA28255",
+        "Stock Number": "S6A28255",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 Kawasaki Eliminator® ABS — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/93/77/93777F42-1C19-44CC-8EA3-2980C84292FA.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/E5/A1/E5A11386-A6AA-4D3A-B39E-02947AAABC4F.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/F0/8E/F08ECFC4-B89E-4552-9F52-1B0BD6368FE2.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/88/81/8881FFC4-28B0-43FE-98ED-35E08CD8F5F4.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/17/D0/17D027A4-6B57-4109-9147-4C758E426CB8.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/A0/3E/A03E16A4-440A-42E4-9959-802E3603161E.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/F2/15/F215B28D-3069-4B8C-9C33-D4E0ACA3F042.jpg"
+      ],
+      "stockNumber": "S6A28255",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=17941845&condition=NEW&year=2026&make=Kawasaki&model=Eliminator%C2%AE+ABS&vtype=Motorcycle+%2F+Scooter&trimid=26278351&location=Sarasota+Powersports&stockno=S6A28255&vin=ML5ELFA14TDA28255&format=print"
+    },
+    {
+      "id": "18216539",
+      "year": 2026,
+      "make": "Kawasaki",
+      "model": "Eliminator® ABS",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 6799,
+      "specs": {
+        "VIN": "ML5ELFA18TDA27397",
+        "Stock Number": "S6A27397",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 Kawasaki Eliminator® ABS — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/E4/72/E472B187-FD95-4E2C-A182-D3B0136309CA.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/A5/F4/A5F4B4FC-3ADF-4F49-8756-80444A909617.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/54/80/5480AA65-EB3C-4A32-87A5-4FABD00C9EFC.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/9E/49/9E49E2A9-8967-4B62-B144-255AC9F464F7.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/F3/E1/F3E12E5C-D6D7-4F4A-ADA0-5C9F3A70E0F0.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/41/29/4129DDE6-D685-4272-A7CC-41970157AE1E.jpg"
+      ],
+      "stockNumber": "S6A27397",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18216539&condition=NEW&year=2026&make=Kawasaki&model=Eliminator%C2%AE+ABS&vtype=Motorcycle+%2F+Scooter&trimid=26278351&location=Sarasota+Powersports&stockno=S6A27397&vin=ML5ELFA18TDA27397&format=print"
+    },
+    {
+      "id": "18068985",
+      "year": 2026,
+      "make": "Kawasaki",
+      "model": "KLR 650",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 6999,
+      "specs": {
+        "VIN": "ML5KLEG1XTDA41693",
+        "Stock Number": "S6A41693",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 Kawasaki KLR 650 — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/F6/64/F664D0CB-10A1-4356-BF7B-33DB0A566D38.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/B2/79/B279FD17-63F4-4203-9E4B-040F399C2D58.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/05/C8/05C8D559-4387-4FA9-B08A-9827EAA167EA.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/AF/7A/AF7AF6ED-C366-4218-8ABC-42D65AA86655.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/B3/C5/B3C531FF-8F58-4507-B00F-AD0F097A4CBB.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/A8/02/A8023FDB-3A19-4188-BDFD-32A4CC9B857A.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/12/A3/12A30464-6699-40E4-A320-3DE5381C3CC3.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/8D/F8/8DF8D0E2-4F60-45B5-9B99-A88D3241B78B.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/74/E3/74E3C979-EB43-4361-9E14-4ABB8CCABF2B.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/6E/CF/6ECF84AA-80DF-407A-89F1-F6C4128C89EE.jpg"
+      ],
+      "stockNumber": "S6A41693",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18068985&condition=NEW&year=2026&make=Kawasaki&model=KLR+650&vtype=Motorcycle+%2F+Scooter&location=Sarasota+Powersports&stockno=S6A41693&vin=ML5KLEG1XTDA41693&format=print"
+    },
+    {
+      "id": "18009423",
+      "year": 2026,
+      "make": "Kawasaki",
+      "model": "KLR®650 ABS",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 7299,
+      "specs": {
+        "VIN": "ML5KLEF13TDA41102",
+        "Stock Number": "S6A41102",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 Kawasaki KLR®650 ABS — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/E3/8E/E38E0D06-1EC9-459E-826D-B426C171D424.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/F1/5D/F15D4393-FB7B-4A87-A0AF-A2C2891D81A2.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/03/96/0396F347-ECF5-46BF-87A0-D8289EC60075.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/33/BF/33BFD14A-BD9E-4E1E-89D2-3672FC1A1C80.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/BE/42/BE42F886-4684-4BC1-AC0E-4F165B7A4794.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/2E/5F/2E5F1BD2-8837-4670-AB3E-533275D53AA4.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/7A/34/7A34A498-7FB4-484E-94EF-4A5F542AC3BF.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/94/07/9407925A-2578-4C12-9BA6-C327EC4E059E.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/8A/0E/8A0E83EB-42B3-4863-AB5E-4A2CF5276484.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/FB/D5/FBD5B1B6-8C09-4936-923D-D9F860A912F3.jpg"
+      ],
+      "stockNumber": "S6A41102",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18009423&condition=NEW&year=2026&make=Kawasaki&model=KLR%C2%AE650+ABS&vtype=Motorcycle+%2F+Scooter&trimid=26282731&location=Sarasota+Powersports&stockno=S6A41102&vin=ML5KLEF13TDA41102&format=print"
+    },
+    {
+      "id": "18172636",
+      "year": 2026,
+      "make": "Kawasaki",
+      "model": "KLR®650 ABS",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 7299,
+      "specs": {
+        "VIN": "ML5KLEF19TDA42142",
+        "Stock Number": "S6A42142",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 Kawasaki KLR®650 ABS — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/trimsdb/26282731-11706411-148501291.png"
+      ],
+      "stockNumber": "S6A42142",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18172636&condition=NEW&year=2026&make=Kawasaki&model=KLR%C2%AE650+ABS&vtype=Motorcycle+%2F+Scooter&trimid=26282731&location=Sarasota+Powersports&stockno=S6A42142&vin=ML5KLEF19TDA42142&format=print"
+    },
+    {
+      "id": "17941836",
+      "year": 2026,
+      "make": "Kawasaki",
+      "model": "KLR®650 Adventure ABS",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 8199,
+      "specs": {
+        "VIN": "ML5KLEH12TDA40701",
+        "Stock Number": "S6A40701",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 Kawasaki KLR®650 Adventure ABS — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/19/3E/193ED067-C34A-4CEB-8284-72686583C53E.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/EE/7E/EE7E61BB-986E-4BE1-9E0E-7E5FB0AE37D0.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/A3/81/A381E270-FAC1-4527-9D29-ECF0D3921D52.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/13/41/13418701-73F1-4762-8F3E-FE8B7A94C1BB.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/EF/00/EF006D52-A759-467C-82DF-FAED45EC1552.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/8D/68/8D681ABC-C8DF-4092-951B-50768DFF398F.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/5F/89/5F896221-16F7-441F-AB17-FFB9390BBDC1.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/7C/B6/7CB683D3-16AE-4EE4-9317-8F4CEB00177A.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/4D/86/4D866144-7841-4D49-9E70-0631A8DD1B1F.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/F8/86/F8868A7A-7021-45C9-9F99-AF382C345830.jpg"
+      ],
+      "stockNumber": "S6A40701",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=17941836&condition=NEW&year=2026&make=Kawasaki&model=KLR%C2%AE650+Adventure+ABS&vtype=Motorcycle+%2F+Scooter&trimid=26283511&location=Sarasota+Powersports&stockno=S6A40701&vin=ML5KLEH12TDA40701&format=print"
+    },
+    {
+      "id": "17940646",
+      "year": 2026,
+      "make": "Kawasaki",
+      "model": "KLR®650 Adventure ABS Cypher Camo Beige",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 8299,
+      "specs": {
+        "VIN": "ML5KLEH17TDA40645",
+        "Stock Number": "S6A40645",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 Kawasaki KLR®650 Adventure ABS Cypher Camo Beige — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/94/07/940737E7-D153-4405-9491-E29E86908814.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/5E/4F/5E4F6BE8-EFC8-49C6-A421-7ABB83CA324D.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/4B/85/4B858DC4-B234-4DAC-99A8-01886CFAB9EE.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/76/C4/76C49192-9AD6-4BE3-A554-D48585D0E43F.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/EE/6E/EE6EE6A1-189F-42DC-ADC6-38F71F3AC351.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/F4/CC/F4CC7D0C-A83C-4BC8-84D6-FC43F517C244.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/E5/4A/E54AD2BB-6DB7-443C-B0BA-E11416104467.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/74/2C/742CB3D5-A95D-4E30-9F05-EDCCAD9CE016.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/65/34/6534B6DE-C9BF-44FA-A322-BE7446EBDA92.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/06/A4/06A4EBA5-421E-4631-9803-F3C7F5D55E7C.jpg"
+      ],
+      "stockNumber": "S6A40645",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=17940646&condition=NEW&year=2026&make=Kawasaki&model=KLR%C2%AE650+Adventure+ABS+Cypher+Camo+Beige&vtype=Motorcycle+%2F+Scooter&trimid=26284171&location=Sarasota+Powersports&stockno=S6A40645&vin=ML5KLEH17TDA40645&format=print"
+    },
+    {
+      "id": "17941844",
+      "year": 2026,
+      "make": "Kawasaki",
+      "model": "KLR®650 S ABS",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 7299,
+      "specs": {
+        "VIN": "ML5KLEK16TDA41309",
+        "Stock Number": "S6A41309",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 Kawasaki KLR®650 S ABS — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/85/03/85036DCA-53FB-4F49-ACD0-A7A89DCDECC2.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/B3/98/B398A515-E6CF-4C78-824A-2F822A831D93.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/42/32/4232129D-1AA3-4EF8-9FEF-165CB778FDE6.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/A2/D8/A2D8A582-8DF3-4537-B52B-A53DF4A1B3E8.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/CE/BD/CEBD3B9D-81BD-45DD-9FC4-A77E6521249D.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/BA/76/BA760F7D-6705-404E-A2CA-80AF84B87594.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/3F/B2/3FB2DA66-1AD9-46DF-86F3-960433ACDE34.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/E8/E1/E8E16553-EEBD-499A-AF08-C656951F78EB.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/56/0D/560DECA3-20C5-4482-97F4-1C5D15DB4D43.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/8D/F2/8DF24419-3DD7-41B1-BCFB-948F8D65FB81.jpg"
+      ],
+      "stockNumber": "S6A41309",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=17941844&condition=NEW&year=2026&make=Kawasaki&model=KLR%C2%AE650+S+ABS&vtype=Motorcycle+%2F+Scooter&trimid=26282951&location=Sarasota+Powersports&stockno=S6A41309&vin=ML5KLEK16TDA41309&format=print"
+    },
+    {
+      "id": "18106824",
+      "year": 2026,
+      "make": "Kawasaki",
+      "model": "KLX®110R",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 2999,
+      "specs": {
+        "VIN": "MH4LXSC10TJP03179",
+        "Stock Number": "S6P03179",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 Kawasaki KLX®110R — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/44/FA/44FA0076-C3C5-45F2-AB84-ABDDA89D7892.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/D6/37/D6371182-B3A8-47D4-81D9-25876CA081C5.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/BD/B5/BDB546B5-A673-482A-AD84-0C1F6F54EBA2.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/20/C0/20C02AB8-1664-4D4E-8361-F81E9BC7A8CF.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/51/94/5194CA8D-1317-4E1C-A972-672DAD8AC52F.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/2B/83/2B833AB8-E871-4613-9BC4-53EC9A144010.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/3E/2B/3E2BB98C-881F-4EAB-B33E-ED624635875F.jpg"
+      ],
+      "stockNumber": "S6P03179",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18106824&condition=NEW&year=2026&make=Kawasaki&model=KLX%C2%AE110R&vtype=Motorcycle+%2F+Scooter&trimid=25088521&location=Sarasota+Powersports&stockno=S6P03179&vin=MH4LXSC10TJP03179&format=print"
+    },
+    {
+      "id": "18196646",
+      "year": 2026,
+      "make": "Kawasaki",
+      "model": "KLX®110R",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 2999,
+      "specs": {
+        "VIN": "MH4LXSC19TJP03357",
+        "Stock Number": "S6P03357",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 Kawasaki KLX®110R — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/trimsdb/25088521-11442901-144619911.png"
+      ],
+      "stockNumber": "S6P03357",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18196646&condition=NEW&year=2026&make=Kawasaki&model=KLX%C2%AE110R&vtype=Motorcycle+%2F+Scooter&trimid=25088521&location=Sarasota+Powersports&stockno=S6P03357&vin=MH4LXSC19TJP03357&format=print"
+    },
+    {
+      "id": "17673113",
+      "year": 2026,
+      "make": "Kawasaki",
+      "model": "KLX®110R",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 2899,
+      "specs": {
+        "VIN": "MH4LXSC10TJP01240",
+        "Stock Number": "S6P01240",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 Kawasaki KLX®110R — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/10/0C/100CD827-5EAB-43A1-B8DE-4F39CCE9043F.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/87/33/8733A6C4-6095-470F-AB0B-3B21BD0CFA18.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/18/BB/18BB97EE-3180-4577-8E6B-396DB5A5A04B.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/8C/FF/8CFFA04A-97D6-4527-9700-972962BAFB29.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/E9/09/E9098B33-5B42-43E6-BFC1-C25F6A6967E3.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/ED/8A/ED8A812A-A1F7-4579-91D7-83DBA13BE30F.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/4A/DB/4ADBD190-D000-42E2-9E7D-CF64BD1546A1.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/70/5A/705A4365-C583-4DD2-866B-AF0F27E95F9D.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/98/FD/98FDDD0D-7D8A-4203-8D11-D4E6248A760F.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/8A/2A/8A2A568C-9417-45A7-BF18-F4BEE1339BB2.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/58/4E/584E9771-F2D3-405F-9E35-C5A9E0B2DE85.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/E7/D7/E7D71007-4493-4229-96D3-C21853AE0BB1.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/14/88/14886FFB-A20F-4111-B4A7-C68BEDE9CF47.jpg"
+      ],
+      "stockNumber": "S6P01240",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=17673113&condition=NEW&year=2026&make=Kawasaki&model=KLX%C2%AE110R&vtype=Motorcycle+%2F+Scooter&trimid=25088521&location=Sarasota+Powersports&stockno=S6P01240&vin=MH4LXSC10TJP01240&format=print"
+    },
+    {
+      "id": "17748268",
+      "year": 2026,
+      "make": "Kawasaki",
+      "model": "KLX®110R L",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 3099,
+      "specs": {
+        "VIN": "MH4LXSD18TJP01923",
+        "Stock Number": "S6P01923",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 Kawasaki KLX®110R L — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/28/4F/284FE5C6-E94E-41C3-8F7F-2A2795D796B0.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/C3/58/C3580882-E468-49C2-838B-0657C505FFAC.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/59/1B/591B753F-0D7B-4DAF-970A-33C11CB9BF84.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/54/5B/545B8483-C165-403B-8E02-C71E8C46EA26.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/21/58/21586380-B56A-4844-98B4-55E52078C5C7.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/16/C0/16C0371C-BA8D-4AE6-93B3-DB71CE485A18.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/B3/3E/B33E4313-4523-4D9B-94CB-09C2DEFFB1FD.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/6F/61/6F61F4B3-584B-4096-B492-9B48CE7BFE04.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/10/D6/10D698E0-AB27-472D-9D96-D473810F439E.jpg"
+      ],
+      "stockNumber": "S6P01923",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=17748268&condition=NEW&year=2026&make=Kawasaki&model=KLX%C2%AE110R+L&vtype=Motorcycle+%2F+Scooter&trimid=25088851&location=Sarasota+Powersports&stockno=S6P01923&vin=MH4LXSD18TJP01923&format=print"
+    },
+    {
+      "id": "17602173",
+      "year": 2026,
+      "make": "Kawasaki",
+      "model": "KLX®110R L",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 3099,
+      "specs": {
+        "VIN": "MH4LXSD14TJP01367",
+        "Stock Number": "S6P01367",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 Kawasaki KLX®110R L — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/E3/00/E3005CD2-1B66-4C7A-B508-1AC628D6B162.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/41/14/4114CFE8-52A1-4E0A-A56E-C3302332BB20.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/9C/05/9C050F3E-DA69-46C5-862F-49546E4B83C2.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/C3/55/C35549FE-E281-48AE-837F-AF2058834807.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/D8/BA/D8BAE35F-8BA2-4564-AEC5-956517CD0C50.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/62/94/6294BD4C-1DBE-4D00-9317-C54ACD89ABE6.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/2D/0C/2D0C870B-6FA3-492D-8238-DCE44F57D9E1.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/B0/FA/B0FADE45-E4DE-48D3-95EC-3CBC87E2466C.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/91/52/91528919-EE23-4C3A-B7E5-F8900648F4C1.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/33/61/3361817C-1189-4B07-9B98-D6841180E975.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/BD/FA/BDFA48F0-2A65-499F-AACF-414D298217AA.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/D8/32/D8320331-300F-4BF7-910F-DB2C0F7DFCA8.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/A9/59/A959B6EB-FFE2-44D9-AF11-0585FCDB7FF7.jpg"
+      ],
+      "stockNumber": "S6P01367",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=17602173&condition=NEW&year=2026&make=Kawasaki&model=KLX%C2%AE110R+L&vtype=Motorcycle+%2F+Scooter&trimid=25088851&location=Sarasota+Powersports&stockno=S6P01367&vin=MH4LXSD14TJP01367&format=print"
+    },
+    {
+      "id": "17695143",
+      "year": 2026,
+      "make": "Kawasaki",
+      "model": "KLX®110R L",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 3099,
+      "specs": {
+        "VIN": "MH4LXSD16TJP01676",
+        "Stock Number": "S6P01676",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 Kawasaki KLX®110R L — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/45/A8/45A8B63F-2271-4137-984B-5C055C0FE1C5.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/7A/4B/7A4BB703-1392-4CBC-B512-13A689241ACE.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/FF/ED/FFEDD006-4574-42E9-A6D3-9E2C54F374EA.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/F3/34/F3345621-0348-4F46-8139-C1231A550FFC.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/43/6F/436FCB14-E679-44C5-951B-107075C619FC.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/33/A8/33A873FF-1751-4C4C-BBD3-101B4662C1FC.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/5C/32/5C32EC86-D976-4311-B6DA-72DD3B677F9B.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/D3/FF/D3FFB3CC-0E5B-4732-A5B5-E579A13825BF.jpg",
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/Assets/Inventory/8A/FE/8AFE1148-1E6B-4133-BD0F-75836DF9A3D6.jpg"
+      ],
+      "stockNumber": "S6P01676",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=17695143&condition=NEW&year=2026&make=Kawasaki&model=KLX%C2%AE110R+L&vtype=Motorcycle+%2F+Scooter&trimid=25088851&location=Sarasota+Powersports&stockno=S6P01676&vin=MH4LXSD16TJP01676&format=print"
+    },
+    {
+      "id": "18183742",
+      "year": 2026,
+      "make": "Kawasaki",
+      "model": "KLX®110R L",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 3199,
+      "specs": {
+        "VIN": "MH4LXSD11TJP03948",
+        "Stock Number": "S6P03948",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 Kawasaki KLX®110R L — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/trimsdb/25088851-11442921-144620001.png"
+      ],
+      "stockNumber": "S6P03948",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18183742&condition=NEW&year=2026&make=Kawasaki&model=KLX%C2%AE110R+L&vtype=Motorcycle+%2F+Scooter&trimid=25088851&location=Sarasota+Powersports&stockno=S6P03948&vin=MH4LXSD11TJP03948&format=print"
+    },
+    {
+      "id": "18285871",
+      "year": 2026,
+      "make": "Kawasaki",
+      "model": "KLX®110R L",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 3199,
+      "specs": {
+        "VIN": "MH4LXSD17TJP04554",
+        "Stock Number": "S6P04554",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 Kawasaki KLX®110R L — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/trimsdb/25088851-0-144620011.png"
+      ],
+      "stockNumber": "S6P04554",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18285871&condition=NEW&year=2026&make=Kawasaki&model=KLX%C2%AE110R+L&vtype=Motorcycle+%2F+Scooter&trimid=25088851&location=Sarasota+Powersports&stockno=S6P04554&vin=MH4LXSD17TJP04554&format=print"
+    },
+    {
+      "id": "18285880",
+      "year": 2026,
+      "make": "Kawasaki",
+      "model": "KLX®110R L",
+      "type": "motorcycle",
+      "condition": "new",
+      "price": 3199,
+      "specs": {
+        "VIN": "MH4LXSD1XTJP04550",
+        "Stock Number": "S6P04550",
+        "Type": "Motorcycle / Scooter",
+        "Condition": "NEW"
+      },
+      "aiDescription": "2026 Kawasaki KLX®110R L — available now at Sarasota Powersports. Contact us for pricing and availability.",
+      "photos": [
+        "https://cdn.dealerspike.com/imglib/v1/800x600/imglib/trimsdb/25088851-0-144620011.png"
+      ],
+      "stockNumber": "S6P04550",
+      "url": "https://www.sarasotapowersports.com/--xInventoryDetail?1=1&fr=xallinventory&oid=18285880&condition=NEW&year=2026&make=Kawasaki&model=KLX%C2%AE110R+L&vtype=Motorcycle+%2F+Scooter&trimid=25088851&location=Sarasota+Powersports&stockno=S6P04550&vin=MH4LXSD1XTJP04550&format=print"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "roostdealer",
+  "private": true,
+  "scripts": {
+    "scrape": "pnpm --filter @roostdealer/scraper run scrape",
+    "dev": "pnpm --filter @roostdealer/web run dev",
+    "build": "pnpm --filter @roostdealer/web run build"
+  }
+}

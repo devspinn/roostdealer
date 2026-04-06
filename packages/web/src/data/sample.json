@@ -1,0 +1,285 @@
+{
+  "dealer": {
+    "name": "Mountain Marine",
+    "slug": "mountain-marine",
+    "phone": "(406) 555-8200",
+    "email": "sales@mountainmarine.com",
+    "address": "2450 US Highway 93 South",
+    "city": "Kalispell",
+    "state": "MT",
+    "zip": "59901",
+    "hours": "Mon-Fri: 9AM-6PM | Sat: 9AM-4PM | Sun: Closed",
+    "sourceUrl": "https://www.mountainmarine.com",
+    "categoryImages": {
+      "boat": "https://loremflickr.com/600/400/motorboat?lock=100",
+      "pwc": "https://loremflickr.com/600/400/jet+ski?lock=101",
+      "trailer": "https://loremflickr.com/600/400/boat+trailer?lock=102"
+    }
+  },
+  "units": [
+    {
+      "id": "mm-001",
+      "year": 2024,
+      "make": "Manitou",
+      "model": "Explore 24",
+      "trim": "SHP",
+      "type": "boat",
+      "condition": "new",
+      "price": 72999,
+      "specs": {
+        "Length": "24 ft 6 in",
+        "Beam": "8 ft 6 in",
+        "Engine": "Mercury 250hp V8 FourStroke",
+        "Horsepower": "250 HP",
+        "Fuel Capacity": "58 gal",
+        "Passenger Capacity": "14",
+        "Hull Material": "Aluminum Pontoon",
+        "Color": "Midnight Blue / Champagne"
+      },
+      "originalDescription": "2024 Manitou Explore 24 SHP. Mercury 250hp. Blue/Champagne. Loaded. Call for details.",
+      "aiDescription": "Experience luxury on the water with the all-new 2024 Manitou Explore 24 SHP, the ultimate pontoon for Montana's pristine lakes. Powered by Mercury's proven 250hp V8 FourStroke, this 24-foot 6-inch tri-toon delivers exhilarating performance with a top speed that will leave traditional pontoons in your wake. The SHP package includes Manitou's exclusive V-Toon technology for razor-sharp handling and a smooth, dry ride even in choppy conditions. Inside, you'll find premium marine-grade vinyl seating for up to 14 passengers, a full-featured captain's console with Garmin touchscreen GPS, Bluetooth-enabled Fusion stereo, and underwater LED lighting. The stunning Midnight Blue and Champagne exterior turns heads at every marina. With a 58-gallon fuel tank, you'll spend more time enjoying Flathead Lake and less time at the pump. This is the pontoon that redefines what's possible on the water.",
+      "photos": [
+        "https://loremflickr.com/800/600/boat,sailing?lock=1",
+        "https://loremflickr.com/800/600/boat,sailing?lock=2",
+        "https://loremflickr.com/800/600/boat,sailing?lock=3"
+      ],
+      "stockNumber": "MAN24-001"
+    },
+    {
+      "id": "mm-002",
+      "year": 2024,
+      "make": "Malibu",
+      "model": "Wakesetter 23 MXZ",
+      "type": "boat",
+      "condition": "new",
+      "price": 84995,
+      "specs": {
+        "Length": "23 ft",
+        "Beam": "102 in",
+        "Engine": "Monsoon M6Di 450hp",
+        "Horsepower": "450 HP",
+        "Fuel Capacity": "65 gal",
+        "Passenger Capacity": "16",
+        "Hull Material": "Fiberglass",
+        "Ballast": "4,500 lbs",
+        "Color": "Arctic White / Graphite"
+      },
+      "originalDescription": "New 2024 Malibu 23MXZ wake boat. 450hp. Surf Gate. Best wake boat on the market. Financing available.",
+      "aiDescription": "The 2024 Malibu Wakesetter 23 MXZ is the undisputed king of wake sports, and it's ready to dominate Montana's lakes this season. Featuring Malibu's revolutionary Surf Gate system and a massive 4,500 lbs of ballast capacity, this boat produces world-class wakes and waves that will elevate your surfing, wakeboarding, and skiing to the next level. The Monsoon M6Di 450hp direct-injection engine delivers instant, powerful torque with impressive fuel efficiency. The spacious 23-foot hull accommodates up to 16 passengers in luxury, with Malibu's signature deep-cushion seating, a premium touchscreen command center, tower-mounted speakers, and integrated transom storage. The Arctic White and Graphite color scheme gives this boat a sleek, aggressive profile on the water. Whether you're throwing down at a tournament or cruising with the family, the 23 MXZ delivers an experience that's second to none.",
+      "photos": [
+        "https://loremflickr.com/800/600/boat,sailing?lock=4",
+        "https://loremflickr.com/800/600/boat,sailing?lock=5",
+        "https://loremflickr.com/800/600/boat,sailing?lock=6"
+      ],
+      "stockNumber": "MAL24-002"
+    },
+    {
+      "id": "mm-003",
+      "year": 2023,
+      "make": "Tracker",
+      "model": "Pro Team 175 TXW",
+      "type": "boat",
+      "condition": "new",
+      "price": 24495,
+      "specs": {
+        "Length": "17 ft 7 in",
+        "Beam": "7 ft 3 in",
+        "Engine": "Mercury 75hp ELPT FourStroke",
+        "Horsepower": "75 HP",
+        "Fuel Capacity": "22 gal",
+        "Passenger Capacity": "5",
+        "Hull Material": "Aluminum",
+        "Trailer": "Custom Matched Trailer Included"
+      },
+      "aiDescription": "The 2023 Tracker Pro Team 175 TXW is the ultimate tournament-ready fishing boat at a price point that won't break the bank. Built with Tracker's legendary all-welded aluminum Revolution hull, this 17-foot 7-inch bass boat is virtually unsinkable and delivers a smooth, stable ride in any conditions. The Mercury 75hp ELPT FourStroke engine provides reliable power with whisper-quiet operation, so you won't spook the fish. Tournament-ready features include a Lowrance HOOK2 fishfinder, bow-mounted trolling motor, aerated livewells, and lockable rod storage for rods up to 8 feet. The custom-matched trailer is included, making this a true turnkey package. Whether you're chasing largemouth on Flathead Lake or trout on the Bitterroot River, the Pro Team 175 TXW is your ticket to more fish and more fun on the water.",
+      "photos": [
+        "https://loremflickr.com/800/600/boat,sailing?lock=7",
+        "https://loremflickr.com/800/600/boat,sailing?lock=8",
+        "https://loremflickr.com/800/600/boat,sailing?lock=9"
+      ],
+      "stockNumber": "TRK23-003"
+    },
+    {
+      "id": "mm-004",
+      "year": 2022,
+      "make": "Lund",
+      "model": "1875 Crossover XS",
+      "type": "boat",
+      "condition": "used",
+      "price": 42500,
+      "specs": {
+        "Length": "18 ft 8 in",
+        "Beam": "96 in",
+        "Engine": "Mercury 150hp FourStroke",
+        "Horsepower": "150 HP",
+        "Fuel Capacity": "37 gal",
+        "Passenger Capacity": "8",
+        "Hull Material": "Aluminum",
+        "Hours": "127",
+        "Color": "Sport Green"
+      },
+      "originalDescription": "Used 2022 Lund 1875 Crossover XS, 150hp Merc, low hours, great shape. Fish and ski boat. Green.",
+      "aiDescription": "This lightly used 2022 Lund 1875 Crossover XS is the Swiss Army knife of boats -- equally at home chasing walleye at dawn and pulling the kids on tubes by afternoon. With only 127 hours on the Mercury 150hp FourStroke, this boat has barely been broken in. Lund's IPS hull design provides the industry's smoothest ride, and the convertible fishing-to-cruising layout means you can go from a serious angling platform to a comfortable family cruiser in seconds. Features include a Humminbird HELIX 7 fishfinder, ski pylon, bow and stern livewells, snap-in marine carpet, and ample storage throughout. The Sport Green color scheme looks sharp and hides wear beautifully. At $42,500, this crossover is thousands less than a comparable new model and has years of reliable service ahead. Don't miss this rare opportunity to own Lund's most versatile boat.",
+      "photos": [
+        "https://loremflickr.com/800/600/boat,sailing?lock=10",
+        "https://loremflickr.com/800/600/boat,sailing?lock=11",
+        "https://loremflickr.com/800/600/boat,sailing?lock=12"
+      ],
+      "stockNumber": "LND22-004"
+    },
+    {
+      "id": "mm-005",
+      "year": 2024,
+      "make": "Yamaha",
+      "model": "FX Cruiser SVHO",
+      "type": "pwc",
+      "condition": "new",
+      "price": 18499,
+      "specs": {
+        "Length": "12 ft 2 in",
+        "Engine": "1.8L Super Vortex HO",
+        "Horsepower": "250 HP",
+        "Fuel Capacity": "18.5 gal",
+        "Passenger Capacity": "3",
+        "Features": "Cruise Assist, No Wake Mode, RiDE System"
+      },
+      "originalDescription": "New Yamaha FX Cruiser SVHO. Fast. Comfortable. Top of the line PWC.",
+      "aiDescription": "The 2024 Yamaha FX Cruiser SVHO sits at the pinnacle of personal watercraft technology, delivering a first-class experience that redefines what a jet ski can be. Under the hood, Yamaha's legendary 1.8-liter Super Vortex High Output engine produces a breathtaking 250 horsepower, making this the fastest and most powerful production PWC in Yamaha's lineup. But raw power is only half the story. The FX Cruiser SVHO features Yamaha's intuitive RiDE dual-handlebar throttle system for effortless low-speed maneuvering, Cruise Assist for relaxed long-distance riding, and a No Wake Mode that automatically limits speed in restricted zones. The plush, ergonomic cruiser seat with bolstered support keeps you comfortable all day long, while the massive 18.5-gallon fuel tank ensures extended range for full-day adventures on Flathead Lake. Premium touches include a watertight smartphone storage with USB charging and a full-color LCD display.",
+      "photos": [
+        "https://loremflickr.com/800/600/jet+ski,watercraft?lock=13",
+        "https://loremflickr.com/800/600/jet+ski,watercraft?lock=14",
+        "https://loremflickr.com/800/600/jet+ski,watercraft?lock=15"
+      ],
+      "stockNumber": "YAM24-005"
+    },
+    {
+      "id": "mm-006",
+      "year": 2023,
+      "make": "Sea-Doo",
+      "model": "GTX Limited 300",
+      "type": "pwc",
+      "condition": "used",
+      "price": 14999,
+      "specs": {
+        "Length": "12 ft 1 in",
+        "Engine": "Rotax 1630 ACE",
+        "Horsepower": "300 HP",
+        "Fuel Capacity": "18.5 gal",
+        "Passenger Capacity": "3",
+        "Hours": "48",
+        "Features": "LinQ System, BRP Audio, Ergolock Seating"
+      },
+      "originalDescription": "2023 Sea-Doo GTX Limited. 300hp. Low hours. Adult owned. Comes with cover.",
+      "aiDescription": "This pristine 2023 Sea-Doo GTX Limited 300 is the ultimate luxury touring watercraft, and with just 48 hours of careful adult use, it's practically new at a significant savings. The Rotax 1630 ACE engine delivers a class-leading 300 horsepower for thrilling acceleration and a top speed that will put a permanent smile on your face. Sea-Doo's exclusive Ergolock seating system lets you ride more aggressively with less fatigue, while the premium BRP Audio System with Bluetooth connectivity lets you bring your favorite playlist along for the ride. The innovative LinQ attachment system allows you to quickly add accessories like a cooler, fuel caddy, or additional storage. This unit comes with the factory cover and has been meticulously maintained. The 18.5-gallon fuel tank provides all-day range, and the intelligent throttle control makes docking a breeze. At $14,999, this is exceptional value for Sea-Doo's flagship touring model.",
+      "photos": [
+        "https://loremflickr.com/800/600/jet+ski,watercraft?lock=16",
+        "https://loremflickr.com/800/600/jet+ski,watercraft?lock=17",
+        "https://loremflickr.com/800/600/jet+ski,watercraft?lock=18"
+      ],
+      "stockNumber": "SD23-006"
+    },
+    {
+      "id": "mm-007",
+      "year": 2024,
+      "make": "Bennington",
+      "model": "22 LXSB",
+      "type": "boat",
+      "condition": "new",
+      "price": 54750,
+      "specs": {
+        "Length": "22 ft 6 in",
+        "Beam": "8 ft 6 in",
+        "Engine": "Yamaha F150 FourStroke",
+        "Horsepower": "150 HP",
+        "Fuel Capacity": "50 gal",
+        "Passenger Capacity": "12",
+        "Hull Material": "Aluminum Pontoon",
+        "Color": "Regatta Blue / Silver"
+      },
+      "aiDescription": "The 2024 Bennington 22 LXSB combines Bennington's legendary build quality with a thoughtful layout designed for families who love spending time on the water. This 22-foot 6-inch luxury pontoon features the sport bench (SB) configuration, offering flexible seating that converts from a social lounge setup to a sun deck in moments. The reliable Yamaha F150 FourStroke engine provides the perfect balance of spirited performance and fuel efficiency, while the 50-gallon tank means full-day outings without worry. Bennington's premium furniture features hand-laid fiberglass bases with stainless steel accents, marine-grade Rotocast seat bases, and ultra-plush vinyl upholstery that resists UV fading and mildew. The Regatta Blue and Silver exterior exudes sophistication, and the integrated Kicker audio system delivers crystal-clear sound across the entire deck. Rated for 12 passengers, this is the perfect platform for sunset cruises, swimming, and making memories on Montana's beautiful lakes.",
+      "photos": [
+        "https://loremflickr.com/800/600/boat,sailing?lock=19",
+        "https://loremflickr.com/800/600/boat,sailing?lock=20",
+        "https://loremflickr.com/800/600/boat,sailing?lock=21"
+      ],
+      "stockNumber": "BEN24-007"
+    },
+    {
+      "id": "mm-008",
+      "year": 2021,
+      "make": "Crestliner",
+      "model": "1650 Fish Hawk SE",
+      "type": "boat",
+      "condition": "used",
+      "price": 28900,
+      "specs": {
+        "Length": "16 ft 8 in",
+        "Beam": "7 ft 8 in",
+        "Engine": "Mercury 90hp ELPT FourStroke",
+        "Horsepower": "90 HP",
+        "Fuel Capacity": "24 gal",
+        "Passenger Capacity": "6",
+        "Hull Material": "Aluminum",
+        "Hours": "210",
+        "Trailer": "Shoreland'r Custom Trailer Included"
+      },
+      "originalDescription": "Pre-owned 2021 Crestliner 1650 Fish Hawk. Mercury 90hp. Comes with trailer. Ready to fish.",
+      "aiDescription": "This well-maintained 2021 Crestliner 1650 Fish Hawk SE is a purpose-built fishing machine backed by Crestliner's industry-leading lifetime hull warranty. With 210 hours on the bulletproof Mercury 90hp ELPT FourStroke, this boat has plenty of life ahead and is ready to hit the water this season. Crestliner's exclusive all-welded aluminum hull with proprietary flared bow design delivers a drier, smoother ride than any riveted competitor. The Fish Hawk SE package includes a full windshield for weather protection, bow and stern fishing platforms with pedestal seat bases, a Humminbird HELIX 5 fishfinder, bow-mounted MotorGuide trolling motor, and dual aerated livewells. The Shoreland'r custom-matched trailer is included and features a swing-away tongue for easy garage storage. At $28,900 complete with trailer, this is outstanding value for a Crestliner -- the name that serious anglers trust. Perfect for everything from Flathead walleye to Bitterroot trout.",
+      "photos": [
+        "https://loremflickr.com/800/600/boat,sailing?lock=22",
+        "https://loremflickr.com/800/600/boat,sailing?lock=23",
+        "https://loremflickr.com/800/600/boat,sailing?lock=24"
+      ],
+      "stockNumber": "CRS21-008"
+    },
+    {
+      "id": "mm-009",
+      "year": 2024,
+      "make": "Yamaha",
+      "model": "SuperJet",
+      "type": "pwc",
+      "condition": "new",
+      "price": 11299,
+      "specs": {
+        "Length": "7 ft 7 in",
+        "Engine": "Yamaha TR-1 HO",
+        "Horsepower": "110 HP",
+        "Fuel Capacity": "4.8 gal",
+        "Rider Capacity": "1 (Stand-up)",
+        "Features": "Race-Inspired Hull, Electric Trim"
+      },
+      "aiDescription": "The 2024 Yamaha SuperJet is the rebirth of an icon -- completely redesigned from the hull up, this stand-up personal watercraft is built for riders who crave pure, unfiltered adrenaline. Powered by Yamaha's compact TR-1 High Output engine producing 110 horsepower, the SuperJet delivers explosive acceleration and razor-sharp handling that will challenge even the most experienced riders. The all-new lightweight hull features a race-inspired design developed with input from professional freestyle and racing champions. Electric trim adjustment lets you fine-tune performance on the fly, while the intuitive handlebar layout keeps controls right at your fingertips. At just 7 feet 7 inches, the SuperJet is incredibly nimble and can be transported easily in a truck bed. Whether you're carving tight turns, launching off chop, or competing in freeride events, the SuperJet delivers an experience that no sit-down watercraft can match. This is the purest form of fun on the water -- period.",
+      "photos": [
+        "https://loremflickr.com/800/600/jet+ski,watercraft?lock=25",
+        "https://loremflickr.com/800/600/jet+ski,watercraft?lock=26",
+        "https://loremflickr.com/800/600/jet+ski,watercraft?lock=27"
+      ],
+      "stockNumber": "YAM24-009"
+    },
+    {
+      "id": "mm-010",
+      "year": 2024,
+      "make": "Shoreland'r",
+      "model": "SLB40T",
+      "trim": "Pontoon Trailer",
+      "type": "trailer",
+      "condition": "new",
+      "price": 4295,
+      "specs": {
+        "Type": "Pontoon Bunk Trailer",
+        "Capacity": "4,000 lbs",
+        "Length": "Fits 20-24 ft Pontoons",
+        "Axle": "Tandem Axle",
+        "Brakes": "Disc Brakes",
+        "Frame": "Galvanized Steel",
+        "Tires": "14 in Radial"
+      },
+      "aiDescription": "The 2024 Shoreland'r SLB40T is a heavy-duty pontoon trailer built to safely and securely transport pontoon boats from 20 to 24 feet in length. Engineered with a fully galvanized steel frame that resists corrosion even after years of freshwater and saltwater exposure, this tandem-axle trailer provides a rock-solid 4,000-pound capacity with an exceptionally smooth tow. Disc brakes on both axles deliver confident stopping power, even on Montana's steep mountain boat ramps. The adjustable bunk system accommodates a wide range of pontoon configurations, while heavy-duty 14-inch radial tires provide excellent highway stability at any speed. Features include an easy-to-use winch with strap, LED submersible lighting, and a swing-away tongue for compact garage storage. Shoreland'r trailers are the number-one choice of dealers and boaters nationwide -- built tough, priced right, and backed by an industry-leading warranty.",
+      "photos": [
+        "https://loremflickr.com/800/600/boat+trailer?lock=28",
+        "https://loremflickr.com/800/600/boat+trailer?lock=29"
+      ],
+      "stockNumber": "SHL24-010"
+    }
+  ]
+}
