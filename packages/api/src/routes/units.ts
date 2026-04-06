@@ -1,13 +1,13 @@
 import { Hono } from 'hono'
 import { eq, and, ilike, sql } from 'drizzle-orm'
-import { createDb, dealers, units } from '@roostdealer/db'
+import { dealers, units } from '@roostdealer/db'
+import type { AppEnv } from '../app'
 
-const db = createDb()
-
-const app = new Hono()
+const app = new Hono<AppEnv>()
 
 // GET /api/dealers/:slug/inventory — list units with optional filters
 app.get('/:slug/inventory', async (c) => {
+  const db = c.get('db')
   const slug = c.req.param('slug')
   const type = c.req.query('type')
   const condition = c.req.query('condition')
@@ -39,6 +39,7 @@ app.get('/:slug/inventory', async (c) => {
 
 // GET /api/dealers/:slug/inventory/:id — single unit
 app.get('/:slug/inventory/:id', async (c) => {
+  const db = c.get('db')
   const id = c.req.param('id')
   const [unit] = await db.select().from(units).where(eq(units.id, id))
   if (!unit) return c.json({ error: 'Unit not found' }, 404)

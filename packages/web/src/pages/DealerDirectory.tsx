@@ -13,14 +13,14 @@ export default function DealerDirectory() {
       <header className="bg-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
-            <div className="flex items-center">
+            <Link to="/" className="flex items-center">
               <span className="text-xl font-bold text-white tracking-tight">
                 RoostDealer
               </span>
               <span className="ml-3 px-2 py-0.5 rounded text-[10px] font-semibold bg-accent/20 text-accent uppercase tracking-wider">
-                Demo
+                Demos
               </span>
-            </div>
+            </Link>
 
             <div className="flex items-center gap-3">
               {session?.user ? (

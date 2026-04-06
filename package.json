@@ -10,6 +10,12 @@
     "db:migrate": "pnpm --filter @roostdealer/db run migrate",
     "db:push": "pnpm --filter @roostdealer/db run push",
     "db:studio": "pnpm --filter @roostdealer/db run studio",
-    "db:seed": "pnpm --filter @roostdealer/db run seed"
+    "db:seed": "pnpm --filter @roostdealer/db run seed",
+    "ship": "pnpm ship:api && pnpm ship:web",
+    "ship:api": "pnpm --filter @roostdealer/api run ship",
+    "ship:web": "pnpm --filter @roostdealer/web run ship"
+  },
+  "devDependencies": {
+    "wrangler": "^4.80.0"
   }
 }

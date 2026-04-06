@@ -6,14 +6,14 @@ RoostDealer is a startup building an AI-native dealer website platform for power
 
 The repo is a pnpm monorepo with four packages:
 - `packages/scraper` — CLI that crawls a dealer website, extracts inventory, and uses Claude to generate structured data + descriptions
-- `packages/web` — React + Vite demo site that renders inventory beautifully
+- `packages/web` — React + Vite frontend: marketing site (`/`), demo directory (`/demos`), and dealer sites (`/:slug/*`)
 - `packages/db` — Drizzle ORM schema, Neon client, seed script, migrations
 - `packages/api` — Hono API server with BetterAuth (email/password)
 
 ## Tech decisions
 
 - **No Next.js** — user had bad experiences with the caching/server component "magic." Use React + Vite instead.
-- **No Vercel** — too expensive, not enough control. Deploy on Railway or Fly.io.
+- **No Vercel** — too expensive, not enough control. Deploy on Cloudflare (Pages + Workers).
 - **No Supabase** — RLS was annoying. Use Neon (Postgres) + Drizzle ORM + BetterAuth instead (Phase B).
 - **AI via AWS Bedrock**, not direct Anthropic API. Auth uses `AWS_BEARER_TOKEN_BEDROCK` as a session token with `@aws-sdk/client-bedrock-runtime`. Model comes from `ANTHROPIC_SMALL_FAST_MODEL` env var.
 
@@ -61,7 +61,17 @@ pnpm db:generate            # Generate SQL migration from schema diff
 pnpm db:migrate             # Run pending migrations
 pnpm db:studio              # Open Drizzle Studio (visual DB browser)
 pnpm db:seed                # Seed demo dealers + inventory into DB
+pnpm ship                   # Deploy API (Workers) + web (Pages) to Cloudflare
+pnpm ship:api               # Deploy only the API to Cloudflare Workers
+pnpm ship:web               # Build + deploy web to Cloudflare Pages
 ```
+
+## Web app routes
+
+- `/` — Marketing landing page (`Marketing.tsx`). Static, no API calls.
+- `/demos` — Demo dealer directory (`DealerDirectory.tsx`). Fetches dealer list from API.
+- `/login`, `/signup` — Auth pages (BetterAuth)
+- `/:slug/*` — Dealer site (Home, Inventory, UnitDetail, Contact). Fetches dealer + units from API.
 
 ## Demo site data
 
@@ -115,7 +125,43 @@ Always prefer setting `heroTitle`/`heroSubtitle` for demo dealers — the vibe f
 - `GET /api/dealers/:slug/inventory/:id` — single unit
 - `/api/auth/*` — BetterAuth (sign-up, sign-in, session, etc.)
 
+## Deployment
+
+All Cloudflare, all CLI — no dashboard (except one-time DNS setup).
+
+- **Web** (`roostdealer.com`) → Cloudflare Pages (project: `roostdealer-web`)
+- **API** (`api.roostdealer.com`) → Cloudflare Workers (name: `roostdealer-api`)
+- **DB** → Neon (already hosted, `@neondatabase/serverless` HTTP driver is Workers-compatible)
+- **Domain** → `roostdealer.com` on Cloudflare (zone ID: `0503decb770d1c6d10ddbc207959a7a8`)
+
+### Architecture
+- `packages/api/src/app.ts` — shared Hono app factory (`createApp()`). Accepts optional `getEnv` for Node.js process.env bridge. Workers populates `c.env` from bindings automatically.
+- `packages/api/src/index.ts` — Node.js dev entry (uses `@hono/node-server`)
+- `packages/api/src/worker.ts` — Workers entry (`export default createApp()`)
+- `packages/api/wrangler.toml` — Workers config (name, routes, secrets). Uses `[[routes]]` with `zone_name` — requires a proxied AAAA `100::` DNS record on `api.roostdealer.com`.
+- `packages/web/.env.production` — production `VITE_API_URL` for Vite build-time injection. Currently points at `roostdealer-api.devonstownsend.workers.dev` until `api.roostdealer.com` DNS is configured.
+
+### Deploy commands
+```bash
+wrangler login                          # One-time Cloudflare OAuth
+wrangler secret put DATABASE_URL        # Set from packages/api dir
+wrangler secret put BETTER_AUTH_SECRET  # Set from packages/api dir
+pnpm ship                               # Deploy both API + web
+pnpm ship:api                           # Deploy only Workers API
+pnpm ship:web                           # Build + deploy Pages
+```
+
+### Deployment gotchas
+- **`pnpm deploy` is reserved** — pnpm intercepts `deploy` as a built-in command. Use `pnpm ship` / `ship:api` / `ship:web` instead.
+- **Workers routes need DNS** — `[[routes]]` in `wrangler.toml` only intercepts traffic already proxied through Cloudflare. The `api` subdomain needs a proxied AAAA record (`100::`) in Cloudflare DNS before the route works.
+- **`wrangler.toml` must live in `packages/api/`** — if a `wrangler.toml` or `wrangler.jsonc` exists at the repo root, wrangler finds it first and ignores the package-level config (causing "Missing entry-point" errors).
+- **CORS origins** — `packages/api/src/app.ts` has an allowlist. Add new origins there (e.g. preview deploy URLs like `*.roostdealer-web.pages.dev`). The `roostdealer-web.pages.dev` origin is already allowed.
+- **VITE_API_URL is build-time** — changes require rebuilding and redeploying the web app (`pnpm ship:web`). The Vite dev proxy (`/api` → `localhost:3000`) still works for local dev when `VITE_API_URL` is unset.
+- **Workers env vs process.env** — route handlers access env via `c.env.DATABASE_URL` (Hono context), not `process.env`. The Node.js dev entry (`index.ts`) bridges `process.env` into `c.env` via middleware. Never use `process.env` in `app.ts` or route files.
+- **`workerd` build script** — must be approved in `pnpm-workspace.yaml` `onlyBuiltDependencies` for wrangler to work. Already configured.
+
 ### Not yet built
+- `api.roostdealer.com` DNS record (AAAA `100::` proxied) — once added, switch `.env.production` back to `https://api.roostdealer.com/api` and redeploy web
 - BetterAuth organization plugin (dealer = org, staff = members with roles)
 - Scraper writing directly to DB
 - Subdomain-based tenant resolution middleware

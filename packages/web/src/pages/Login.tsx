@@ -33,7 +33,7 @@ export default function Login() {
     <div className="min-h-screen flex flex-col bg-gray-50">
       <div className="p-4">
         <Link to="/" className="text-sm text-gray-500 hover:text-primary transition-colors">
-          &larr; Back to directory
+          &larr; Back to home
         </Link>
       </div>
 

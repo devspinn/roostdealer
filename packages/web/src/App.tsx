@@ -7,6 +7,7 @@ import Contact from '@/pages/Contact'
 import Login from '@/pages/Login'
 import Signup from '@/pages/Signup'
 import DealerDirectory from '@/pages/DealerDirectory'
+import Marketing from '@/pages/Marketing'
 import { DealerBasePathProvider } from '@/DealerContext'
 import { useDealerSite } from '@/hooks/use-api'
 
@@ -73,7 +74,8 @@ function DealerSite() {
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<DealerDirectory />} />
+      <Route path="/" element={<Marketing />} />
+      <Route path="/demos" element={<DealerDirectory />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/:slug/*" element={<DealerSite />} />

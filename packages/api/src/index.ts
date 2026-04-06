@@ -1,27 +1,11 @@
-import { Hono } from 'hono'
-import { cors } from 'hono/cors'
-import { logger } from 'hono/logger'
 import { serve } from '@hono/node-server'
-import authRoutes from './routes/auth'
-import dealerRoutes from './routes/dealers'
-import unitRoutes from './routes/units'
+import { createApp } from './app'
 
-const app = new Hono()
-
-app.use('*', logger())
-app.use(
-  '/api/*',
-  cors({
-    origin: ['http://localhost:5173'],
-    credentials: true,
-  })
-)
-
-app.route('/api/auth', authRoutes)
-app.route('/api/dealers', dealerRoutes)
-app.route('/api/dealers', unitRoutes)
-
-app.get('/', (c) => c.json({ name: 'RoostDealer API', version: '0.1.0' }))
+const app = createApp(() => ({
+  DATABASE_URL: process.env.DATABASE_URL!,
+  BETTER_AUTH_SECRET: process.env.BETTER_AUTH_SECRET!,
+  BETTER_AUTH_URL: process.env.BETTER_AUTH_URL!,
+}))
 
 const port = parseInt(process.env.PORT || '3000')
 serve({ fetch: app.fetch, port }, () => {

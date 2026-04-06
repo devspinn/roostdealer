@@ -5,3 +5,5 @@ dist/
 *.log
 .DS_Store
 packages/scraper/output/
+.wrangler/
+.dev.vars
