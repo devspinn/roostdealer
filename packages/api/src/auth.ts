@@ -33,7 +33,10 @@ async function verifyPassword(hash: string, password: string): Promise<boolean> 
     256
   )
   const hashHex = [...new Uint8Array(bits)].map((b) => b.toString(16).padStart(2, '0')).join('')
-  return hashHex === expectedHash
+  const a = new TextEncoder().encode(hashHex)
+  const b = new TextEncoder().encode(expectedHash)
+  if (a.length !== b.length) return false
+  return crypto.subtle.timingSafeEqual(a, b)
 }
 
 export function createAuth(env: Env) {
