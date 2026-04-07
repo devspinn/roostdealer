@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, Fragment } from 'react'
 import { useDashboardLeads } from '@/hooks/use-dashboard'
 import { dashboard } from '@/lib/api'
 import { MessageSquare, Download } from 'lucide-react'
@@ -121,57 +121,55 @@ export default function DashboardLeads() {
                   : null
 
                 return (
-                  <tr key={lead.id} className="group">
-                    <td colSpan={7} className="p-0">
-                      <div
-                        className="grid grid-cols-[auto_1fr_auto] sm:grid-cols-[auto_1fr_auto_auto] md:grid-cols-[auto_1fr_auto_auto_auto] lg:grid-cols-[auto_1fr_auto_auto_auto_auto_auto] items-center cursor-pointer hover:bg-gray-50 transition-colors"
-                        onClick={() => setExpandedId(isExpanded ? null : lead.id)}
-                      >
-                        <div className="px-4 py-3 text-gray-500 whitespace-nowrap">
-                          {new Date(lead.createdAt).toLocaleDateString()}
-                        </div>
-                        <div className="px-4 py-3 font-medium text-gray-900 truncate">
-                          {lead.firstName} {lead.lastName}
-                        </div>
-                        <div className="px-4 py-3 text-gray-600 hidden sm:block truncate">
-                          {lead.email}
-                        </div>
-                        <div className="px-4 py-3 text-gray-600 hidden md:block">
-                          {lead.phone || '-'}
-                        </div>
-                        <div className="px-4 py-3 text-gray-600 hidden lg:block truncate max-w-[200px]">
-                          {unitLabel || '-'}
-                        </div>
-                        <div className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
-                          <select
-                            value={lead.status}
-                            onChange={(e) => handleStatusChange(lead, e.target.value)}
-                            className={cn(
-                              'px-2.5 py-1 rounded-full text-xs font-semibold border-0 cursor-pointer',
-                              STATUS_COLORS[lead.status]
-                            )}
-                          >
-                            {STATUS_OPTIONS.map((opt) => (
-                              <option key={opt.value} value={opt.value}>
-                                {opt.label}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                        <div className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
-                          <button
-                            onClick={() => handleExportAdf(lead.id)}
-                            className="p-1.5 text-gray-400 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors"
-                            title="Export ADF XML"
-                          >
-                            <Download className="h-4 w-4" />
-                          </button>
-                        </div>
-                      </div>
-
-                      {/* Expanded details */}
-                      {isExpanded && (
-                        <div className="px-4 pb-4 pt-1 bg-gray-50 border-t border-gray-100">
+                  <Fragment key={lead.id}>
+                    <tr
+                      className="group cursor-pointer hover:bg-gray-50 transition-colors"
+                      onClick={() => setExpandedId(isExpanded ? null : lead.id)}
+                    >
+                      <td className="px-4 py-3 text-gray-500 whitespace-nowrap">
+                        {new Date(lead.createdAt).toLocaleDateString()}
+                      </td>
+                      <td className="px-4 py-3 font-medium text-gray-900 truncate">
+                        {lead.firstName} {lead.lastName}
+                      </td>
+                      <td className="px-4 py-3 text-gray-600 hidden sm:table-cell truncate">
+                        {lead.email}
+                      </td>
+                      <td className="px-4 py-3 text-gray-600 hidden md:table-cell">
+                        {lead.phone || '-'}
+                      </td>
+                      <td className="px-4 py-3 text-gray-600 hidden lg:table-cell truncate max-w-[200px]">
+                        {unitLabel || '-'}
+                      </td>
+                      <td className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
+                        <select
+                          value={lead.status}
+                          onChange={(e) => handleStatusChange(lead, e.target.value)}
+                          className={cn(
+                            'px-2.5 py-1 rounded-full text-xs font-semibold border-0 cursor-pointer',
+                            STATUS_COLORS[lead.status]
+                          )}
+                        >
+                          {STATUS_OPTIONS.map((opt) => (
+                            <option key={opt.value} value={opt.value}>
+                              {opt.label}
+                            </option>
+                          ))}
+                        </select>
+                      </td>
+                      <td className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
+                        <button
+                          onClick={() => handleExportAdf(lead.id)}
+                          className="p-1.5 text-gray-400 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors"
+                          title="Export ADF XML"
+                        >
+                          <Download className="h-4 w-4" />
+                        </button>
+                      </td>
+                    </tr>
+                    {isExpanded && (
+                      <tr>
+                        <td colSpan={7} className="px-4 pb-4 pt-1 bg-gray-50 border-t border-gray-100">
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                             <div>
                               <span className="text-gray-500">Email:</span>{' '}
@@ -209,10 +207,10 @@ export default function DashboardLeads() {
                               {lead.message}
                             </div>
                           )}
-                        </div>
-                      )}
-                    </td>
-                  </tr>
+                        </td>
+                      </tr>
+                    )}
+                  </Fragment>
                 )
               })}
             </tbody>
