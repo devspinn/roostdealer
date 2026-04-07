@@ -1,13 +1,21 @@
 import { Routes, Route, useParams, Navigate } from 'react-router-dom'
 import Layout from '@/components/Layout'
+import DashboardLayout from '@/components/DashboardLayout'
 import Home from '@/pages/Home'
 import Inventory from '@/pages/Inventory'
 import UnitDetail from '@/pages/UnitDetail'
 import Contact from '@/pages/Contact'
 import Login from '@/pages/Login'
 import Signup from '@/pages/Signup'
+import ForgotPassword from '@/pages/ForgotPassword'
+import ResetPassword from '@/pages/ResetPassword'
 import DealerDirectory from '@/pages/DealerDirectory'
 import Marketing from '@/pages/Marketing'
+import DashboardOverview from '@/pages/dashboard/DashboardOverview'
+import DashboardSettings from '@/pages/dashboard/DashboardSettings'
+import DashboardInventory from '@/pages/dashboard/DashboardInventory'
+import DashboardInventoryNew from '@/pages/dashboard/DashboardInventoryNew'
+import DashboardInventoryEdit from '@/pages/dashboard/DashboardInventoryEdit'
 import { DealerBasePathProvider } from '@/DealerContext'
 import { useDealerSite } from '@/hooks/use-api'
 
@@ -78,6 +86,15 @@ function App() {
       <Route path="/demos" element={<DealerDirectory />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/dashboard" element={<DashboardLayout />}>
+        <Route index element={<DashboardOverview />} />
+        <Route path="settings" element={<DashboardSettings />} />
+        <Route path="inventory" element={<DashboardInventory />} />
+        <Route path="inventory/new" element={<DashboardInventoryNew />} />
+        <Route path="inventory/:id/edit" element={<DashboardInventoryEdit />} />
+      </Route>
       <Route path="/:slug/*" element={<DealerSite />} />
     </Routes>
   )

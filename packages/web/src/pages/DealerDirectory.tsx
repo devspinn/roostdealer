@@ -114,12 +114,14 @@ export default function DealerDirectory() {
                           {dealer.city}, {dealer.state}
                         </div>
                       )}
-                      <p className="text-sm text-gray-400 mt-2">
-                        Scraped from{' '}
-                        <span className="text-gray-500">
-                          {new URL(dealer.sourceUrl).hostname}
-                        </span>
-                      </p>
+                      {dealer.sourceUrl && (
+                        <p className="text-sm text-gray-400 mt-2">
+                          Scraped from{' '}
+                          <span className="text-gray-500">
+                            {new URL(dealer.sourceUrl).hostname}
+                          </span>
+                        </p>
+                      )}
                     </div>
                     <ArrowRight className="h-5 w-5 text-gray-300 group-hover:text-accent transition-colors mt-1 shrink-0" />
                   </div>

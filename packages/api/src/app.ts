@@ -6,15 +6,19 @@ import { createAuth } from './auth'
 import dealerRoutes from './routes/dealers'
 import unitRoutes from './routes/units'
 import authRoutes from './routes/auth'
+import dashboardRoutes from './routes/dashboard'
 
 export type Env = {
   DATABASE_URL: string
   BETTER_AUTH_SECRET: string
   BETTER_AUTH_URL: string
+  RESEND_API_KEY: string
 }
 
 type Variables = {
   db: Database
+  user: { id: string; name: string; email: string; dealerId?: string | null }
+  session: { id: string; expiresAt: Date; userId: string }
 }
 
 export type AppEnv = { Bindings: Env; Variables: Variables }
@@ -44,6 +48,7 @@ export function createApp(getEnv?: () => Env) {
           'http://localhost:5173',
           'https://roostdealer.com',
           'https://www.roostdealer.com',
+          'https://staging.roostdealer.com',
           'https://roostdealer-web.pages.dev',
         ]
         return allowed.includes(origin) ? origin : ''
@@ -60,6 +65,7 @@ export function createApp(getEnv?: () => Env) {
   })
 
   app.route('/api/auth', authRoutes)
+  app.route('/api/dashboard', dashboardRoutes)
   app.route('/api/dealers', dealerRoutes)
   app.route('/api/dealers', unitRoutes)
 

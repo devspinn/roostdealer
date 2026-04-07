@@ -33,7 +33,7 @@ export interface DealerInfo {
   heroTitle?: string
   heroSubtitle?: string
   categoryImages?: Record<string, string>
-  sourceUrl: string
+  sourceUrl?: string
 }
 
 export interface EnrichedData {
