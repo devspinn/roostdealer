@@ -35,7 +35,7 @@ export default function Signup() {
       return
     }
 
-    navigate('/')
+    navigate('/dashboard')
   }
 
   return (

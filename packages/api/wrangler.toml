@@ -5,7 +5,7 @@ compatibility_flags = ["nodejs_compat"]
 workers_dev = true
 
 [vars]
-BETTER_AUTH_URL = "https://api.roostdealer.com"
+BETTER_AUTH_URL = "https://roostdealer-api.devonstownsend.workers.dev"
 
 # Secrets (set via `wrangler secret put`):
 # - DATABASE_URL
@@ -14,3 +14,18 @@ BETTER_AUTH_URL = "https://api.roostdealer.com"
 [[routes]]
 pattern = "api.roostdealer.com/*"
 zone_name = "roostdealer.com"
+
+[observability]
+enabled = false
+head_sampling_rate = 1
+
+[observability.logs]
+enabled = true
+head_sampling_rate = 1
+persist = true
+invocation_logs = true
+
+[observability.traces]
+enabled = false
+persist = true
+head_sampling_rate = 1

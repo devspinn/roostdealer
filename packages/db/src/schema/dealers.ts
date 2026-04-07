@@ -16,7 +16,7 @@ export const dealers = pgTable('dealers', {
   heroTitle: text('hero_title'),
   heroSubtitle: text('hero_subtitle'),
   categoryImages: jsonb('category_images').$type<Record<string, string>>(),
-  sourceUrl: text('source_url').notNull(),
+  sourceUrl: text('source_url'),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow().$onUpdate(() => new Date()),
 })

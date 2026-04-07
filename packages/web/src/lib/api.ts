@@ -22,3 +22,32 @@ export async function fetchDealer(slug: string): Promise<DealerInfo> {
 export async function fetchInventory(slug: string): Promise<Unit[]> {
   return fetchJson(`${API_BASE}/dealers/${slug}/inventory`)
 }
+
+// --- Dashboard (authenticated) API ---
+
+async function fetchAuthed<T>(url: string, init?: RequestInit): Promise<T> {
+  const res = await fetch(url, { credentials: 'include', ...init })
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}))
+    throw new Error(body.error || `API error: ${res.status}`)
+  }
+  return res.json()
+}
+
+async function mutate<T>(url: string, method: string, body?: unknown): Promise<T> {
+  return fetchAuthed(url, {
+    method,
+    headers: body ? { 'Content-Type': 'application/json' } : undefined,
+    body: body ? JSON.stringify(body) : undefined,
+  })
+}
+
+export const dashboard = {
+  getDealer: () => fetchAuthed<{ dealer: DealerInfo | null }>(`${API_BASE}/dashboard`),
+  createDealer: (data: Partial<DealerInfo>) => mutate<{ dealer: DealerInfo }>(`${API_BASE}/dashboard/dealer`, 'POST', data),
+  updateDealer: (data: Partial<DealerInfo>) => mutate<{ dealer: DealerInfo }>(`${API_BASE}/dashboard/dealer`, 'PUT', data),
+  getInventory: () => fetchAuthed<Unit[]>(`${API_BASE}/dashboard/inventory`),
+  addUnit: (data: Record<string, unknown>) => mutate<{ unit: Unit }>(`${API_BASE}/dashboard/inventory`, 'POST', data),
+  updateUnit: (id: string, data: Record<string, unknown>) => mutate<{ unit: Unit }>(`${API_BASE}/dashboard/inventory/${id}`, 'PUT', data),
+  deleteUnit: (id: string) => mutate<{ success: boolean }>(`${API_BASE}/dashboard/inventory/${id}`, 'DELETE'),
+}

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { authClient } from '@/lib/auth-client'
 import {
   ArrowRight,
   Clock,
@@ -91,6 +92,7 @@ const featureColorMap: Record<string, { bg: string; text: string }> = {
 
 export default function Marketing() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { data: session } = authClient.useSession()
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -116,18 +118,29 @@ export default function Marketing() {
               >
                 Demos
               </Link>
-              <Link
-                to="/login"
-                className="text-sm font-medium text-white/80 hover:text-white transition-colors"
-              >
-                Sign In
-              </Link>
-              <Link
-                to="/signup"
-                className="bg-accent hover:bg-accent-light text-primary font-semibold px-4 py-2 rounded-lg text-sm transition-colors"
-              >
-                Get Started
-              </Link>
+              {session ? (
+                <Link
+                  to="/dashboard"
+                  className="bg-accent hover:bg-accent-light text-primary font-semibold px-4 py-2 rounded-lg text-sm transition-colors"
+                >
+                  Dashboard
+                </Link>
+              ) : (
+                <>
+                  <Link
+                    to="/login"
+                    className="text-sm font-medium text-white/80 hover:text-white transition-colors"
+                  >
+                    Sign In
+                  </Link>
+                  <Link
+                    to="/signup"
+                    className="bg-accent hover:bg-accent-light text-primary font-semibold px-4 py-2 rounded-lg text-sm transition-colors"
+                  >
+                    Get Started
+                  </Link>
+                </>
+              )}
             </nav>
 
             {/* Mobile hamburger */}
@@ -161,20 +174,32 @@ export default function Marketing() {
             >
               Demos
             </Link>
-            <Link
-              to="/login"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block py-2 text-sm font-medium text-white/80 hover:text-white"
-            >
-              Sign In
-            </Link>
-            <Link
-              to="/signup"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block w-full text-center bg-accent hover:bg-accent-light text-primary font-semibold px-4 py-2 rounded-lg text-sm transition-colors"
-            >
-              Get Started
-            </Link>
+            {session ? (
+              <Link
+                to="/dashboard"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block w-full text-center bg-accent hover:bg-accent-light text-primary font-semibold px-4 py-2 rounded-lg text-sm transition-colors"
+              >
+                Dashboard
+              </Link>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block py-2 text-sm font-medium text-white/80 hover:text-white"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  to="/signup"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block w-full text-center bg-accent hover:bg-accent-light text-primary font-semibold px-4 py-2 rounded-lg text-sm transition-colors"
+                >
+                  Get Started
+                </Link>
+              </>
+            )}
           </div>
         )}
       </header>
@@ -371,10 +396,10 @@ export default function Marketing() {
                 Demos
               </Link>
               <Link
-                to="/login"
+                to={session ? '/dashboard' : '/login'}
                 className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
               >
-                Sign In
+                {session ? 'Dashboard' : 'Sign In'}
               </Link>
             </div>
           </div>
