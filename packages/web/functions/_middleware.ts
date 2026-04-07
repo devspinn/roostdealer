@@ -56,12 +56,13 @@ export const onRequest: PagesFunction = async (context) => {
 
     if (password === SITE_PASSWORD) {
       const url = new URL(request.url);
-      const response = Response.redirect(url.origin + url.pathname, 302);
-      response.headers.append(
-        "Set-Cookie",
-        `${COOKIE_NAME}=1; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${COOKIE_MAX_AGE}`
-      );
-      return response;
+      return new Response(null, {
+        status: 302,
+        headers: {
+          Location: url.origin + url.pathname,
+          "Set-Cookie": `${COOKIE_NAME}=1; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${COOKIE_MAX_AGE}`,
+        },
+      });
     }
 
     return loginPage("Wrong password.");
