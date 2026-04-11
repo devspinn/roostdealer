@@ -136,19 +136,38 @@ export default function Contact({ dealer }: ContactProps) {
               </div>
             </div>
 
-            {/* Map Placeholder */}
+            {/* Map */}
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-              <div className="aspect-[4/3] bg-gray-200 flex items-center justify-center">
-                <div className="text-center px-6">
-                  <MapPin className="h-10 w-10 text-gray-400 mx-auto mb-3" />
-                  <p className="text-sm font-medium text-gray-500">
-                    Interactive Map
-                  </p>
-                  <p className="text-xs text-gray-400 mt-1">
-                    {dealer.address}, {dealer.city}, {dealer.state} {dealer.zip}
-                  </p>
+              {dealer.address ? (
+                <div className="aspect-[4/3]">
+                  <iframe
+                    title={`Map showing ${dealer.name} location`}
+                    src={`https://maps.google.com/maps?q=${encodeURIComponent(
+                      [dealer.address, dealer.city, dealer.state, dealer.zip]
+                        .filter(Boolean)
+                        .join(', ')
+                    )}&output=embed`}
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    allowFullScreen
+                  />
                 </div>
-              </div>
+              ) : (
+                <div className="aspect-[4/3] bg-gray-200 flex items-center justify-center">
+                  <div className="text-center px-6">
+                    <MapPin className="h-10 w-10 text-gray-400 mx-auto mb-3" />
+                    <p className="text-sm font-medium text-gray-500">
+                      Map
+                    </p>
+                    <p className="text-xs text-gray-400 mt-1">
+                      Address not available
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 

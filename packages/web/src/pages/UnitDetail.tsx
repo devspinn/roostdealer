@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import {
-  ChevronLeft,
   Sparkles,
   FileText,
   ArrowLeftRight,
@@ -11,6 +10,8 @@ import {
 import { cn, formatPrice, formatCondition } from '@/lib/utils'
 import { useDealerPath } from '@/DealerContext'
 import { submitLead } from '@/lib/api'
+import Breadcrumbs from '@/components/Breadcrumbs'
+import Lightbox from '@/components/Lightbox'
 import type { Unit, DealerInfo } from '@/types'
 
 interface UnitDetailProps {
@@ -23,6 +24,7 @@ export default function UnitDetail({ units, dealer }: UnitDetailProps) {
   const dp = useDealerPath()
   const unit = units.find((u) => u.id === id)
   const [activePhoto, setActivePhoto] = useState(0)
+  const [lightboxOpen, setLightboxOpen] = useState(false)
   const [showOriginal, setShowOriginal] = useState(false)
   const [inquiryName, setInquiryName] = useState('')
   const [inquiryPhone, setInquiryPhone] = useState('')
@@ -57,25 +59,23 @@ export default function UnitDetail({ units, dealer }: UnitDetailProps) {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      {/* Breadcrumb */}
-      <div className="bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Link
-            to={dp('/inventory')}
-            className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-primary font-medium transition-colors"
-          >
-            <ChevronLeft className="h-4 w-4" />
-            Back to Inventory
-          </Link>
-        </div>
-      </div>
+      <Breadcrumbs
+        items={[
+          { label: 'Home', href: dp('/') },
+          { label: 'Inventory', href: dp('/inventory') },
+          { label: title },
+        ]}
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Photo Gallery */}
           <div>
             {/* Main Image */}
-            <div className="aspect-[4/3] rounded-xl overflow-hidden bg-gray-100 shadow-sm">
+            <div
+              className="aspect-[4/3] rounded-xl overflow-hidden bg-gray-100 shadow-sm cursor-zoom-in"
+              onClick={() => setLightboxOpen(true)}
+            >
               <img
                 src={photos[activePhoto]}
                 alt={`${title} - Photo ${activePhoto + 1}`}
@@ -383,6 +383,15 @@ export default function UnitDetail({ units, dealer }: UnitDetailProps) {
           </div>
         </div>
       </div>
+
+      {lightboxOpen && (
+        <Lightbox
+          photos={photos}
+          activeIndex={activePhoto}
+          onClose={() => setLightboxOpen(false)}
+          onNavigate={setActivePhoto}
+        />
+      )}
     </div>
   )
 }

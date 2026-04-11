@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Shield, Sparkles, ArrowRight, Wrench } from "lucide-react";
 import UnitCard from "@/components/UnitCard";
 import { useDealerPath } from "@/DealerContext";
+import { getBrandLogoUrl } from "@/data/brand-logos";
 import type { DealerInfo, Unit, UnitType } from "@/types";
 
 interface HomeProps {
@@ -103,6 +104,20 @@ export default function Home({ dealer, units }: HomeProps) {
       .sort((a, b) => b[1] - a[1])
       .slice(0, 4)
       .map(([make]) => make);
+  }, [units]);
+
+  // All unique makes (deduplicated by normalized key)
+  const allMakes = useMemo(() => {
+    const seen = new Set<string>();
+    const makes: string[] = [];
+    for (const u of units) {
+      const key = u.make.toLowerCase().replace(/®/g, "");
+      if (!seen.has(key)) {
+        seen.add(key);
+        makes.push(u.make);
+      }
+    }
+    return makes;
   }, [units]);
 
   return (
@@ -234,6 +249,37 @@ export default function Home({ dealer, units }: HomeProps) {
           </div>
         </div>
       </section>
+
+      {/* Brands We Carry */}
+      {allMakes.length > 1 && (
+        <section className="py-14 sm:py-20 bg-gray-50 border-t border-gray-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-10 text-center">
+              Brands We Carry
+            </h2>
+            <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12">
+              {allMakes.map((make) => {
+                const logoUrl = getBrandLogoUrl(make);
+                return logoUrl ? (
+                  <img
+                    key={make}
+                    src={logoUrl}
+                    alt={make}
+                    className="h-8 sm:h-10 w-auto object-contain grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
+                  />
+                ) : (
+                  <span
+                    key={make}
+                    className="text-sm sm:text-base font-bold text-gray-400 hover:text-gray-700 uppercase tracking-wider transition-colors duration-300"
+                  >
+                    {make.replace(/®/g, "")}
+                  </span>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Why Choose Us */}
       <section className="py-14 sm:py-20 bg-white">
