@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { Routes, Route, useParams, Navigate } from 'react-router-dom'
 import Layout from '@/components/Layout'
 import DashboardLayout from '@/components/DashboardLayout'
@@ -5,6 +6,10 @@ import Home from '@/pages/Home'
 import Inventory from '@/pages/Inventory'
 import UnitDetail from '@/pages/UnitDetail'
 import Contact from '@/pages/Contact'
+import Financing from '@/pages/Financing'
+import About from '@/pages/About'
+import Service from '@/pages/Service'
+import Parts from '@/pages/Parts'
 import Login from '@/pages/Login'
 import Signup from '@/pages/Signup'
 import ForgotPassword from '@/pages/ForgotPassword'
@@ -19,10 +24,31 @@ import DashboardInventoryEdit from '@/pages/dashboard/DashboardInventoryEdit'
 import DashboardLeads from '@/pages/dashboard/DashboardLeads'
 import { DealerBasePathProvider } from '@/DealerContext'
 import { useDealerSite } from '@/hooks/use-api'
+import type { UnitType } from '@/types'
+
+const TYPE_LABELS: Record<UnitType, string> = {
+  boat: 'Boats',
+  motorcycle: 'Motorcycles',
+  atv: 'ATVs',
+  utv: 'Side x Sides',
+  snowmobile: 'Snowmobiles',
+  pwc: 'Personal Watercraft',
+  trailer: 'Trailers',
+  other: 'Other',
+}
 
 function DealerSite() {
   const { slug } = useParams<{ slug: string }>()
   const { data, loading, error } = useDealerSite(slug)
+
+  const unitTypes = useMemo(() => {
+    if (!data?.units) return []
+    const counts = new Map<UnitType, number>()
+    for (const u of data.units) counts.set(u.type, (counts.get(u.type) || 0) + 1)
+    return [...counts.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .map(([type, count]) => ({ type, label: TYPE_LABELS[type], count }))
+  }, [data?.units])
 
   if (loading) {
     return (
@@ -65,7 +91,7 @@ function DealerSite() {
 
   return (
     <DealerBasePathProvider basePath={basePath}>
-      <Layout dealer={dealer}>
+      <Layout dealer={dealer} unitTypes={unitTypes}>
         <Routes>
           <Route path="/" element={<Home dealer={dealer} units={units} />} />
           <Route path="/inventory" element={<Inventory units={units} dealer={dealer} />} />
@@ -74,6 +100,10 @@ function DealerSite() {
             element={<UnitDetail units={units} dealer={dealer} />}
           />
           <Route path="/contact" element={<Contact dealer={dealer} />} />
+          <Route path="/financing" element={<Financing dealer={dealer} />} />
+          <Route path="/about" element={<About dealer={dealer} units={units} />} />
+          <Route path="/service" element={<Service dealer={dealer} units={units} />} />
+          <Route path="/parts" element={<Parts dealer={dealer} units={units} />} />
         </Routes>
       </Layout>
     </DealerBasePathProvider>

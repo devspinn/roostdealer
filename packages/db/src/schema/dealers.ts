@@ -17,6 +17,13 @@ export const dealers = pgTable('dealers', {
   heroSubtitle: text('hero_subtitle'),
   categoryImages: jsonb('category_images').$type<Record<string, string>>(),
   sourceUrl: text('source_url'),
+  socialLinks: jsonb('social_links').$type<{ facebook?: string; instagram?: string; youtube?: string; tiktok?: string }>(),
+  financingUrl: text('financing_url'),
+  aboutContent: text('about_content'),
+  serviceContent: text('service_content'),
+  partsContent: text('parts_content'),
+  heroSlides: jsonb('hero_slides').$type<Array<{ image: string; video?: string; title: string; subtitle: string; ctaText?: string; ctaLink?: string }>>(),
+  chatWidgetCode: text('chat_widget_code'),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow().$onUpdate(() => new Date()),
 })

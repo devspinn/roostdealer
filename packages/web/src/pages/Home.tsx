@@ -4,6 +4,7 @@ import { Shield, Sparkles, ArrowRight, Wrench } from "lucide-react";
 import UnitCard from "@/components/UnitCard";
 import { useDealerPath } from "@/DealerContext";
 import { getBrandLogoUrl } from "@/data/brand-logos";
+import { getDealerVibe } from "@/lib/dealer-vibe";
 import type { DealerInfo, Unit, UnitType } from "@/types";
 
 interface HomeProps {
@@ -32,18 +33,6 @@ const TYPE_FLICKR_KEYWORDS: Record<UnitType, string> = {
   trailer: "boat+trailer",
   other: "vehicle",
 };
-
-/** Detect whether this dealer is marine, powersports, or mixed. */
-function getDealerVibe(units: Unit[]) {
-  const types = units.map((u) => u.type);
-  const marine = types.filter((t) => t === "boat" || t === "pwc").length;
-  const land = types.filter((t) =>
-    ["motorcycle", "atv", "utv", "snowmobile"].includes(t),
-  ).length;
-  if (marine > land) return "marine" as const;
-  if (land > marine) return "powersports" as const;
-  return "mixed" as const;
-}
 
 const vibeContent = {
   marine: {
