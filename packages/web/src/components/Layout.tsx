@@ -1,8 +1,9 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Phone, Mail, MapPin, Clock, Menu, X, Anchor, ChevronDown } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, Menu, X, Anchor, ChevronDown, CheckCircle } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 import { cn } from '@/lib/utils'
 import { useDealerPath } from '@/DealerContext'
+import { subscribeNewsletter } from '@/lib/api'
 import type { DealerInfo, UnitType } from '@/types'
 
 interface UnitTypeSummary {
@@ -94,6 +95,9 @@ export default function Layout({ dealer, unitTypes = [], children }: LayoutProps
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [mobileInventoryOpen, setMobileInventoryOpen] = useState(false)
   const [mobileDealershipOpen, setMobileDealershipOpen] = useState(false)
+  const [newsletterEmail, setNewsletterEmail] = useState('')
+  const [newsletterStatus, setNewsletterStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [newsletterError, setNewsletterError] = useState('')
   const location = useLocation()
   const dp = useDealerPath()
 
@@ -131,41 +135,6 @@ export default function Layout({ dealer, unitTypes = [], children }: LayoutProps
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Top utility bar */}
-      <div className="bg-gray-900 text-gray-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-9 text-xs">
-          <div className="flex items-center gap-4">
-            {dealer.address && (
-              <Link
-                to={dp('/contact')}
-                className="hidden sm:flex items-center gap-1.5 hover:text-white transition-colors"
-              >
-                <MapPin className="h-3 w-3" />
-                {dealer.city && dealer.state
-                  ? `${dealer.city}, ${dealer.state}`
-                  : dealer.address}
-              </Link>
-            )}
-            <Link
-              to={dp('/contact')}
-              className="flex items-center gap-1.5 hover:text-white transition-colors"
-            >
-              <Clock className="h-3 w-3" />
-              Map &amp; Hours
-            </Link>
-          </div>
-          {dealer.phone && (
-            <a
-              href={`tel:${dealer.phone}`}
-              className="flex items-center gap-1.5 font-bold text-white hover:text-accent transition-colors"
-            >
-              <Phone className="h-3 w-3" />
-              {dealer.phone}
-            </a>
-          )}
-        </div>
-      </div>
-
       {/* Header */}
       <header className="sticky top-0 z-50 bg-primary shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -340,6 +309,55 @@ export default function Layout({ dealer, unitTypes = [], children }: LayoutProps
 
       {/* Main Content */}
       <main className="flex-1">{children}</main>
+
+      {/* Newsletter Signup Bar */}
+      <section className="bg-accent">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-primary font-bold text-sm sm:text-base">
+            Get Inventory Updates &amp; Exclusive Deals
+          </p>
+          {newsletterStatus === 'success' ? (
+            <p className="text-primary font-medium text-sm flex items-center gap-2">
+              <CheckCircle className="h-4 w-4" /> You're subscribed!
+            </p>
+          ) : (
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault()
+                setNewsletterStatus('loading')
+                setNewsletterError('')
+                try {
+                  await subscribeNewsletter(dealer.slug, newsletterEmail)
+                  setNewsletterStatus('success')
+                } catch (err: any) {
+                  setNewsletterError(err.message || 'Something went wrong.')
+                  setNewsletterStatus('error')
+                }
+              }}
+              className="flex gap-2"
+            >
+              <input
+                type="email"
+                required
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
+                placeholder="your@email.com"
+                className="px-4 py-2 rounded-lg text-sm border-0 focus:ring-2 focus:ring-primary/50 w-64"
+              />
+              <button
+                type="submit"
+                disabled={newsletterStatus === 'loading'}
+                className="bg-primary hover:bg-primary-light text-white font-semibold px-5 py-2 rounded-lg text-sm transition-colors disabled:opacity-50"
+              >
+                {newsletterStatus === 'loading' ? 'Subscribing...' : 'Subscribe'}
+              </button>
+            </form>
+          )}
+          {newsletterStatus === 'error' && (
+            <p className="text-red-800 text-xs">{newsletterError}</p>
+          )}
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-300">
