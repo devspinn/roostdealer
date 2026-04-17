@@ -61,7 +61,8 @@ export default function DashboardInventory() {
       ) : (
         <div className="space-y-3">
           {units.map((unit) => {
-            const title = [unit.year, unit.make, unit.model].filter(Boolean).join(' ')
+            const skipMake = unit.make && unit.model?.toLowerCase().includes(unit.make.toLowerCase())
+            const title = [unit.year, skipMake ? null : unit.make, unit.model].filter(Boolean).join(' ')
             return (
               <div
                 key={unit.id}

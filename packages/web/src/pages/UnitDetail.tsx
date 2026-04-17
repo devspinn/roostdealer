@@ -64,7 +64,8 @@ export default function UnitDetail({ units, dealer }: UnitDetailProps) {
     )
   }
 
-  const title = [unit.year, unit.make, unit.model].filter(Boolean).join(' ')
+  const skipMake = unit.make && unit.model?.toLowerCase().includes(unit.make.toLowerCase())
+  const title = [unit.year, skipMake ? null : unit.make, unit.model].filter(Boolean).join(' ')
   const photos =
     unit.photos.length > 0
       ? unit.photos

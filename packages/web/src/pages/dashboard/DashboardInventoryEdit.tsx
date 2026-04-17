@@ -22,7 +22,8 @@ export default function DashboardInventoryEdit() {
     return <p className="text-gray-500">Unit not found.</p>
   }
 
-  const title = [unit.year, unit.make, unit.model].filter(Boolean).join(' ')
+  const skipMake = unit.make && unit.model?.toLowerCase().includes(unit.make.toLowerCase())
+  const title = [unit.year, skipMake ? null : unit.make, unit.model].filter(Boolean).join(' ')
 
   return (
     <div>

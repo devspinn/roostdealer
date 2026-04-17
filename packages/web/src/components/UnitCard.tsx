@@ -9,7 +9,8 @@ interface UnitCardProps {
 
 export default function UnitCard({ unit }: UnitCardProps) {
   const dp = useDealerPath()
-  const title = [unit.year, unit.make, unit.model].filter(Boolean).join(' ')
+  const skipMake = unit.make && unit.model?.toLowerCase().includes(unit.make.toLowerCase())
+  const title = [unit.year, skipMake ? null : unit.make, unit.model].filter(Boolean).join(' ')
   const photoUrl = unit.photos[0] || 'https://placehold.co/800x600/94a3b8/white?text=No+Photo'
 
   // Extract a few key specs to show as tags

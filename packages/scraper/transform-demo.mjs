@@ -306,21 +306,43 @@ console.log('  Makes:', [...new Set(tomsriverUnits.map(u => u.make))].join(', ')
 
 const fivestarRaw = JSON.parse(readFileSync('output/fivestar-raw.json', 'utf-8'))
 
+const MARINE_BRANDS = [
+  'Honda', 'Yamaha', 'Suzuki', 'Mercury', 'Tohatsu', 'Evinrude',
+  'Johnson', 'Volvo', 'Showa', 'OMC', 'Mercruiser', 'SeaStar',
+]
+
+function extractMake(productName) {
+  const lower = productName.toLowerCase()
+  for (const brand of MARINE_BRANDS) {
+    if (lower.includes(brand.toLowerCase())) return brand
+  }
+  return null
+}
+
+function decodeEntities(str) {
+  return str
+    .replace(/&#038;/g, '&').replace(/&amp;/g, '&')
+    .replace(/&#8211;/g, '–').replace(/&#8212;/g, '—')
+    .replace(/&#8217;/g, "'").replace(/&#8220;/g, '"').replace(/&#8221;/g, '"')
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
+}
+
 const fivestarUnits = fivestarRaw.units.map((u, i) => {
   const sku = u.specs?.SKU || null
   const category = u.specs?.Category || ''
+  const model = decodeEntities(u.model)
 
   return {
     id: sku || `fivestar-${i}`,
     year: null,
-    make: 'Five Star Marine',
-    model: u.model,
+    make: extractMake(model) || extractMake(category) || 'Parts & Accessories',
+    model,
     type: 'other',
     condition: 'new',
     price: u.price ? Math.round(u.price) : null,
     specs: u.specs || {},
     originalDescription: u.originalDescription?.slice(0, 2000),
-    aiDescription: `${u.model} — available from Five Star Marine, trusted worldwide for precision marine hydraulic rebuilds and parts. ${category ? `Category: ${category}.` : ''} Call 727-346-6912 for details.`,
+    aiDescription: `${model} — available from Five Star Marine, trusted worldwide for precision marine hydraulic rebuilds and parts. ${category ? `Category: ${category}.` : ''} Call 727-346-6912 for details.`,
     photos: u.photos || [],
     stockNumber: sku,
     url: u.url,
