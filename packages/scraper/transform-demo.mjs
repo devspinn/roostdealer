@@ -300,3 +300,55 @@ writeFileSync(
 console.log(`Toms River: ${tomsriverUnits.length} units written`)
 console.log('  Types:', [...new Set(tomsriverUnits.map(u => u.type))].join(', '))
 console.log('  Makes:', [...new Set(tomsriverUnits.map(u => u.make))].join(', '))
+
+
+// === Five Star Marine (WooCommerce) ===
+
+const fivestarRaw = JSON.parse(readFileSync('output/fivestar-raw.json', 'utf-8'))
+
+const fivestarUnits = fivestarRaw.units.map((u, i) => {
+  const sku = u.specs?.SKU || null
+  const category = u.specs?.Category || ''
+
+  return {
+    id: sku || `fivestar-${i}`,
+    year: null,
+    make: 'Five Star Marine',
+    model: u.model,
+    type: 'other',
+    condition: 'new',
+    price: u.price ? Math.round(u.price) : null,
+    specs: u.specs || {},
+    originalDescription: u.originalDescription?.slice(0, 2000),
+    aiDescription: `${u.model} — available from Five Star Marine, trusted worldwide for precision marine hydraulic rebuilds and parts. ${category ? `Category: ${category}.` : ''} Call 727-346-6912 for details.`,
+    photos: u.photos || [],
+    stockNumber: sku,
+    url: u.url,
+  }
+})
+
+const fivestarOutput = {
+  dealer: {
+    name: 'Five Star Marine',
+    slug: 'five-star-marine',
+    logo: fivestarRaw.dealer.logo,
+    phone: '727-346-6912',
+    email: 'fsmcustomerservice@gmail.com',
+    address: '6902 Industrial Ave',
+    city: 'Port Richey',
+    state: 'FL',
+    zip: '34668',
+    heroTitle: 'Marine Hydraulics. Rebuilt Right.',
+    heroSubtitle: 'Over 40,000 trim & tilt units rebuilt with precision craftsmanship. Rebuild services, kits, and parts shipped worldwide.',
+    heroImage: undefined,
+    sourceUrl: 'https://fivestarmarine.com',
+  },
+  units: fivestarUnits,
+}
+
+writeFileSync(
+  new URL('../web/src/data/five-star-marine.json', import.meta.url),
+  JSON.stringify(fivestarOutput, null, 2),
+)
+console.log(`Five Star Marine: ${fivestarUnits.length} units written`)
+console.log('  Categories:', [...new Set(fivestarUnits.map(u => u.specs?.Category).filter(Boolean))].join(', '))

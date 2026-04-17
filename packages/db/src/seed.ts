@@ -53,6 +53,7 @@ const files = [
   'sarasota-powersports.json',
   'portside-marine.json',
   'toms-river-marine.json',
+  'five-star-marine.json',
 ]
 
 async function seed() {
@@ -92,25 +93,30 @@ async function seed() {
     }
 
     if (data.units.length > 0) {
-      await db.insert(units).values(
-        data.units.map((u) => ({
-          dealerId: dealer.id,
-          externalId: u.id,
-          year: u.year,
-          make: u.make,
-          model: u.model,
-          trim: u.trim,
-          type: u.type as any,
-          condition: u.condition as any,
-          price: u.price,
-          specs: u.specs,
-          originalDescription: u.originalDescription,
-          aiDescription: u.aiDescription,
-          photos: u.photos,
-          stockNumber: u.stockNumber,
-          url: u.url,
-        }))
-      )
+      // Batch inserts to stay under Postgres parameter limit
+      const BATCH_SIZE = 10
+      for (let i = 0; i < data.units.length; i += BATCH_SIZE) {
+        const batch = data.units.slice(i, i + BATCH_SIZE)
+        await db.insert(units).values(
+          batch.map((u) => ({
+            dealerId: dealer.id,
+            externalId: u.id,
+            year: u.year,
+            make: u.make,
+            model: u.model,
+            trim: u.trim,
+            type: u.type as any,
+            condition: u.condition as any,
+            price: u.price,
+            specs: u.specs,
+            originalDescription: u.originalDescription,
+            aiDescription: u.aiDescription,
+            photos: u.photos,
+            stockNumber: u.stockNumber,
+            url: u.url,
+          }))
+        )
+      }
     }
 
     console.log(`  Done: ${data.units.length} units inserted`)

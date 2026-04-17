@@ -3,6 +3,7 @@ import { writeFile, mkdir } from 'node:fs/promises'
 import { dirname } from 'node:path'
 import { crawl } from './crawl.js'
 import { enrich, enrichDealerHero } from './enrich.js'
+import { closeBrowser } from './browser.js'
 import type { EnrichedData } from './types.js'
 
 const program = new Command()
@@ -108,6 +109,8 @@ program
         console.error(`\n  ${err.stack}`)
       }
       process.exit(1)
+    } finally {
+      await closeBrowser()
     }
   })
 

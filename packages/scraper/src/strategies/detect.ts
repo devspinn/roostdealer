@@ -2,10 +2,11 @@ import type * as cheerio from 'cheerio'
 import type { SiteVersion } from './types.js'
 
 /**
- * Detect which DealerSpike version a site is running.
+ * Detect which site platform/version is running.
  *
- * Classic: /default.asp pages, --xInventoryDetail URLs, utag_data
+ * Classic DealerSpike: /default.asp pages, --xInventoryDetail URLs, utag_data
  * ARI/Endeavor: /search/inventory/ or /inventory/{slug}-{id}i URLs
+ * WooCommerce: wp-content paths, .woocommerce body class, /product/ URLs
  */
 export function detectSiteVersion(
   $: cheerio.CheerioAPI,
@@ -26,9 +27,17 @@ export function detectSiteVersion(
   })
   const hasAriDetailPattern = /\/inventory\/\d{4}-[\w-]+-\d+i/.test(html)
 
+  // WooCommerce/WordPress signals
+  const hasWpContent = /wp-content|wp-includes/i.test(html)
+  const hasWooBodyClass = $('body.woocommerce-page, body.woocommerce').length > 0 ||
+    ($('body').attr('class') || '').includes('woocommerce')
+  const hasWcBlocks = $('script[src*="wc-blocks"], script[src*="woocommerce"], link[href*="woocommerce"]').length > 0
+  const hasProductUrls = $('a[href*="/product/"]').length > 0
+
   // Score them
   let classicScore = 0
   let ariScore = 0
+  let wooScore = 0
 
   if (hasDefaultAsp) classicScore += 3
   if (hasXInventory) classicScore += 3
@@ -45,6 +54,19 @@ export function detectSiteVersion(
   if ($('[class*="dspn-"]').length > 0) ariScore += 1
   if ($('[class*="endeavor"]').length > 0) ariScore += 2
 
-  const version: SiteVersion = ariScore > classicScore ? 'ari' : 'classic'
+  if (hasWpContent) wooScore += 2
+  if (hasWooBodyClass) wooScore += 3
+  if (hasWcBlocks) wooScore += 2
+  if (hasProductUrls) wooScore += 1
+
+  const maxScore = Math.max(classicScore, ariScore, wooScore)
+  if (maxScore === 0) return 'classic' // default fallback
+
+  const version: SiteVersion =
+    wooScore === maxScore && wooScore > classicScore && wooScore > ariScore
+      ? 'woocommerce'
+      : ariScore > classicScore
+        ? 'ari'
+        : 'classic'
   return version
 }

@@ -8,36 +8,11 @@ import {
   type ScrapeStrategy,
   type SiteVersion,
 } from './strategies/index.js'
+import { crawlWooCommerce } from './woocommerce.js'
+import { fetchPage, closeBrowser } from './browser.js'
 
-const USER_AGENT =
-  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
 
-const RATE_LIMIT_MS = 200
-
-/** Fetch a URL with a browser-like user-agent and rate limiting. */
-async function fetchPage(url: string): Promise<string> {
-  const res = await fetch(url, {
-    headers: {
-      'User-Agent': USER_AGENT,
-      Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-      'Accept-Language': 'en-US,en;q=0.9',
-    },
-    redirect: 'follow',
-  })
-
-  if (!res.ok) {
-    throw new Error(`HTTP ${res.status} fetching ${url}`)
-  }
-
-  return res.text()
-}
-
-/** Sleep for a given number of milliseconds. */
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms))
-}
-
-function getStrategy(version: SiteVersion): ScrapeStrategy {
+function getStrategy(version: 'classic' | 'ari'): ScrapeStrategy {
   return version === 'ari' ? ariStrategy : classicStrategy
 }
 
@@ -54,13 +29,18 @@ export async function crawl(
   // Step 1: Fetch the homepage/base URL
   log('Fetching homepage...')
   const homepageHtml = await fetchPage(baseUrl)
-  await sleep(RATE_LIMIT_MS)
 
   // Step 2: Detect site version
   const $ = cheerio.load(homepageHtml)
   const version = detectSiteVersion($, homepageHtml, baseUrl)
-  const strategy = getStrategy(version)
   log(`Detected site version: ${version}`)
+
+  // WooCommerce uses a completely different crawl path (JSON API, not HTML scraping)
+  if (version === 'woocommerce') {
+    return crawlWooCommerce(origin, homepageHtml, baseUrl, log)
+  }
+
+  const strategy = getStrategy(version)
 
   // Step 3: Extract dealer info from the homepage
   log('Extracting dealer info...')
@@ -110,7 +90,6 @@ export async function crawl(
     i++
     log(`Extracting listing ${i}/${detailUrls.size}: ${detailUrl}`)
     try {
-      await sleep(RATE_LIMIT_MS)
       const html = await fetchPage(detailUrl)
       const listing = extractListing(html, detailUrl, version)
       listings.push(listing)
@@ -149,16 +128,9 @@ async function probeCommonPaths(
   for (const path of commonPaths) {
     const testUrl = `${origin}${path}`
     try {
-      await sleep(RATE_LIMIT_MS)
-      const res = await fetch(testUrl, {
-        method: 'HEAD',
-        headers: { 'User-Agent': USER_AGENT },
-        redirect: 'follow',
-      })
-      if (res.ok) {
-        found.push(testUrl)
-        log(`Found inventory page: ${testUrl}`)
-      }
+      await fetchPage(testUrl)
+      found.push(testUrl)
+      log(`Found inventory page: ${testUrl}`)
     } catch {
       // Not found, skip
     }
@@ -170,7 +142,7 @@ async function probeCommonPaths(
 /**
  * Extract dealer info from the homepage HTML.
  */
-function extractDealerInfo(html: string, sourceUrl: string): DealerInfo {
+export function extractDealerInfo(html: string, sourceUrl: string): DealerInfo {
   const $ = cheerio.load(html)
   const origin = new URL(sourceUrl).origin
 
@@ -375,7 +347,6 @@ async function crawlInventoryPage(
     globalVisited.add(currentUrl)
     pagesVisited++
 
-    await sleep(RATE_LIMIT_MS)
     let html: string
     try {
       html = await fetchPage(currentUrl)

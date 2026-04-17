@@ -1,7 +1,7 @@
 import type * as cheerio from 'cheerio'
 
-/** Supported DealerSpike site versions. */
-export type SiteVersion = 'classic' | 'ari'
+/** Supported site versions. */
+export type SiteVersion = 'classic' | 'ari' | 'woocommerce'
 
 /**
  * A version-specific scraping strategy.

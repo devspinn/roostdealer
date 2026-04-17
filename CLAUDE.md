@@ -83,6 +83,7 @@ The web app fetches dealer and inventory data from the API at runtime. Demo data
 | Sarasota Powersports | `sarasota-powersports` | Real (classic DealerSpike) | 50 powersports | `sarasota-powersports.json` |
 | Portside Marine | `portside-marine` | Real (ARI DealerSpike) | 20 boats/trailers | `portside-marine.json` |
 | Toms River Marine | `toms-river-marine` | Real (classic DealerSpike) | 152 mixed marine+powersports | `toms-river-marine.json` |
+| Five Star Marine | `five-star-marine` | Real (WooCommerce) | 186 marine hydraulic parts | `five-star-marine.json` |
 
 To add a new dealer:
 1. Scrape: `pnpm scrape --url <URL> --skip-enrich --output output/name-raw.json`
