@@ -13,9 +13,11 @@
     "migrate": "drizzle-kit migrate",
     "push": "drizzle-kit push",
     "studio": "drizzle-kit studio",
-    "seed": "tsx src/seed.ts"
+    "seed": "tsx src/seed.ts",
+    "migrate-images": "tsx src/migrate-images.ts"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1032.0",
     "@neondatabase/serverless": "^0.10.0",
     "dotenv": "^17.4.1",
     "drizzle-orm": ">=0.41.0"

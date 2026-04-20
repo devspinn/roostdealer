@@ -41,6 +41,7 @@ export const classicStrategy: ScrapeStrategy = {
         url.searchParams.has('vt') ||
         url.searchParams.has('vc') ||
         url.searchParams.has('ac') ||
+        url.searchParams.has('at') ||
         url.searchParams.has('subcategory') ||
         url.searchParams.has('category')
       )
@@ -53,7 +54,7 @@ export const classicStrategy: ScrapeStrategy = {
     if (allInv) {
       // Strip any leftover filter params to get the clean "all inventory" page
       const clean = new URL(allInv)
-      for (const key of ['category', 'make', 'vt', 'vc', 'ac', 'subcategory']) {
+      for (const key of ['category', 'make', 'vt', 'vc', 'ac', 'at', 'subcategory']) {
         clean.searchParams.delete(key)
       }
       return [clean.href]
@@ -63,7 +64,7 @@ export const classicStrategy: ScrapeStrategy = {
     const categoryFiltered = [...found].find((u) => /xAllInventory/i.test(u))
     if (categoryFiltered) {
       const clean = new URL(categoryFiltered)
-      for (const key of ['category', 'make', 'vt', 'vc', 'ac', 'subcategory']) {
+      for (const key of ['category', 'make', 'vt', 'vc', 'ac', 'at', 'subcategory']) {
         clean.searchParams.delete(key)
       }
       return [clean.href]

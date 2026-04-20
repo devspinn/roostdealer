@@ -16,6 +16,7 @@ export type Env = {
   BETTER_AUTH_SECRET: string
   BETTER_AUTH_URL: string
   RESEND_API_KEY: string
+  IMAGES?: R2Bucket
 }
 
 type Variables = {

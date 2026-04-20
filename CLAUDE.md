@@ -53,7 +53,8 @@ DealerSpike has (at least) two site generations. The scraper auto-detects which 
 ```bash
 pnpm dev                    # Run demo site at localhost:5173
 pnpm build                  # Build web for production
-pnpm scrape --url <URL>     # Full scrape + AI enrichment
+pnpm scrape --url <URL>     # Full scrape + AI enrichment + R2 image upload
+pnpm scrape --url <URL> --skip-images  # Scrape + enrich but keep original image URLs
 pnpm scrape --url <URL> --skip-enrich --max-listings 5  # Test crawling only
 pnpm api:dev                # Run Hono API server at localhost:3000
 pnpm db:push                # Push schema changes to Neon (dev workflow)
@@ -61,6 +62,7 @@ pnpm db:generate            # Generate SQL migration from schema diff
 pnpm db:migrate             # Run pending migrations
 pnpm db:studio              # Open Drizzle Studio (visual DB browser)
 pnpm db:seed                # Seed demo dealers + inventory into DB
+pnpm db:migrate-images      # Mirror all DB images to R2, rewrite URLs (idempotent)
 pnpm ship                   # Deploy API (Workers) + web (Pages) to Cloudflare
 pnpm ship:api               # Deploy only the API to Cloudflare Workers
 pnpm ship:web               # Build + deploy web to Cloudflare Pages
@@ -84,6 +86,7 @@ The web app fetches dealer and inventory data from the API at runtime. Demo data
 | Portside Marine | `portside-marine` | Real (ARI DealerSpike) | 20 boats/trailers | `portside-marine.json` |
 | Toms River Marine | `toms-river-marine` | Real (classic DealerSpike) | 152 mixed marine+powersports | `toms-river-marine.json` |
 | Five Star Marine | `five-star-marine` | Real (WooCommerce) | 186 marine hydraulic parts | `five-star-marine.json` |
+| Five Star Duncansville | `five-star-duncansville` | Real (classic DealerSpike v6) | 75 powersports | `five-star-duncansville.json` |
 
 To add a new dealer:
 1. Scrape: `pnpm scrape --url <URL> --skip-enrich --output output/name-raw.json`
@@ -161,8 +164,22 @@ pnpm ship:web                           # Build + deploy Pages
 - **Workers env vs process.env** — route handlers access env via `c.env.DATABASE_URL` (Hono context), not `process.env`. The Node.js dev entry (`index.ts`) bridges `process.env` into `c.env` via middleware. Never use `process.env` in `app.ts` or route files.
 - **`workerd` build script** — must be approved in `pnpm-workspace.yaml` `onlyBuiltDependencies` for wrangler to work. Already configured.
 
+### Image hosting (R2)
+- **Bucket**: `roostdealer-images` on Cloudflare R2
+- **Public URL**: `https://img.roostdealer.com` (needs custom domain setup on R2 bucket — use `pub-<hash>.r2.dev` until then)
+- **Key structure**: `{dealer-slug}/units/{stockNumber}/{filename}`, `{dealer-slug}/dealer/{filename}`
+- **Scraper uploads at scrape time**: `packages/scraper/src/images.ts` downloads from source, uploads to R2, rewrites URLs in output JSON
+- **Bulk migration**: `pnpm db:migrate-images` (`packages/db/src/migrate-images.ts`) reads all dealers+units from DB, mirrors images to R2, updates rows. Idempotent — skips URLs already on R2.
+- **Env vars**: `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET` (default: `roostdealer-images`), `R2_PUBLIC_URL` (default: `https://img.roostdealer.com`)
+- **`R2_ACCOUNT_ID` is not an API token** — it's the 32-char hex Cloudflare account ID (e.g. `7eb5d5329ed4a2fb46e213755af0bcfc`). Found in the dashboard URL or wrangler output. The `R2_ACCESS_KEY_ID`/`R2_SECRET_ACCESS_KEY` come from the R2 API token.
+- **R2 API token**: Create via Cloudflare dashboard → R2 → Manage R2 API Tokens → "Admin Read & Write" permission on the bucket
+- **Workers binding**: `IMAGES` R2 binding in `wrangler.toml` (available in API worker as `c.env.IMAGES`)
+- **`--skip-images`**: Scraper flag to keep original external URLs (useful for testing)
+- **DealerSpike TLS**: DealerSpike sites have broken TLS on non-www domains. Image downloads use `curl` (shelled out) instead of Node `fetch`/`https` to handle this — macOS LibreSSL negotiates where Node's OpenSSL 3.x fails.
+
 ### Not yet built
 - `api.roostdealer.com` DNS record (AAAA `100::` proxied) — once added, switch `.env.production` back to `https://api.roostdealer.com/api` and redeploy web
+- `img.roostdealer.com` custom domain on R2 bucket (until then, use R2 public dev URL or Workers binding)
 - BetterAuth organization plugin (dealer = org, staff = members with roles)
 - Scraper writing directly to DB
 - Subdomain-based tenant resolution middleware

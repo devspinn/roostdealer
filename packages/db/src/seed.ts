@@ -54,6 +54,7 @@ const files = [
   'portside-marine.json',
   'toms-river-marine.json',
   'five-star-marine.json',
+  'five-star-duncansville.json',
 ]
 
 async function seed() {

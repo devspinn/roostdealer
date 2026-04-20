@@ -67,6 +67,15 @@ export async function fetchJson<T>(url: string): Promise<T> {
 }
 
 /**
+ * Evaluate a function in the current page's browser context.
+ * The page must have been navigated to via fetchPage() first.
+ */
+export async function evaluateInPage<T>(fn: () => T): Promise<T> {
+  if (!page) throw new Error('No page loaded — call fetchPage() first')
+  return page.evaluate(fn)
+}
+
+/**
  * Close the browser. Call this when scraping is done.
  */
 export async function closeBrowser(): Promise<void> {

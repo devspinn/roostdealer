@@ -9,7 +9,7 @@ import {
   type SiteVersion,
 } from './strategies/index.js'
 import { crawlWooCommerce } from './woocommerce.js'
-import { fetchPage, closeBrowser } from './browser.js'
+import { fetchPage, evaluateInPage, closeBrowser } from './browser.js'
 
 
 function getStrategy(version: 'classic' | 'ari'): ScrapeStrategy {
@@ -66,35 +66,49 @@ export async function crawl(
 
   log(`Found ${inventoryUrls.length} inventory page(s)`)
 
-  // Step 5: Crawl all inventory pages and collect detail page links
-  const detailUrls = new Set<string>()
-  const globalVisitedPages = new Set<string>()
+  // Step 5: Try the fast path — DealerSpike v6 loads all inventory as a JS array
+  let listings: RawListing[] = []
 
-  for (const invUrl of inventoryUrls) {
-    if (globalVisitedPages.has(invUrl)) continue
-    log(`Crawling inventory page: ${invUrl}`)
-    try {
-      await crawlInventoryPage(invUrl, origin, detailUrls, strategy, log, globalVisitedPages)
-    } catch (err) {
-      log(`Warning: Failed to crawl ${invUrl}: ${err instanceof Error ? err.message : String(err)}`)
+  if (version === 'classic') {
+    const invPageUrl = inventoryUrls[0] ?? `${origin}/default.asp?page=xAllInventory`
+    log(`Loading inventory page: ${invPageUrl}`)
+    await fetchPage(invPageUrl)
+
+    const inlineVehicles = await extractInlineVehicles(origin)
+    if (inlineVehicles.length > 0) {
+      log(`Found ${inlineVehicles.length} vehicles via inline JS data (fast path)`)
+      listings = inlineVehicles
     }
   }
 
-  log(`Found ${detailUrls.size} unique listing detail pages`)
+  // Fallback: crawl individual detail pages if fast path didn't work
+  if (listings.length === 0) {
+    const detailUrls = new Set<string>()
+    const globalVisitedPages = new Set<string>()
 
-  // Step 6: Fetch each detail page and extract listing data
-  const listings: RawListing[] = []
-  let i = 0
+    for (const invUrl of inventoryUrls) {
+      if (globalVisitedPages.has(invUrl)) continue
+      log(`Crawling inventory page: ${invUrl}`)
+      try {
+        await crawlInventoryPage(invUrl, origin, detailUrls, strategy, log, globalVisitedPages)
+      } catch (err) {
+        log(`Warning: Failed to crawl ${invUrl}: ${err instanceof Error ? err.message : String(err)}`)
+      }
+    }
 
-  for (const detailUrl of detailUrls) {
-    i++
-    log(`Extracting listing ${i}/${detailUrls.size}: ${detailUrl}`)
-    try {
-      const html = await fetchPage(detailUrl)
-      const listing = extractListing(html, detailUrl, version)
-      listings.push(listing)
-    } catch (err) {
-      log(`Warning: Failed to extract ${detailUrl}: ${err instanceof Error ? err.message : String(err)}`)
+    log(`Found ${detailUrls.size} unique listing detail pages`)
+
+    let i = 0
+    for (const detailUrl of detailUrls) {
+      i++
+      log(`Extracting listing ${i}/${detailUrls.size}: ${detailUrl}`)
+      try {
+        const html = await fetchPage(detailUrl)
+        const listing = extractListing(html, detailUrl, version)
+        listings.push(listing)
+      } catch (err) {
+        log(`Warning: Failed to extract ${detailUrl}: ${err instanceof Error ? err.message : String(err)}`)
+      }
     }
   }
 
@@ -324,6 +338,125 @@ function resolveUrl(url: string | undefined | null, origin: string): string | nu
   } catch {
     return null
   }
+}
+
+/**
+ * Build CDN URL for DealerSpike inventory images.
+ * Pattern: cdn.dealerspike.com/imglib/v1/{size}/imglib/Assets/Inventory/{first2}/{next2}/{guid}.ext
+ */
+function dealerSpikeImageUrl(filename: string, size = '1024x768'): string {
+  const guid = filename.replace(/\.[^.]+$/, '')
+  const first2 = guid.substring(0, 2)
+  const next2 = guid.substring(2, 4)
+  return `https://cdn.dealerspike.com/imglib/v1/${size}/imglib/Assets/Inventory/${first2}/${next2}/${filename}`
+}
+
+interface DSVehicle {
+  id: string
+  stockno: string
+  manuf: string
+  model: string
+  bike_year: string
+  price: string
+  retail_price: string
+  sale_price: string
+  MSRP: string
+  color: string
+  vin: string
+  type: string // N = new, U = used
+  vehtypename: string
+  catname: string
+  notes: string
+  status: string
+  miles: string
+  engine: string
+  displacement: string
+  hp: string
+  length: string
+  beam: string
+  loa: string
+  hullmaterial: string
+  propulsion: string
+  transmission: string
+  enginehours: string
+  fuel_capacity: string
+  stock_image: string
+  bike_image: string
+  image2: string
+  vehtitle: string
+  unitvertical: string
+  HasImages: string
+}
+
+/**
+ * Extract vehicles from DealerSpike v6's inline `window.Vehicles` JS array.
+ * Returns RawListing[] directly — no need to visit individual detail pages.
+ */
+async function extractInlineVehicles(origin: string): Promise<RawListing[]> {
+  const vehicles = await evaluateInPage(() => {
+    const v = (window as any).Vehicles
+    if (!v || !Array.isArray(v)) return null
+    return v as DSVehicle[]
+  })
+
+  if (!vehicles || vehicles.length === 0) return []
+
+  return vehicles.map((v) => {
+    const year = v.bike_year || ''
+    const make = (v.manuf || '').replace(/[®™©]/g, '').trim()
+    const model = v.model || ''
+    const title = v.vehtitle || [year, make, model].filter(Boolean).join(' ')
+
+    const price = v.price || v.sale_price || v.retail_price || v.MSRP || ''
+    const priceStr = price ? `$${Number(price).toLocaleString()}` : undefined
+
+    const photos: string[] = []
+    if (v.bike_image) {
+      photos.push(dealerSpikeImageUrl(v.bike_image))
+    }
+    if (v.image2) {
+      photos.push(dealerSpikeImageUrl(v.image2))
+    }
+    if (photos.length === 0 && v.stock_image) {
+      photos.push(v.stock_image.startsWith('http') ? v.stock_image : `${origin}${v.stock_image}`)
+    }
+
+    const specs: Record<string, string> = {}
+    if (year) specs['Year'] = year
+    if (make) specs['Make'] = make
+    if (model) specs['Model'] = model
+    if (v.color) specs['Color'] = v.color
+    if (v.vin) specs['VIN'] = v.vin
+    if (v.stockno) specs['Stock Number'] = v.stockno
+    if (v.vehtypename) specs['Type'] = v.vehtypename
+    if (v.catname) specs['Category'] = v.catname
+    if (v.type) specs['Condition'] = v.type === 'N' ? 'New' : v.type === 'U' ? 'Used' : v.type
+    if (v.miles && v.miles !== '0') specs['Miles'] = v.miles
+    if (v.engine) specs['Engine'] = v.engine
+    if (v.displacement) specs['Displacement'] = v.displacement
+    if (v.hp) specs['Horsepower'] = v.hp
+    if (v.transmission) specs['Transmission'] = v.transmission
+    if (v.enginehours && v.enginehours !== '0') specs['Engine Hours'] = v.enginehours
+    if (v.fuel_capacity) specs['Fuel Capacity'] = v.fuel_capacity
+    if (v.length) specs['Length'] = v.length
+    if (v.beam) specs['Beam'] = v.beam
+    if (v.hullmaterial) specs['Hull Material'] = v.hullmaterial
+    if (v.propulsion) specs['Propulsion'] = v.propulsion
+    if (v.status) specs['Status'] = v.status
+    if (v.MSRP && v.MSRP !== '0') specs['MSRP'] = `$${Number(v.MSRP).toLocaleString()}`
+
+    const detailUrl = `${origin}/default.asp?page=xInventoryDetail&id=${v.id}&s=&fr=xAllInventory`
+
+    return {
+      url: detailUrl,
+      title,
+      price: priceStr,
+      photos,
+      specs,
+      description: v.notes || undefined,
+      rawHtml: '',
+    } satisfies RawListing
+  })
 }
 
 /**

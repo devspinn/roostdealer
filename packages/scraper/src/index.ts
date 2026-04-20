@@ -3,6 +3,7 @@ import { writeFile, mkdir } from 'node:fs/promises'
 import { dirname } from 'node:path'
 import { crawl } from './crawl.js'
 import { enrich, enrichDealerHero } from './enrich.js'
+import { uploadImages } from './images.js'
 import { closeBrowser } from './browser.js'
 import type { EnrichedData } from './types.js'
 
@@ -15,12 +16,14 @@ program
   .option('--output <path>', 'Output JSON file path', './output/dealer.json')
   .option('--skip-enrich', 'Skip AI enrichment (output raw scraped data)', false)
   .option('--max-listings <n>', 'Maximum number of listings to scrape', parseInt)
+  .option('--skip-images', 'Skip uploading images to R2', false)
   .action(async (opts) => {
     const startTime = Date.now()
-    const { url, output, skipEnrich, maxListings } = opts as {
+    const { url, output, skipEnrich, skipImages, maxListings } = opts as {
       url: string
       output: string
       skipEnrich: boolean
+      skipImages: boolean
       maxListings?: number
     }
 
@@ -32,7 +35,7 @@ program
 
     try {
       // Step 1: Crawl the site
-      console.log('[1/3] Crawling website...')
+      console.log('[1/4] Crawling website...')
       const scraped = await crawl(url, (msg) => console.log(`  ${msg}`))
 
       console.log()
@@ -55,7 +58,7 @@ program
       let result: EnrichedData
 
       if (skipEnrich) {
-        console.log('\n[2/3] Skipping AI enrichment (--skip-enrich)')
+        console.log('\n[2/4] Skipping AI enrichment (--skip-enrich)')
         // Map raw listings to basic units without AI
         result = {
           dealer: scraped.dealer,
@@ -75,7 +78,7 @@ program
           })),
         }
       } else {
-        console.log('\n[2/3] Enriching with AI...')
+        console.log('\n[2/4] Enriching with AI...')
         const units = await enrich(listings, (msg) => console.log(`  ${msg}`))
 
         // Generate AI hero content based on the enriched inventory
@@ -93,8 +96,23 @@ program
         }
       }
 
-      // Step 3: Write output
-      console.log('\n[3/3] Writing output...')
+      // Step 3: Upload images to R2
+      if (!skipImages) {
+        console.log('\n[3/4] Uploading images to R2...')
+        try {
+          const uploaded = await uploadImages(result.dealer, result.units, (msg) => console.log(`  ${msg}`))
+          result.dealer = uploaded.dealer
+          result.units = uploaded.units
+        } catch (err) {
+          console.log(`  Warning: Image upload failed: ${err instanceof Error ? err.message : String(err)}`)
+          console.log('  Falling back to original image URLs')
+        }
+      } else {
+        console.log('\n[3/4] Skipping image upload (--skip-images)')
+      }
+
+      // Step 4: Write output
+      console.log('\n[4/4] Writing output...')
       await mkdir(dirname(output), { recursive: true })
       await writeFile(output, JSON.stringify(result, null, 2), 'utf-8')
 
