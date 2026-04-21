@@ -2,8 +2,13 @@ import { Link } from 'react-router-dom'
 import { MapPin, ArrowRight, Bike, Anchor, LogOut } from 'lucide-react'
 import { authClient } from '@/lib/auth-client'
 import { useDealers } from '@/hooks/use-api'
+import { useMetaTags } from '@/hooks/use-meta-tags'
 
 export default function DealerDirectory() {
+  useMetaTags({
+    title: 'Demo Dealers | RoostDealer',
+    description: 'Browse demo dealer websites powered by RoostDealer. See real inventory from powersports and marine dealers.',
+  })
   const { data: session } = authClient.useSession()
   const { data: dealerList, loading, error } = useDealers()
 

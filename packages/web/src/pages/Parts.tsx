@@ -3,6 +3,7 @@ import { Package, Send, CheckCircle, Truck, ShieldCheck } from 'lucide-react'
 import { getDealerVibe } from '@/lib/dealer-vibe'
 import { getBrandLogoUrl } from '@/data/brand-logos'
 import { submitLead } from '@/lib/api'
+import { useMetaTags } from '@/hooks/use-meta-tags'
 import type { DealerInfo, Unit } from '@/types'
 
 interface PartsProps {
@@ -22,6 +23,11 @@ function getDefaultPartsContent(dealer: DealerInfo, vibe: string): string {
 export default function Parts({ dealer, units }: PartsProps) {
   const vibe = useMemo(() => getDealerVibe(units), [units])
   const partsContent = dealer.partsContent || getDefaultPartsContent(dealer, vibe)
+
+  useMetaTags({
+    title: `Parts & Accessories | ${dealer.name}`,
+    description: `Shop OEM parts and accessories at ${dealer.name}${dealer.city ? ` in ${dealer.city}, ${dealer.state}` : ''}. Order online or visit us today.`,
+  })
 
   const allMakes = useMemo(() => {
     const seen = new Set<string>()

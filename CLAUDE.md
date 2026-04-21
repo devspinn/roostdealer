@@ -40,13 +40,24 @@ DealerSpike has (at least) two site generations. The scraper auto-detects which 
 - Multi-word brands are common (e.g. "Alk2 Powerboats", "Sea Born", "Magic Tilt")
 - Example site: portsideorlando.com (113 units)
 
+### Classic DealerSpike v6 (fast path)
+- Detected via `data-platformversion="6"` on the `<html>` tag
+- All inventory loaded client-side as `window.Vehicles` JS array (can be 500+ items)
+- The scraper uses `page.evaluate()` to extract this array directly — no need to visit individual detail pages
+- Each vehicle object has: `id`, `bike_year`, `manuf`, `model`, `price`, `vin`, `stockno`, `type` (N/U), `vehtypename`, `catname`, `bike_image`, `image2`, `stock_image`, etc.
+- Dealer-uploaded images: `cdn.dealerspike.com/imglib/v1/{size}/imglib/Assets/Inventory/{guid[0:2]}/{guid[2:4]}/{guid}.jpg`
+- Stock/catalog images: `/imglib/trimsdb/{trimsid}-{variant}.png` (served from the dealer's domain)
+- Falls back to detail-page crawl if `window.Vehicles` is empty (older classic sites use server-side pagination)
+- Client-side pagination shows 15 items at a time — the HTML only has visible items as `<a>` tags, so the fast path is essential for getting the full inventory
+- Example v6 site: fivestarduncansville.com (583 units)
+
 ### Gotchas
 - `--skip-enrich` produces `year: null, make: 'Unknown'` — the enrichment-free path doesn't parse URL params. Use the transform script (`packages/scraper/transform-demo.mjs`) to structure raw data for the demo.
 - Photos: Classic sites often only return 1 photo per unit on listing pages; detail pages have full galleries. ARI sites tend to return ~3 thumbnails.
 - DealerSpike CDN images: `cdn.dealerspike.com/imglib/v1/800x600/...`
 - **Scrape output path**: `pnpm scrape` runs from `packages/scraper/`, so `--output` is relative to that dir. Use `--output output/name-raw.json` (not `packages/scraper/output/...` — that nests incorrectly).
 - **Logo extraction**: DealerSpike injects a generic "Powered by DealerSpike" logo at `cdn.dealerspike.com/imglib/template/...` that matches `[class*="logo"] img`. The scraper filters these out and picks the next match (the actual dealer logo). If a new template logo pattern appears, update `findDealerLogo()` in `crawl.ts`.
-- **Classic inventory discovery**: Some sites link to category-filtered inventory (e.g. `xAllInventory?category=atv`). The scraper strips `category=` and other filter params to get the full unfiltered inventory. If a site is missing categories, check `discoverInventoryPages()` in `strategies/classic.ts`.
+- **Classic inventory discovery**: Some sites link to category-filtered inventory (e.g. `xAllInventory?category=atv`). The scraper strips `category=`, `make=`, `vt=`, `vc=`, `ac=`, `at=`, and `subcategory=` params to get the full unfiltered inventory. If a site is missing categories, check `discoverInventoryPages()` in `strategies/classic.ts`.
 
 ## Key commands
 

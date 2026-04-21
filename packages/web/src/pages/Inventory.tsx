@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 import { Search, X, SlidersHorizontal } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import UnitCard from '@/components/UnitCard'
+import { useMetaTags } from '@/hooks/use-meta-tags'
 import type { Unit, Condition, UnitType, DealerInfo } from '@/types'
 
 interface InventoryProps {
@@ -194,6 +195,12 @@ export default function Inventory({ units, dealer }: InventoryProps) {
     typeFilter !== 'all'
       ? `${TYPE_LABELS[typeFilter]} Inventory`
       : 'Our Inventory'
+
+  const location = dealer.city && dealer.state ? ` in ${dealer.city}, ${dealer.state}` : ''
+  useMetaTags({
+    title: `${pageTitle} | ${dealer.name}`,
+    description: `Browse ${filteredUnits.length} ${typeFilter !== 'all' ? TYPE_LABELS[typeFilter].toLowerCase() : 'vehicles'} for sale${location} at ${dealer.name}.`,
+  })
 
   const intro = useMemo(
     () => generateIntro(units, dealer, typeFilter),

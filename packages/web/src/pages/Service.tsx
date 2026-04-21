@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react'
 import { Wrench, Shield, Clock, CheckCircle, Settings, Droplets, Send, Gauge } from 'lucide-react'
 import { getDealerVibe } from '@/lib/dealer-vibe'
 import { submitLead } from '@/lib/api'
+import { useMetaTags } from '@/hooks/use-meta-tags'
 import type { DealerInfo, Unit } from '@/types'
 
 interface ServiceProps {
@@ -39,6 +40,11 @@ function getDefaultServiceContent(dealer: DealerInfo, vibe: string): string {
 export default function Service({ dealer, units }: ServiceProps) {
   const vibe = useMemo(() => getDealerVibe(units), [units])
   const serviceContent = dealer.serviceContent || getDefaultServiceContent(dealer, vibe)
+
+  useMetaTags({
+    title: `Service & Repair | ${dealer.name}`,
+    description: `Professional service and repair at ${dealer.name}${dealer.city ? ` in ${dealer.city}, ${dealer.state}` : ''}. Schedule your appointment today.`,
+  })
   const services = vibe === 'marine' ? MARINE_SERVICES : POWERSPORTS_SERVICES
 
   const [firstName, setFirstName] = useState('')

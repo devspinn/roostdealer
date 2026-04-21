@@ -14,6 +14,7 @@ import { useDealerPath } from "@/DealerContext";
 import { getBrandLogoUrl } from "@/data/brand-logos";
 import { getDealerVibe } from "@/lib/dealer-vibe";
 import { fetchTestimonials } from "@/lib/api";
+import { useMetaTags } from "@/hooks/use-meta-tags";
 import type { DealerInfo, Unit, UnitType, Testimonial } from "@/types";
 
 interface HomeProps {
@@ -69,6 +70,14 @@ export default function Home({ dealer, units }: HomeProps) {
 
   // Hero background: use dealer heroImage, or first unit photo
   const heroImage = dealer.heroImage || 'hero.jpg';
+
+  const location = dealer.city && dealer.state ? ` | ${dealer.city}, ${dealer.state}` : ''
+  useMetaTags({
+    title: `${dealer.name}${location}`,
+    description: dealer.heroSubtitle || content.heroSub(dealer.name, dealer.city),
+    ogImage: dealer.heroSlides?.[0]?.image || dealer.heroImage,
+    ogType: 'website',
+  });
 
   // Categories: group by type, get count + image for each
   const categories = useMemo(() => {

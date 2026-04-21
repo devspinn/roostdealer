@@ -26,6 +26,7 @@ interface DealerJson {
     heroTitle?: string
     heroSubtitle?: string
     categoryImages?: Record<string, string>
+    heroSlides?: Array<{ image: string; video?: string; title: string; subtitle: string; ctaText?: string; ctaLink?: string }>
     sourceUrl: string
   }
   units: {
@@ -83,6 +84,7 @@ async function seed() {
         heroTitle: data.dealer.heroTitle,
         heroSubtitle: data.dealer.heroSubtitle,
         categoryImages: data.dealer.categoryImages,
+        heroSlides: data.dealer.heroSlides,
         sourceUrl: data.dealer.sourceUrl,
       })
       .onConflictDoNothing({ target: dealers.slug })
@@ -121,6 +123,19 @@ async function seed() {
     }
 
     console.log(`  Done: ${data.units.length} units inserted`)
+  }
+
+  // Backfill heroSlides for dealers that already existed
+  for (const file of files) {
+    const raw = readFileSync(resolve(dataDir, file), 'utf-8')
+    const data: DealerJson = JSON.parse(raw)
+    if (data.dealer.heroSlides?.length) {
+      await db
+        .update(dealers)
+        .set({ heroSlides: data.dealer.heroSlides })
+        .where(eq(dealers.slug, data.dealer.slug))
+      console.log(`  Updated heroSlides for ${data.dealer.name}`)
+    }
   }
 
   // --- Seed carousel + testimonials for Sarasota Powersports ---

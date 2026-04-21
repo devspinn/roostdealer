@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import { useMetaTags } from '@/hooks/use-meta-tags'
 import {
   Sparkles,
   FileText,
@@ -70,6 +71,14 @@ export default function UnitDetail({ units, dealer }: UnitDetailProps) {
     unit.photos.length > 0
       ? unit.photos
       : ['https://placehold.co/800x600/94a3b8/white?text=No+Photo']
+
+  const priceStr = unit.price ? ` | $${unit.price.toLocaleString()}` : ''
+  useMetaTags({
+    title: `${title}${priceStr} | ${dealer.name}`,
+    description: unit.aiDescription?.slice(0, 160),
+    ogImage: unit.photos[0],
+    ogType: 'product',
+  })
 
   return (
     <div className="bg-gray-50 min-h-screen">

@@ -2,12 +2,17 @@ import { useState } from 'react'
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from 'lucide-react'
 import type { DealerInfo } from '@/types'
 import { submitLead } from '@/lib/api'
+import { useMetaTags } from '@/hooks/use-meta-tags'
 
 interface ContactProps {
   dealer: DealerInfo
 }
 
 export default function Contact({ dealer }: ContactProps) {
+  useMetaTags({
+    title: `Contact Us | ${dealer.name}`,
+    description: `Get in touch with ${dealer.name}${dealer.city ? ` in ${dealer.city}, ${dealer.state}` : ''}. Call ${dealer.phone || 'us'} or send a message.`,
+  })
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')

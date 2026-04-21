@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Shield, Sparkles, Wrench, ArrowRight } from 'lucide-react'
 import { useDealerPath } from '@/DealerContext'
 import { getDealerVibe } from '@/lib/dealer-vibe'
+import { useMetaTags } from '@/hooks/use-meta-tags'
 import type { DealerInfo, Unit } from '@/types'
 
 interface AboutProps {
@@ -31,6 +32,11 @@ function getDefaultAboutContent(dealer: DealerInfo, vibe: string): string[] {
 export default function About({ dealer, units }: AboutProps) {
   const dp = useDealerPath()
   const vibe = useMemo(() => getDealerVibe(units), [units])
+
+  useMetaTags({
+    title: `About Us | ${dealer.name}`,
+    description: `Learn about ${dealer.name}${dealer.city ? ` in ${dealer.city}, ${dealer.state}` : ''} — your local powersports and marine dealer.`,
+  })
 
   const paragraphs = dealer.aboutContent
     ? dealer.aboutContent.split('\n\n').filter(Boolean)

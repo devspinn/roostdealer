@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { authClient } from '@/lib/auth-client'
+import { useMetaTags } from '@/hooks/use-meta-tags'
 import {
   ArrowRight,
   Clock,
@@ -93,6 +94,12 @@ const featureColorMap: Record<string, { bg: string; text: string }> = {
 export default function Marketing() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { data: session } = authClient.useSession()
+
+  useMetaTags({
+    title: 'RoostDealer | AI-Powered Dealer Websites for Powersports & Marine',
+    description: 'Modern, AI-powered websites for powersports and marine dealers. Replace your legacy DealerSpike site with a faster, smarter platform.',
+    ogType: 'website',
+  })
 
   return (
     <div className="min-h-screen flex flex-col">

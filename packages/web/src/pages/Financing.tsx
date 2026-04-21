@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Calculator, Send, CheckCircle, ExternalLink, DollarSign } from 'lucide-react'
 import { useDealerPath } from '@/DealerContext'
 import { submitLead } from '@/lib/api'
+import { useMetaTags } from '@/hooks/use-meta-tags'
 import type { DealerInfo } from '@/types'
 
 interface FinancingProps {
@@ -24,6 +25,11 @@ function calculateMonthlyPayment(
 
 export default function Financing({ dealer }: FinancingProps) {
   const dp = useDealerPath()
+
+  useMetaTags({
+    title: `Financing | ${dealer.name}`,
+    description: `Explore financing options at ${dealer.name}. Use our payment calculator and apply online.`,
+  })
 
   // Calculator state
   const [price, setPrice] = useState(25000)
