@@ -46,8 +46,124 @@ function getCookie(request: Request, name: string): string | null {
   return match ? match[1] : null;
 }
 
+// --- OG meta tag injection for dealer pages ---
+
+const NON_DEALER_PREFIXES = new Set([
+  '', 'demos', 'login', 'signup', 'forgot-password', 'reset-password', 'dashboard', 'api',
+]);
+
+interface DealerOGData {
+  name: string
+  slug: string
+  logo?: string
+  city?: string
+  state?: string
+  heroImage?: string
+  heroSubtitle?: string
+  heroSlides?: Array<{ image: string }>
+}
+
+function getDealerSlug(pathname: string): string | null {
+  if (pathname.includes('.')) return null;
+  const first = pathname.split('/').filter(Boolean)[0];
+  if (!first || first.startsWith('_') || NON_DEALER_PREFIXES.has(first)) return null;
+  return first;
+}
+
+function escapeAttr(s: string): string {
+  return s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+async function fetchDealerData(slug: string, apiUrl: string): Promise<DealerOGData | null> {
+  const url = `${apiUrl}/dealers/${slug}`;
+  const cache = (caches as any).default as Cache;
+  const cacheKey = new Request(url);
+  const cached = await cache.match(cacheKey);
+  if (cached) return cached.json();
+
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 3000);
+    const res = await fetch(url, { signal: controller.signal });
+    clearTimeout(timeout);
+    if (!res.ok) return null;
+    const dealer: DealerOGData = await res.json();
+    await cache.put(cacheKey, new Response(JSON.stringify(dealer), {
+      headers: { 'Cache-Control': 's-maxage=300' },
+    }));
+    return dealer;
+  } catch {
+    return null;
+  }
+}
+
+class MetaTagInjector implements HTMLRewriterElementContentHandlers {
+  private dealer: DealerOGData;
+  private pageUrl: string;
+
+  constructor(dealer: DealerOGData, pageUrl: string) {
+    this.dealer = dealer;
+    this.pageUrl = pageUrl;
+  }
+
+  element(element: Element) {
+    const d = this.dealer;
+    const location = d.city && d.state ? ` in ${d.city}, ${d.state}` : '';
+    const title = `${d.name}${location}`;
+    const description = d.heroSubtitle || `Shop powersports and marine at ${d.name}${location}.`;
+    const image = d.logo || d.heroSlides?.[0]?.image || d.heroImage || '';
+
+    const tags = [
+      `<meta property="og:title" content="${escapeAttr(title)}" />`,
+      `<meta property="og:description" content="${escapeAttr(description)}" />`,
+      image && `<meta property="og:image" content="${escapeAttr(image)}" />`,
+      `<meta property="og:url" content="${escapeAttr(this.pageUrl)}" />`,
+      `<meta property="og:type" content="website" />`,
+      `<meta property="og:site_name" content="Talos" />`,
+      `<meta name="twitter:card" content="${image ? 'summary_large_image' : 'summary'}" />`,
+      `<meta name="twitter:title" content="${escapeAttr(title)}" />`,
+      `<meta name="twitter:description" content="${escapeAttr(description)}" />`,
+      image && `<meta name="twitter:image" content="${escapeAttr(image)}" />`,
+      `<meta name="description" content="${escapeAttr(description)}" />`,
+    ].filter(Boolean);
+
+    element.append(tags.join('\n'), { html: true });
+  }
+}
+
+class TitleRewriter implements HTMLRewriterElementContentHandlers {
+  private title: string;
+  constructor(title: string) { this.title = title; }
+  text(text: Text) {
+    if (text.text.trim()) text.replace(this.title);
+  }
+}
+
+async function serveWithOGTags(context: EventContext<{ API_URL?: string }, any, any>): Promise<Response> {
+  const url = new URL(context.request.url);
+  const slug = getDealerSlug(url.pathname);
+
+  if (!slug) return context.next();
+
+  const apiUrl = (context.env as any).API_URL || 'https://api.talosdealer.com/api';
+  const [dealer, response] = await Promise.all([
+    fetchDealerData(slug, apiUrl),
+    context.next(),
+  ]);
+
+  if (!dealer) return response;
+
+  const location = dealer.city && dealer.state ? ` in ${dealer.city}, ${dealer.state}` : '';
+  const title = `${dealer.name}${location}`;
+
+  return new HTMLRewriter()
+    .on('head', new MetaTagInjector(dealer, url.href))
+    .on('title', new TitleRewriter(title))
+    .transform(response);
+}
+
 export const onRequest: PagesFunction = async (context) => {
-  return context.next(); // temporarily disabled
+  return serveWithOGTags(context); // password gate temporarily disabled
   const { request } = context;
 
   // POST = password submission
@@ -71,7 +187,7 @@ export const onRequest: PagesFunction = async (context) => {
 
   // Check for auth cookie
   if (getCookie(request, COOKIE_NAME) === "1") {
-    return context.next();
+    return serveWithOGTags(context);
   }
 
   // No cookie = show login
