@@ -125,16 +125,19 @@ async function seed() {
     console.log(`  Done: ${data.units.length} units inserted`)
   }
 
-  // Backfill heroSlides for dealers that already existed
+  // Backfill fields for dealers that already existed
   for (const file of files) {
     const raw = readFileSync(resolve(dataDir, file), 'utf-8')
     const data: DealerJson = JSON.parse(raw)
-    if (data.dealer.heroSlides?.length) {
+    const updates: Record<string, any> = {}
+    if (data.dealer.heroSlides?.length) updates.heroSlides = data.dealer.heroSlides
+    if (data.dealer.hours) updates.hours = data.dealer.hours
+    if (Object.keys(updates).length > 0) {
       await db
         .update(dealers)
-        .set({ heroSlides: data.dealer.heroSlides })
+        .set(updates)
         .where(eq(dealers.slug, data.dealer.slug))
-      console.log(`  Updated heroSlides for ${data.dealer.name}`)
+      console.log(`  Updated ${Object.keys(updates).join(', ')} for ${data.dealer.name}`)
     }
   }
 

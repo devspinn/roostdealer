@@ -119,18 +119,15 @@ export default function Layout({ dealer, unitTypes = [], children }: LayoutProps
 
   const dealershipItems = [
     { to: dp('/about'), label: 'About Us' },
-    { to: dp('/financing'), label: 'Financing' },
-    { to: dp('/service'), label: 'Service' },
-    { to: dp('/parts'), label: 'Parts' },
     { to: dp('/contact'), label: 'Contact Us' },
   ]
 
   const isInventoryActive = location.pathname.includes('/inventory')
+  const isServiceActive = location.pathname.includes('/service')
+  const isPartsActive = location.pathname.includes('/parts')
+  const isFinancingActive = location.pathname.includes('/financing')
   const isDealershipActive =
     location.pathname.includes('/about') ||
-    location.pathname.includes('/financing') ||
-    location.pathname.includes('/service') ||
-    location.pathname.includes('/parts') ||
     location.pathname.includes('/contact')
 
   return (
@@ -159,22 +156,38 @@ export default function Layout({ dealer, unitTypes = [], children }: LayoutProps
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-8">
-              <Link
-                to={dp('/')}
-                className={cn(
-                  'text-sm font-medium transition-colors hover:text-accent',
-                  location.pathname === dp('/') || location.pathname === dp('/') + '/'
-                    ? 'text-accent'
-                    : 'text-white/90',
-                )}
-              >
-                Home
-              </Link>
               <DesktopDropdown
                 label="Inventory"
                 items={inventoryItems}
                 isActive={isInventoryActive}
               />
+              <Link
+                to={dp('/service')}
+                className={cn(
+                  'text-sm font-medium transition-colors hover:text-accent',
+                  isServiceActive ? 'text-accent' : 'text-white/90',
+                )}
+              >
+                Service
+              </Link>
+              <Link
+                to={dp('/parts')}
+                className={cn(
+                  'text-sm font-medium transition-colors hover:text-accent',
+                  isPartsActive ? 'text-accent' : 'text-white/90',
+                )}
+              >
+                Parts
+              </Link>
+              <Link
+                to={dp('/financing')}
+                className={cn(
+                  'text-sm font-medium transition-colors hover:text-accent',
+                  isFinancingActive ? 'text-accent' : 'text-white/90',
+                )}
+              >
+                Financing
+              </Link>
               <DesktopDropdown
                 label="Dealership"
                 items={dealershipItems}
@@ -208,19 +221,6 @@ export default function Layout({ dealer, unitTypes = [], children }: LayoutProps
         {mobileMenuOpen && (
           <div className="md:hidden bg-primary-light border-t border-white/10">
             <div className="px-4 py-3 space-y-1">
-              <Link
-                to={dp('/')}
-                onClick={() => setMobileMenuOpen(false)}
-                className={cn(
-                  'block px-3 py-2 rounded-lg text-sm font-medium transition-colors',
-                  location.pathname === dp('/') || location.pathname === dp('/') + '/'
-                    ? 'bg-white/10 text-accent'
-                    : 'text-white/90 hover:bg-white/5',
-                )}
-              >
-                Home
-              </Link>
-
               {/* Mobile Inventory Accordion */}
               <div>
                 <button
@@ -257,6 +257,43 @@ export default function Layout({ dealer, unitTypes = [], children }: LayoutProps
                   </div>
                 )}
               </div>
+
+              <Link
+                to={dp('/service')}
+                onClick={() => setMobileMenuOpen(false)}
+                className={cn(
+                  'block px-3 py-2 rounded-lg text-sm font-medium transition-colors',
+                  isServiceActive
+                    ? 'bg-white/10 text-accent'
+                    : 'text-white/90 hover:bg-white/5',
+                )}
+              >
+                Service
+              </Link>
+              <Link
+                to={dp('/parts')}
+                onClick={() => setMobileMenuOpen(false)}
+                className={cn(
+                  'block px-3 py-2 rounded-lg text-sm font-medium transition-colors',
+                  isPartsActive
+                    ? 'bg-white/10 text-accent'
+                    : 'text-white/90 hover:bg-white/5',
+                )}
+              >
+                Parts
+              </Link>
+              <Link
+                to={dp('/financing')}
+                onClick={() => setMobileMenuOpen(false)}
+                className={cn(
+                  'block px-3 py-2 rounded-lg text-sm font-medium transition-colors',
+                  isFinancingActive
+                    ? 'bg-white/10 text-accent'
+                    : 'text-white/90 hover:bg-white/5',
+                )}
+              >
+                Financing
+              </Link>
 
               {/* Mobile Dealership Accordion */}
               <div>
