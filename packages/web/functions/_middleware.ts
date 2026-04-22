@@ -47,6 +47,7 @@ function getCookie(request: Request, name: string): string | null {
 }
 
 export const onRequest: PagesFunction = async (context) => {
+  return context.next(); // temporarily disabled
   const { request } = context;
 
   // POST = password submission
