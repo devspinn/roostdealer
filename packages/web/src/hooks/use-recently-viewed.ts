@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react'
 const MAX_ITEMS = 8
 
 function getStorageKey(slug: string) {
-  return `roostdealer:recently-viewed:${slug}`
+  return `talosdealer:recently-viewed:${slug}`
 }
 
 export function useRecentlyViewed(slug: string, currentUnitId?: string) {

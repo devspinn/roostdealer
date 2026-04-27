@@ -20,7 +20,7 @@ importers:
       '@neondatabase/serverless':
         specifier: ^0.10.4
         version: 0.10.4
-      '@roostdealer/db':
+      '@talosdealer/db':
         specifier: workspace:*
         version: link:../db
       better-auth:

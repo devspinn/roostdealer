@@ -1,4 +1,4 @@
-import type { Lead, Dealer, Unit } from '@roostdealer/db'
+import type { Lead, Dealer, Unit } from '@talosdealer/db'
 
 interface AdfInput {
   lead: Lead

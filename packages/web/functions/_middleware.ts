@@ -1,5 +1,5 @@
-const SITE_PASSWORD = "roost2026";
-const COOKIE_NAME = "roost_auth";
+const SITE_PASSWORD = "talos2026";
+const COOKIE_NAME = "talosdealer_auth";
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 30; // 30 days
 
 function loginPage(error?: string) {

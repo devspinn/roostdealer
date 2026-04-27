@@ -19,7 +19,7 @@ function getR2Config(): R2Config {
   const accessKeyId = process.env.R2_ACCESS_KEY_ID
   const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY
   const bucket = process.env.R2_BUCKET || 'roostdealer-images'
-  const publicUrl = process.env.R2_PUBLIC_URL || `https://img.roostdealer.com`
+  const publicUrl = process.env.R2_PUBLIC_URL || `https://img.talosdealer.com`
 
   if (!accountId || !accessKeyId || !secretAccessKey) {
     throw new Error(

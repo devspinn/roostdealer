@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
 import { eq } from 'drizzle-orm'
-import { dealers, newsletterSignups } from '@roostdealer/db'
+import { dealers, newsletterSignups } from '@talosdealer/db'
 import type { AppEnv } from '../app'
 
 const app = new Hono<AppEnv>()

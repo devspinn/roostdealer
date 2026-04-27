@@ -1,5 +1,5 @@
 {
-  "name": "@roostdealer/api",
+  "name": "@talosdealer/api",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -13,7 +13,7 @@
   "dependencies": {
     "@hono/node-server": "^1.14.0",
     "@neondatabase/serverless": "^0.10.4",
-    "@roostdealer/db": "workspace:*",
+    "@talosdealer/db": "workspace:*",
     "better-auth": "^1.2.0",
     "drizzle-orm": ">=0.41.0",
     "hono": "^4.7.0",

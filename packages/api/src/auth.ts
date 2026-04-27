@@ -1,7 +1,7 @@
 import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 import { Resend } from 'resend'
-import { createDb } from '@roostdealer/db'
+import { createDb } from '@talosdealer/db'
 import type { Env } from './app'
 
 // Workers-compatible password hashing using Web Crypto PBKDF2
@@ -80,10 +80,7 @@ export function createAuth(env: Env) {
       'https://talosdealer.com',
       'https://www.talosdealer.com',
       'https://staging.talosdealer.com',
-      'https://roostdealer.com',
-      'https://www.roostdealer.com',
-      'https://staging.roostdealer.com',
-      'https://roostdealer-web.pages.dev',
+      'https://talosdealer-web.pages.dev',
     ],
     advanced: {
       // TODO: Re-enable once api.talosdealer.com DNS is configured

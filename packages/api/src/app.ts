@@ -1,7 +1,7 @@
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
-import { createDb, type Database } from '@roostdealer/db'
+import { createDb, type Database } from '@talosdealer/db'
 import { createAuth } from './auth'
 import dealerRoutes from './routes/dealers'
 import unitRoutes from './routes/units'
@@ -53,10 +53,7 @@ export function createApp(getEnv?: () => Env) {
           'https://talosdealer.com',
           'https://www.talosdealer.com',
           'https://staging.talosdealer.com',
-          'https://roostdealer.com',
-          'https://www.roostdealer.com',
-          'https://staging.roostdealer.com',
-          'https://roostdealer-web.pages.dev',
+          'https://talosdealer-web.pages.dev',
         ]
         return allowed.includes(origin) ? origin : ''
       },

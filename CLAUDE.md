@@ -120,10 +120,10 @@ Always prefer setting `heroTitle`/`heroSubtitle` for demo dealers — the vibe f
 ## Backend (Phase B — in progress)
 
 - **Hono** API server (`packages/api`) at `:3000` with CORS for `:5173`
-- **Neon** Postgres 17, AWS us-east-1, project name `roostdealer`
+- **Neon** Postgres 17, AWS us-east-1, project name `roostdealer` (legacy — predates rebrand, not renamed because Neon project renames are risky and the `DATABASE_URL` is what matters)
 - **Drizzle** ORM — schema in `packages/db/src/schema/`, migrations in `packages/db/drizzle/`
 - **BetterAuth** — email/password auth, Drizzle adapter. Tables: `user`, `session`, `account`, `verification`
-- Multi-tenant via wildcard subdomains: `{slug}.roostdealer.com` (not wired yet)
+- Multi-tenant via wildcard subdomains: `{slug}.talosdealer.com` (not wired yet)
 
 ### DB/API gotchas
 - **Env loading**: The API uses `--env-file=../../.env` in the tsx/node command (not dotenv import) because ES module imports are hoisted — top-level `createDb()` calls in `auth.ts` run before any dotenv `config()` in `index.ts`. The db package uses `dotenv` in `drizzle.config.ts` and `seed.ts` since those are standalone scripts, not imported modules.
@@ -131,7 +131,7 @@ Always prefer setting `heroTitle`/`heroSubtitle` for demo dealers — the vibe f
 - **Schema changes workflow**: Edit schema files in `packages/db/src/schema/`, then `pnpm db:push` for dev iteration or `pnpm db:generate` + `pnpm db:migrate` for tracked migrations.
 - **Seed is idempotent**: Uses `onConflictDoNothing` on dealer slug, so re-running won't duplicate. But units don't have a unique constraint beyond their UUID, so re-seeding after a full wipe is the safest path.
 - **Web fetches from API**: The web app fetches dealers and inventory from the Hono API at runtime via hooks in `packages/web/src/hooks/use-api.ts`. The Vite dev server proxies `/api` to `localhost:3000`. Both `pnpm dev` and `pnpm api:dev` must be running for the demo site to work.
-- **Types are duplicated**: `packages/web/src/types.ts` and `packages/scraper/src/types.ts` both define `Unit`/`DealerInfo`. `packages/db/src/index.ts` exports Drizzle-inferred `Dealer`/`Unit` types. The web and scraper should eventually import from `@roostdealer/db` instead.
+- **Types are duplicated**: `packages/web/src/types.ts` and `packages/scraper/src/types.ts` both define `Unit`/`DealerInfo`. `packages/db/src/index.ts` exports Drizzle-inferred `Dealer`/`Unit` types. The web and scraper should eventually import from `@talosdealer/db` instead.
 
 ### API routes
 - `GET /api/dealers` — list all dealers
@@ -144,17 +144,17 @@ Always prefer setting `heroTitle`/`heroSubtitle` for demo dealers — the vibe f
 
 All Cloudflare, all CLI — no dashboard (except one-time DNS setup).
 
-- **Web** (`roostdealer.com`) → Cloudflare Pages (project: `roostdealer-web`)
-- **API** (`api.roostdealer.com`) → Cloudflare Workers (name: `roostdealer-api`)
+- **Web** (`talosdealer.com`) → Cloudflare Pages (project: `talosdealer-web`)
+- **API** (`api.talosdealer.com`) → Cloudflare Workers (name: `talosdealer-api`)
 - **DB** → Neon (already hosted, `@neondatabase/serverless` HTTP driver is Workers-compatible)
-- **Domain** → `roostdealer.com` on Cloudflare (zone ID: `0503decb770d1c6d10ddbc207959a7a8`)
+- **Domain** → `talosdealer.com` on Cloudflare
 
 ### Architecture
 - `packages/api/src/app.ts` — shared Hono app factory (`createApp()`). Accepts optional `getEnv` for Node.js process.env bridge. Workers populates `c.env` from bindings automatically.
 - `packages/api/src/index.ts` — Node.js dev entry (uses `@hono/node-server`)
 - `packages/api/src/worker.ts` — Workers entry (`export default createApp()`)
-- `packages/api/wrangler.toml` — Workers config (name, routes, secrets). Uses `[[routes]]` with `zone_name` — requires a proxied AAAA `100::` DNS record on `api.roostdealer.com`.
-- `packages/web/.env.production` — production `VITE_API_URL` for Vite build-time injection. Currently points at `roostdealer-api.devonstownsend.workers.dev` until `api.roostdealer.com` DNS is configured.
+- `packages/api/wrangler.toml` — Workers config (name, routes, secrets). Uses `[[routes]]` with `zone_name` — requires a proxied AAAA `100::` DNS record on `api.talosdealer.com`.
+- `packages/web/.env.production` — production `VITE_API_URL` for Vite build-time injection.
 
 ### Deploy commands
 ```bash
@@ -170,18 +170,18 @@ pnpm ship:web                           # Build + deploy Pages
 - **`pnpm deploy` is reserved** — pnpm intercepts `deploy` as a built-in command. Use `pnpm ship` / `ship:api` / `ship:web` instead.
 - **Workers routes need DNS** — `[[routes]]` in `wrangler.toml` only intercepts traffic already proxied through Cloudflare. The `api` subdomain needs a proxied AAAA record (`100::`) in Cloudflare DNS before the route works.
 - **`wrangler.toml` must live in `packages/api/`** — if a `wrangler.toml` or `wrangler.jsonc` exists at the repo root, wrangler finds it first and ignores the package-level config (causing "Missing entry-point" errors).
-- **CORS origins** — `packages/api/src/app.ts` has an allowlist. Add new origins there (e.g. preview deploy URLs like `*.roostdealer-web.pages.dev`). The `roostdealer-web.pages.dev` origin is already allowed.
+- **CORS origins** — `packages/api/src/app.ts` has an allowlist. Add new origins there (e.g. preview deploy URLs like `*.talosdealer-web.pages.dev`).
 - **VITE_API_URL is build-time** — changes require rebuilding and redeploying the web app (`pnpm ship:web`). The Vite dev proxy (`/api` → `localhost:3000`) still works for local dev when `VITE_API_URL` is unset.
 - **Workers env vs process.env** — route handlers access env via `c.env.DATABASE_URL` (Hono context), not `process.env`. The Node.js dev entry (`index.ts`) bridges `process.env` into `c.env` via middleware. Never use `process.env` in `app.ts` or route files.
 - **`workerd` build script** — must be approved in `pnpm-workspace.yaml` `onlyBuiltDependencies` for wrangler to work. Already configured.
 
 ### Image hosting (R2)
-- **Bucket**: `roostdealer-images` on Cloudflare R2
-- **Public URL**: `https://img.roostdealer.com` (needs custom domain setup on R2 bucket — use `pub-<hash>.r2.dev` until then)
+- **Bucket**: `roostdealer-images` on Cloudflare R2 (legacy name — R2 buckets can't be renamed and renaming would require re-uploading every image + rewriting every DB URL; not worth it. Only the public domain in front changes.)
+- **Public URL**: `https://img.talosdealer.com` (needs custom domain setup on R2 bucket — use `pub-<hash>.r2.dev` until then)
 - **Key structure**: `{dealer-slug}/units/{stockNumber}/{filename}`, `{dealer-slug}/dealer/{filename}`
 - **Scraper uploads at scrape time**: `packages/scraper/src/images.ts` downloads from source, uploads to R2, rewrites URLs in output JSON
 - **Bulk migration**: `pnpm db:migrate-images` (`packages/db/src/migrate-images.ts`) reads all dealers+units from DB, mirrors images to R2, updates rows. Idempotent — skips URLs already on R2.
-- **Env vars**: `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET` (default: `roostdealer-images`), `R2_PUBLIC_URL` (default: `https://img.roostdealer.com`)
+- **Env vars**: `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET` (default: `roostdealer-images`), `R2_PUBLIC_URL` (default: `https://img.talosdealer.com`)
 - **`R2_ACCOUNT_ID` is not an API token** — it's the 32-char hex Cloudflare account ID (e.g. `7eb5d5329ed4a2fb46e213755af0bcfc`). Found in the dashboard URL or wrangler output. The `R2_ACCESS_KEY_ID`/`R2_SECRET_ACCESS_KEY` come from the R2 API token.
 - **R2 API token**: Create via Cloudflare dashboard → R2 → Manage R2 API Tokens → "Admin Read & Write" permission on the bucket
 - **Workers binding**: `IMAGES` R2 binding in `wrangler.toml` (available in API worker as `c.env.IMAGES`)
@@ -189,8 +189,8 @@ pnpm ship:web                           # Build + deploy Pages
 - **DealerSpike TLS**: DealerSpike sites have broken TLS on non-www domains. Image downloads use `curl` (shelled out) instead of Node `fetch`/`https` to handle this — macOS LibreSSL negotiates where Node's OpenSSL 3.x fails.
 
 ### Not yet built
-- `api.roostdealer.com` DNS record (AAAA `100::` proxied) — once added, switch `.env.production` back to `https://api.roostdealer.com/api` and redeploy web
-- `img.roostdealer.com` custom domain on R2 bucket (until then, use R2 public dev URL or Workers binding)
+- `api.talosdealer.com` DNS record (AAAA `100::` proxied) — once added, switch `.env.production` back to `https://api.talosdealer.com/api` and redeploy web
+- `img.talosdealer.com` custom domain on R2 bucket (until then, use R2 public dev URL or Workers binding)
 - BetterAuth organization plugin (dealer = org, staff = members with roles)
 - Scraper writing directly to DB
 - Subdomain-based tenant resolution middleware

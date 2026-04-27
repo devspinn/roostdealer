@@ -21,7 +21,7 @@ function getR2Config() {
   const accessKeyId = process.env.R2_ACCESS_KEY_ID
   const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY
   const bucket = process.env.R2_BUCKET || 'roostdealer-images'
-  const publicUrl = process.env.R2_PUBLIC_URL || 'https://img.roostdealer.com'
+  const publicUrl = process.env.R2_PUBLIC_URL || 'https://img.talosdealer.com'
 
   if (!accountId || !accessKeyId || !secretAccessKey) {
     throw new Error('Missing R2 credentials. Set R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY in .env')
@@ -61,7 +61,7 @@ function sanitizeFilename(url: string): string {
 }
 
 function isR2Url(url: string): boolean {
-  return url.includes('.r2.dev/') || url.includes('img.roostdealer.com/')
+  return url.includes('.r2.dev/') || url.includes('img.roostdealer.com/') || url.includes('img.talosdealer.com/')
 }
 
 function isAlreadyMirrored(url: string, publicUrl: string): boolean {

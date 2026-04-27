@@ -1,20 +1,20 @@
 {
-  "name": "roostdealer",
+  "name": "talosdealer",
   "private": true,
   "scripts": {
-    "scrape": "pnpm --filter @roostdealer/scraper run scrape",
-    "dev": "pnpm --filter @roostdealer/web --filter @roostdealer/api -r --parallel run dev",
-    "build": "pnpm --filter @roostdealer/web run build",
-    "api:dev": "pnpm --filter @roostdealer/api run dev",
-    "db:generate": "pnpm --filter @roostdealer/db run generate",
-    "db:migrate": "pnpm --filter @roostdealer/db run migrate",
-    "db:push": "pnpm --filter @roostdealer/db run push",
-    "db:studio": "pnpm --filter @roostdealer/db run studio",
-    "db:seed": "pnpm --filter @roostdealer/db run seed",
-    "db:migrate-images": "pnpm --filter @roostdealer/db run migrate-images",
+    "scrape": "pnpm --filter @talosdealer/scraper run scrape",
+    "dev": "pnpm --filter @talosdealer/web --filter @talosdealer/api -r --parallel run dev",
+    "build": "pnpm --filter @talosdealer/web run build",
+    "api:dev": "pnpm --filter @talosdealer/api run dev",
+    "db:generate": "pnpm --filter @talosdealer/db run generate",
+    "db:migrate": "pnpm --filter @talosdealer/db run migrate",
+    "db:push": "pnpm --filter @talosdealer/db run push",
+    "db:studio": "pnpm --filter @talosdealer/db run studio",
+    "db:seed": "pnpm --filter @talosdealer/db run seed",
+    "db:migrate-images": "pnpm --filter @talosdealer/db run migrate-images",
     "ship": "pnpm ship:api && pnpm ship:web",
-    "ship:api": "pnpm --filter @roostdealer/api run ship",
-    "ship:web": "pnpm --filter @roostdealer/web run ship"
+    "ship:api": "pnpm --filter @talosdealer/api run ship",
+    "ship:web": "pnpm --filter @talosdealer/web run ship"
   },
   "devDependencies": {
     "wrangler": "^4.80.0"

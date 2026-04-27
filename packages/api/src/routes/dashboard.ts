@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
 import { eq, and, desc } from 'drizzle-orm'
-import { dealers, units, leads, user } from '@roostdealer/db'
+import { dealers, units, leads, user } from '@talosdealer/db'
 import type { AppEnv } from '../app'
 import { requireAuth } from '../middleware/auth'
 import { buildAdfXml } from '../lib/adf'

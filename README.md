@@ -11,7 +11,7 @@ AI-native website platform for powersports, marine, and outdoor equipment dealer
 ## Project structure
 
 ```
-roostdealer/
+talosdealer/
 ├── packages/
 │   ├── scraper/          # CLI tool: crawl dealer sites, enrich with AI
 │   │   ├── src/

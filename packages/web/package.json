@@ -1,5 +1,5 @@
 {
-  "name": "@roostdealer/web",
+  "name": "@talosdealer/web",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "ship": "vite build && wrangler pages deploy dist --project-name roostdealer-web"
+    "ship": "vite build && wrangler pages deploy dist --project-name talosdealer-web"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",
