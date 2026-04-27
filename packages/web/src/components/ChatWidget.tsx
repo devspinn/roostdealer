@@ -4,6 +4,7 @@ import { MessageCircle, Search, Send, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { streamChat, type ChatMessage } from '@/lib/chat-client'
 import UnitInlineCard from '@/components/chat/UnitInlineCard'
+import LeadConfirmationCard from '@/components/chat/LeadConfirmationCard'
 import type { DealerInfo } from '@/types'
 
 interface ChatWidgetProps {
@@ -42,22 +43,41 @@ function saveMessages(slug: string, messages: ChatMessage[]) {
 }
 
 // Renders a chunk of assistant text:
-//   - [[unit:UUID]] sentinels → <UnitInlineCard />
-//   - **bold** → <strong>
+//   - [[unit:UUID]]  → <UnitInlineCard />
+//   - [[lead:UUID]]  → <LeadConfirmationCard />
+//   - **bold**       → <strong>
 //   - preserves line breaks
-function RenderedAssistantText({ text, slug }: { text: string; slug: string }) {
-  // Split on the unit sentinel, keeping the captured UUID.
-  const parts = text.split(/\[\[unit:([0-9a-fA-F-]+)\]\]/g)
-  return (
-    <>
-      {parts.map((chunk, i) => {
-        if (i % 2 === 1) {
-          return <UnitInlineCard key={`u-${i}-${chunk}`} slug={slug} unitId={chunk} />
-        }
-        return <InlineText key={`t-${i}`} text={chunk} />
-      })}
-    </>
-  )
+function RenderedAssistantText({
+  text,
+  slug,
+  dealerName,
+}: {
+  text: string
+  slug: string
+  dealerName: string
+}) {
+  // Split on any of our sentinels. The regex captures [kind, uuid] so every fourth
+  // element in the split is a kind and every fifth an id — but with a combined group
+  // we get pairs: (text)(kind)(uuid)(text)(kind)(uuid)...
+  const parts = text.split(/\[\[(unit|lead):([0-9a-fA-F-]+)\]\]/g)
+  const nodes: React.ReactNode[] = []
+  for (let i = 0; i < parts.length; i++) {
+    if (i % 3 === 0) {
+      // text chunk
+      if (parts[i]) nodes.push(<InlineText key={`t-${i}`} text={parts[i]} />)
+    } else if (i % 3 === 1) {
+      // sentinel kind — consume it with the next element (the id)
+      const kind = parts[i]
+      const id = parts[i + 1]
+      if (kind === 'unit') {
+        nodes.push(<UnitInlineCard key={`u-${i}-${id}`} slug={slug} unitId={id} />)
+      } else if (kind === 'lead') {
+        nodes.push(<LeadConfirmationCard key={`l-${i}-${id}`} dealerName={dealerName} />)
+      }
+      i++ // skip the id, already consumed
+    }
+  }
+  return <>{nodes}</>
 }
 
 function InlineText({ text }: { text: string }) {
@@ -97,16 +117,20 @@ const TOOL_LABELS: Record<string, string> = {
 
 function ToolIndicator({ tool }: { tool: ActiveTool }) {
   const label = TOOL_LABELS[tool.name] ?? tool.name
+  let text: string
+  if (!tool.done) {
+    text = `${label}…`
+  } else if (!tool.ok) {
+    text = `${label} · ${tool.summary ?? 'failed'}`
+  } else if (tool.summary) {
+    text = `${label} · ${tool.summary}`
+  } else {
+    text = label
+  }
   return (
     <div className="flex items-center gap-2 text-xs text-gray-500 italic px-3 py-1.5 bg-gray-100 rounded-full w-fit">
       <Search className={cn('h-3 w-3', !tool.done && 'animate-pulse')} />
-      {tool.done ? (
-        <span>
-          {label} {tool.ok ? '·' : 'failed'} {tool.summary ?? ''}
-        </span>
-      ) : (
-        <span>{label}…</span>
-      )}
+      <span>{text}</span>
     </div>
   )
 }
@@ -193,6 +217,11 @@ export default function ChatWidget({ dealer }: ChatWidgetProps) {
           )
         } else if (evt.type === 'agent_name') {
           setAgentName(evt.name)
+        } else if (evt.type === 'lead_captured') {
+          // Append a sentinel that RenderedAssistantText turns into a confirmation card.
+          // Piggy-backs on the existing message storage so it survives reloads.
+          accumulated += `\n\n[[lead:${evt.leadId}]]`
+          setStreamingText(accumulated)
         } else if (evt.type === 'error') {
           setError(evt.message)
           break
@@ -307,7 +336,11 @@ export default function ChatWidget({ dealer }: ChatWidgetProps) {
                   )}
                 >
                   {m.role === 'assistant' ? (
-                    <RenderedAssistantText text={m.content} slug={dealer.slug} />
+                    <RenderedAssistantText
+                      text={m.content}
+                      slug={dealer.slug}
+                      dealerName={dealer.name}
+                    />
                   ) : (
                     m.content
                   )}
@@ -328,7 +361,11 @@ export default function ChatWidget({ dealer }: ChatWidgetProps) {
             {streamingText && (
               <div className="flex justify-start">
                 <div className="max-w-[85%] px-3 py-2 rounded-2xl rounded-bl-sm text-sm leading-relaxed break-words bg-white border border-gray-200 text-gray-900">
-                  <RenderedAssistantText text={streamingText} slug={dealer.slug} />
+                  <RenderedAssistantText
+                    text={streamingText}
+                    slug={dealer.slug}
+                    dealerName={dealer.name}
+                  />
                 </div>
               </div>
             )}

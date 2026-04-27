@@ -15,6 +15,7 @@ export type AgentEvent =
   | { type: 'text'; delta: string }
   | { type: 'tool_start'; id: string; name: string }
   | { type: 'tool_end'; id: string; name: string; ok: boolean; summary?: string }
+  | { type: 'lead_captured'; leadId: string }
   | { type: 'done' }
   | { type: 'error'; message: string }
 

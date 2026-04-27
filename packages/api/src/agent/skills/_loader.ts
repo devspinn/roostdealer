@@ -6,6 +6,10 @@ import { financingBasics } from './financing-basics'
 import { objectionHandle } from './objection-handle'
 import { powersports101 } from './powersports-101'
 import { marine101 } from './marine-101'
+import { leadCapture } from './lead-capture'
+import { testRideBooking } from './test-ride-booking'
+import { tradeInIntake } from './trade-in-intake'
+import { handoffEscalate } from './handoff-escalate'
 
 export type SkillDomain = 'powersports' | 'marine'
 
@@ -30,6 +34,10 @@ const ALL_SKILLS: Skill[] = [
   objectionHandle,
   powersports101,
   marine101,
+  leadCapture,
+  testRideBooking,
+  tradeInIntake,
+  handoffEscalate,
 ]
 
 export function loadSkills(filter?: { domain?: SkillDomain }): Skill[] {
