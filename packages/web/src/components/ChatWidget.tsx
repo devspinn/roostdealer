@@ -1,13 +1,16 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
-import { MessageCircle, Send, X } from 'lucide-react'
+import { MessageCircle, Search, Send, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { sendChat, type ChatMessage } from '@/lib/chat-client'
+import { streamChat, type ChatMessage } from '@/lib/chat-client'
+import UnitInlineCard from '@/components/chat/UnitInlineCard'
 import type { DealerInfo } from '@/types'
 
 interface ChatWidgetProps {
   dealer: DealerInfo
 }
+
+type ActiveTool = { id: string; name: string; summary?: string; ok?: boolean; done: boolean }
 
 function storageKey(slug: string) {
   return `talos:chat:${slug}`
@@ -38,8 +41,26 @@ function saveMessages(slug: string, messages: ChatMessage[]) {
   }
 }
 
-// Minimal rich text: bold between **…**, preserve line breaks. No HTML injection.
-function RenderedText({ text }: { text: string }) {
+// Renders a chunk of assistant text:
+//   - [[unit:UUID]] sentinels → <UnitInlineCard />
+//   - **bold** → <strong>
+//   - preserves line breaks
+function RenderedAssistantText({ text, slug }: { text: string; slug: string }) {
+  // Split on the unit sentinel, keeping the captured UUID.
+  const parts = text.split(/\[\[unit:([0-9a-fA-F-]+)\]\]/g)
+  return (
+    <>
+      {parts.map((chunk, i) => {
+        if (i % 2 === 1) {
+          return <UnitInlineCard key={`u-${i}-${chunk}`} slug={slug} unitId={chunk} />
+        }
+        return <InlineText key={`t-${i}`} text={chunk} />
+      })}
+    </>
+  )
+}
+
+function InlineText({ text }: { text: string }) {
   const lines = text.split('\n')
   return (
     <>
@@ -68,43 +89,70 @@ function renderInline(line: string): React.ReactNode[] {
   return parts
 }
 
+const TOOL_LABELS: Record<string, string> = {
+  search_inventory: 'Searching inventory',
+  get_unit_details: 'Looking up unit details',
+  get_dealer_info: 'Checking dealer info',
+}
+
+function ToolIndicator({ tool }: { tool: ActiveTool }) {
+  const label = TOOL_LABELS[tool.name] ?? tool.name
+  return (
+    <div className="flex items-center gap-2 text-xs text-gray-500 italic px-3 py-1.5 bg-gray-100 rounded-full w-fit">
+      <Search className={cn('h-3 w-3', !tool.done && 'animate-pulse')} />
+      {tool.done ? (
+        <span>
+          {label} {tool.ok ? '·' : 'failed'} {tool.summary ?? ''}
+        </span>
+      ) : (
+        <span>{label}…</span>
+      )}
+    </div>
+  )
+}
+
 export default function ChatWidget({ dealer }: ChatWidgetProps) {
   const [open, setOpen] = useState(false)
   const [messages, setMessages] = useState<ChatMessage[]>([])
   const [draft, setDraft] = useState('')
   const [loading, setLoading] = useState(false)
+  const [streamingText, setStreamingText] = useState('')
+  const [activeTools, setActiveTools] = useState<ActiveTool[]>([])
   const [error, setError] = useState<string | null>(null)
-  const [agentName, setAgentName] = useState<string>('Sales Assistant')
+  const [agentName, setAgentName] = useState<string>(dealer.chatAgentName || 'Sales Assistant')
   const scrollRef = useRef<HTMLDivElement>(null)
+  const abortRef = useRef<AbortController | null>(null)
   const location = useLocation()
-  const params = useParams<{ unitId?: string }>()
+  const params = useParams<{ id?: string }>()
 
   const pageContext = useMemo(
-    () => ({ path: location.pathname, unitId: params.unitId }),
-    [location.pathname, params.unitId],
+    () => ({ path: location.pathname, unitId: params.id }),
+    [location.pathname, params.id],
   )
 
-  // Load persisted messages on mount / dealer change
   useEffect(() => {
     setMessages(loadMessages(dealer.slug))
   }, [dealer.slug])
 
-  // Persist on change
   useEffect(() => {
     saveMessages(dealer.slug, messages)
   }, [dealer.slug, messages])
 
-  // Initial agent name from dealer override
   useEffect(() => {
     if (dealer.chatAgentName) setAgentName(dealer.chatAgentName)
   }, [dealer.chatAgentName])
 
-  // Autoscroll to bottom on new message
   useEffect(() => {
     if (open && scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight
     }
-  }, [messages, open, loading])
+  }, [messages, open, loading, streamingText, activeTools])
+
+  useEffect(() => {
+    return () => {
+      abortRef.current?.abort()
+    }
+  }, [])
 
   if (dealer.chatEnabled === false) return null
 
@@ -118,27 +166,64 @@ export default function ChatWidget({ dealer }: ChatWidgetProps) {
     setDraft('')
     setLoading(true)
     setError(null)
+    setStreamingText('')
+    setActiveTools([])
 
+    const ac = new AbortController()
+    abortRef.current = ac
+
+    let accumulated = ''
     try {
-      const res = await sendChat({ slug: dealer.slug, messages: next, pageContext })
-      setMessages([...next, res.message])
-      if (res.agentName) setAgentName(res.agentName)
+      for await (const evt of streamChat({
+        slug: dealer.slug,
+        messages: next,
+        pageContext,
+        signal: ac.signal,
+      })) {
+        if (evt.type === 'text') {
+          accumulated += evt.delta
+          setStreamingText(accumulated)
+        } else if (evt.type === 'tool_start') {
+          setActiveTools((prev) => [...prev, { id: evt.id, name: evt.name, done: false }])
+        } else if (evt.type === 'tool_end') {
+          setActiveTools((prev) =>
+            prev.map((t) =>
+              t.id === evt.id ? { ...t, done: true, ok: evt.ok, summary: evt.summary } : t,
+            ),
+          )
+        } else if (evt.type === 'agent_name') {
+          setAgentName(evt.name)
+        } else if (evt.type === 'error') {
+          setError(evt.message)
+          break
+        } else if (evt.type === 'done') {
+          break
+        }
+      }
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Something went wrong'
-      setError(msg)
+      if ((err as Error).name !== 'AbortError') {
+        setError(err instanceof Error ? err.message : 'Something went wrong')
+      }
     } finally {
+      if (accumulated.trim()) {
+        setMessages([...next, { role: 'assistant', content: accumulated }])
+      }
+      setStreamingText('')
+      setActiveTools([])
       setLoading(false)
+      abortRef.current = null
     }
   }
 
   function handleClear() {
     setMessages([])
     setError(null)
+    setStreamingText('')
+    setActiveTools([])
   }
 
   return (
     <>
-      {/* Floating pill */}
       {!open && (
         <button
           type="button"
@@ -155,7 +240,6 @@ export default function ChatWidget({ dealer }: ChatWidgetProps) {
         </button>
       )}
 
-      {/* Open panel */}
       {open && (
         <div
           className={cn(
@@ -167,11 +251,7 @@ export default function ChatWidget({ dealer }: ChatWidgetProps) {
           <div className="flex items-center justify-between gap-2 bg-primary text-white px-4 py-3 sm:rounded-t-2xl">
             <div className="flex items-center gap-2 min-w-0">
               {dealer.logo ? (
-                <img
-                  src={dealer.logo}
-                  alt=""
-                  className="h-8 w-8 rounded-full bg-white object-contain"
-                />
+                <img src={dealer.logo} alt="" className="h-8 w-8 rounded-full bg-white object-contain" />
               ) : (
                 <div className="h-8 w-8 rounded-full bg-white/20 flex items-center justify-center">
                   <MessageCircle className="h-4 w-4" />
@@ -187,8 +267,8 @@ export default function ChatWidget({ dealer }: ChatWidgetProps) {
                 <button
                   type="button"
                   onClick={handleClear}
-                  className="text-xs text-white/80 hover:text-white px-2 py-1 rounded"
-                  aria-label="Clear conversation"
+                  disabled={loading}
+                  className="text-xs text-white/80 hover:text-white px-2 py-1 rounded disabled:opacity-50"
                 >
                   Clear
                 </button>
@@ -210,34 +290,51 @@ export default function ChatWidget({ dealer }: ChatWidgetProps) {
               <div className="text-sm text-gray-600 bg-white border border-gray-200 rounded-lg px-3 py-3">
                 <p className="font-medium text-gray-900 mb-1">Hey, I'm {agentName}.</p>
                 <p>
-                  I can help you find the right unit, answer questions about{' '}
-                  {dealer.name}, or get you set up with our team. What are you looking for?
+                  I can help you find the right unit, answer questions about {dealer.name}, or get
+                  you set up with our team. What are you looking for?
                 </p>
               </div>
             )}
 
             {messages.map((m, i) => (
-              <div
-                key={i}
-                className={cn(
-                  'flex',
-                  m.role === 'user' ? 'justify-end' : 'justify-start',
-                )}
-              >
+              <div key={i} className={cn('flex', m.role === 'user' ? 'justify-end' : 'justify-start')}>
                 <div
                   className={cn(
-                    'max-w-[85%] px-3 py-2 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap break-words',
+                    'max-w-[85%] px-3 py-2 rounded-2xl text-sm leading-relaxed break-words',
                     m.role === 'user'
-                      ? 'bg-primary text-white rounded-br-sm'
+                      ? 'bg-primary text-white rounded-br-sm whitespace-pre-wrap'
                       : 'bg-white border border-gray-200 text-gray-900 rounded-bl-sm',
                   )}
                 >
-                  <RenderedText text={m.content} />
+                  {m.role === 'assistant' ? (
+                    <RenderedAssistantText text={m.content} slug={dealer.slug} />
+                  ) : (
+                    m.content
+                  )}
                 </div>
               </div>
             ))}
 
-            {loading && (
+            {/* Active tool indicators (shown during streaming) */}
+            {activeTools.length > 0 && (
+              <div className="flex flex-col gap-1 items-start">
+                {activeTools.map((t) => (
+                  <ToolIndicator key={t.id} tool={t} />
+                ))}
+              </div>
+            )}
+
+            {/* In-progress streaming assistant message */}
+            {streamingText && (
+              <div className="flex justify-start">
+                <div className="max-w-[85%] px-3 py-2 rounded-2xl rounded-bl-sm text-sm leading-relaxed break-words bg-white border border-gray-200 text-gray-900">
+                  <RenderedAssistantText text={streamingText} slug={dealer.slug} />
+                </div>
+              </div>
+            )}
+
+            {/* Typing dots when waiting for first token */}
+            {loading && !streamingText && activeTools.length === 0 && (
               <div className="flex justify-start">
                 <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-sm px-3 py-2">
                   <div className="flex gap-1">

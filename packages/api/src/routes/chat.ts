@@ -1,15 +1,15 @@
 import { Hono } from 'hono'
+import { streamSSE } from 'hono/streaming'
 import { eq } from 'drizzle-orm'
 import { dealers } from '@talosdealer/db'
 import type { AppEnv } from '../app'
 import { runAgent } from '../agent'
-import type { ClaudeMessage } from '../agent/client'
 
 const app = new Hono<AppEnv>()
 
 const MAX_MESSAGES = 40
 
-// POST /api/dealers/:slug/chat
+// POST /api/dealers/:slug/chat — SSE stream
 // Body: { messages: [{role, content}], pageContext?: { path, unitId } }
 app.post('/:slug/chat', async (c) => {
   const db = c.get('db')
@@ -25,14 +25,12 @@ app.post('/:slug/chat', async (c) => {
   }
 
   const rawMessages = body.messages as Array<{ role?: string; content?: string }>
-  if (rawMessages.length === 0) {
-    return c.json({ error: 'messages is empty' }, 400)
-  }
+  if (rawMessages.length === 0) return c.json({ error: 'messages is empty' }, 400)
   if (rawMessages.length > MAX_MESSAGES) {
     return c.json({ error: `Too many messages (max ${MAX_MESSAGES})` }, 400)
   }
 
-  const messages: ClaudeMessage[] = []
+  const messages: Array<{ role: 'user' | 'assistant'; content: string }> = []
   for (const m of rawMessages) {
     if ((m.role !== 'user' && m.role !== 'assistant') || typeof m.content !== 'string') {
       return c.json({ error: 'Invalid message shape' }, 400)
@@ -51,24 +49,44 @@ app.post('/:slug/chat', async (c) => {
     return c.json({ error: 'Chat not configured: missing AWS_BEARER_TOKEN_BEDROCK' }, 500)
   }
 
-  try {
-    const result = await runAgent({
-      db,
-      dealer,
-      messages,
-      pageContext,
-      env: {
-        AWS_BEARER_TOKEN_BEDROCK: c.env.AWS_BEARER_TOKEN_BEDROCK,
-        AWS_REGION: c.env.AWS_REGION,
-        ANTHROPIC_SMALL_FAST_MODEL: c.env.ANTHROPIC_SMALL_FAST_MODEL,
-      },
-    })
-    return c.json({ message: { role: 'assistant', content: result.text }, agentName: result.agentName })
-  } catch (err) {
-    console.error('[chat] agent error', err)
-    const message = err instanceof Error ? err.message : 'Unknown error'
-    return c.json({ error: `Agent error: ${message}` }, 500)
-  }
+  return streamSSE(
+    c,
+    async (stream) => {
+      try {
+        for await (const evt of runAgent({
+          db,
+          dealer,
+          messages,
+          pageContext,
+          env: {
+            AWS_BEARER_TOKEN_BEDROCK: c.env.AWS_BEARER_TOKEN_BEDROCK!,
+            AWS_REGION: c.env.AWS_REGION,
+            ANTHROPIC_SMALL_FAST_MODEL: c.env.ANTHROPIC_SMALL_FAST_MODEL,
+          },
+        })) {
+          await stream.writeSSE({
+            event: evt.type,
+            data: JSON.stringify(evt),
+          })
+          if (evt.type === 'done' || evt.type === 'error') break
+        }
+      } catch (err) {
+        console.error('[chat] agent error', err)
+        const message = err instanceof Error ? err.message : 'Unknown error'
+        await stream.writeSSE({
+          event: 'error',
+          data: JSON.stringify({ type: 'error', message }),
+        })
+      }
+    },
+    async (err, stream) => {
+      console.error('[chat] stream error', err)
+      await stream.writeSSE({
+        event: 'error',
+        data: JSON.stringify({ type: 'error', message: err.message }),
+      })
+    },
+  )
 })
 
 export default app

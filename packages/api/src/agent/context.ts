@@ -213,11 +213,12 @@ export type BuildSystemPromptArgs = {
   inventorySummary: InventorySummary
   pageContext?: PageContext
   agentName: string
+  domain?: SkillDomain
 }
 
 export function buildSystemPrompt(args: BuildSystemPromptArgs): string {
   const { dealer, inventorySummary, pageContext, agentName } = args
-  const domain = pickDomain(inventorySummary)
+  const domain = args.domain ?? pickDomain(inventorySummary)
   const vertical = domain === 'marine' ? 'marine' : 'powersports'
 
   const base = SYSTEM_BASE.replace('{agentName}', agentName)
